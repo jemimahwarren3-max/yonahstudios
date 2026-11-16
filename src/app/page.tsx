@@ -6,10 +6,9 @@ import { HomeHero } from "@/components/sections/home-hero";
 import { ProcessSection } from "@/components/sections/process";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { ProjectVisual } from "@/components/concept/project-visual";
-import { LiveWorkCard } from "@/components/concept/live-work-card";
+import { ShowcaseCarousel } from "@/components/sections/showcase-carousel";
 import { services } from "@/lib/data/services";
 import { getProject } from "@/lib/data/projects";
-import { liveProjects } from "@/lib/data/work";
 
 const valuePoints = [
   { title: "Thoughtful design", text: "Every piece is considered, intentional and made to fit your business." },
@@ -141,13 +140,13 @@ export default function Home() {
         <Container>
           <Reveal className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
-              <Eyebrow>Selected work</Eyebrow>
+              <Eyebrow>Work in rotation</Eyebrow>
               <h2 className="mt-5 font-heading text-4xl leading-tight text-charcoal sm:text-5xl">
-                Live sites we've designed and built.
+                A showreel of what we make.
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                Real websites, out in the world — explore a few below, then see
-                our studio concepts for the full range of what we can create.
+                Live sites and studio concepts, cycling through — pause on any
+                that catches your eye and open it to explore.
               </p>
             </div>
             <Link
@@ -161,10 +160,8 @@ export default function Home() {
             </Link>
           </Reveal>
 
-          <div className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2">
-            {liveProjects.map((project) => (
-              <LiveWorkCard key={project.slug} project={project} />
-            ))}
+          <div className="mt-14">
+            <ShowcaseCarousel />
           </div>
 
           <div className="mt-12 sm:hidden">
