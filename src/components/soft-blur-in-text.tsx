@@ -23,23 +23,41 @@ export function SoftBlurInText({
   duration = 0.9,
   className,
 }: SoftBlurInTextProps) {
+  // Split into words and whitespace so letters animate individually, but
+  // words never break across lines.
+  const tokens = text.split(/(\s+)/);
+  let letter = 0;
+
   return (
     <span
       className={className}
       style={{ "--sbi-blur": `${blur}px` } as CSSProperties}
     >
-      {Array.from(text).map((char, i) => (
-        <span
-          key={i}
-          className="soft-blur-in-char"
-          style={{
-            animationDelay: `${delay + i * stagger}s`,
-            animationDuration: `${duration}s`,
-          }}
-        >
-          {char === " " ? " " : char}
-        </span>
-      ))}
+      {tokens.map((token, ti) => {
+        if (/^\s+$/.test(token) || token === "") {
+          // Breakable whitespace between words.
+          return <span key={ti}>{token}</span>;
+        }
+        return (
+          <span key={ti} style={{ display: "inline-block", whiteSpace: "nowrap" }}>
+            {Array.from(token).map((char) => {
+              const idx = letter++;
+              return (
+                <span
+                  key={idx}
+                  className="soft-blur-in-char"
+                  style={{
+                    animationDelay: `${delay + idx * stagger}s`,
+                    animationDuration: `${duration}s`,
+                  }}
+                >
+                  {char}
+                </span>
+              );
+            })}
+          </span>
+        );
+      })}
     </span>
   );
 }
