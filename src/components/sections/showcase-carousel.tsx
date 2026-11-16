@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { BrowserFrame } from "@/components/concept/frame";
+import { ProjectVisual } from "@/components/concept/project-visual";
 import { showcaseItems } from "@/lib/data/showcase";
 
 const n = showcaseItems.length;
@@ -56,17 +57,23 @@ export function ShowcaseCarousel() {
           >
             {/* Preview */}
             <div className="order-1">
-              <BrowserFrame url={previewUrl(item)}>
-                <div className="relative aspect-[16/10] overflow-hidden bg-sand">
-                  <Image
-                    src={item.image}
-                    alt={`${item.name} — ${item.sector}`}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 560px"
-                    className="object-cover object-top"
-                  />
+              {item.image ? (
+                <BrowserFrame url={previewUrl(item)}>
+                  <div className="relative aspect-[16/10] overflow-hidden bg-sand">
+                    <Image
+                      src={item.image}
+                      alt={`${item.name} — ${item.sector}`}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 560px"
+                      className="object-cover object-top"
+                    />
+                  </div>
+                </BrowserFrame>
+              ) : item.project ? (
+                <div className="mx-auto max-w-sm">
+                  <ProjectVisual project={item.project} />
                 </div>
-              </BrowserFrame>
+              ) : null}
             </div>
 
             {/* Copy */}

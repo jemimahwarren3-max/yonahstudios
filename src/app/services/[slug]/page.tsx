@@ -12,6 +12,7 @@ import { services } from "@/lib/data/services";
 import { pricingGroups, inclusions } from "@/lib/data/pricing";
 import { getProject, type Project } from "@/lib/data/projects";
 import { whatsappLink } from "@/lib/site";
+import { siteImages } from "@/lib/img";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -34,9 +35,12 @@ export default async function ServicePage({
   if (!service) notFound();
 
   const pricing = pricingGroups.find((g) => g.slug === slug);
-  const heroImage = getProject(
-    slug === "web" ? "sable-and-stone" : slug === "branding" ? "haneul" : "lela",
-  )!.image;
+  const heroImage =
+    slug === "web"
+      ? siteImages.bannerWarm
+      : slug === "branding"
+        ? siteImages.intro
+        : siteImages.about;
 
   return (
     <>
@@ -254,7 +258,7 @@ function WebShowcase() {
 }
 
 function BrandingShowcase() {
-  const haneul = getProject("haneul")!;
+  const fiore = getProject("fiore")!;
   const marula = getProject("marula-and-co")!;
   return (
     <section className="bg-sand/60 py-20">
@@ -271,7 +275,7 @@ function BrandingShowcase() {
           </p>
         </Reveal>
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
-          {[haneul, marula].map((p, i) => (
+          {[marula, fiore].map((p, i) => (
             <Reveal key={p.slug} delay={i * 0.05}>
               <Link href={`/work/${p.slug}`} className="group block">
                 <div className="transition-transform duration-500 group-hover:-translate-y-1.5">

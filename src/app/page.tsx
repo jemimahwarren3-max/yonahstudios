@@ -7,6 +7,7 @@ import { ParallaxBanner } from "@/components/sections/parallax-banner";
 import { ProcessSection } from "@/components/sections/process";
 import { FinalCTA } from "@/components/sections/final-cta";
 import Image from "next/image";
+import { ProjectVisual } from "@/components/concept/project-visual";
 import { ShowcaseCarousel } from "@/components/sections/showcase-carousel";
 import { services } from "@/lib/data/services";
 import { getProject } from "@/lib/data/projects";
@@ -21,7 +22,7 @@ const valuePoints = [
 ];
 
 const serviceVisual: Record<string, string> = {
-  branding: "haneul",
+  branding: "marula-and-co",
   web: "sable-and-stone",
   social: "lela",
 };
@@ -146,14 +147,8 @@ export default function Home() {
                         </ButtonLink>
                       </div>
                     </div>
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-sand shadow-[0_30px_60px_-30px_rgba(40,30,20,0.4)]">
-                      <Image
-                        src={project.image}
-                        alt={`${service.title} — ${project.name} concept`}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-cover transition-transform duration-[1200ms] ease-out hover:scale-105"
-                      />
+                    <div>
+                      <ProjectVisual project={project} />
                     </div>
                   </div>
                 </Reveal>

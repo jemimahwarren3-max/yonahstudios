@@ -3,14 +3,15 @@ import { Container, Eyebrow } from "@/components/site/container";
 import { PageHeader } from "@/components/site/page-header";
 import { Reveal } from "@/components/motion/reveal";
 import { LiveWorkCard } from "@/components/concept/live-work-card";
-import { WorkGallery } from "@/components/concept/work-gallery";
+import { ProjectCard } from "@/components/concept/project-card";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { liveProjects } from "@/lib/data/work";
+import { websiteProjects, graphicProjects } from "@/lib/data/projects";
 
 export const metadata: Metadata = {
   title: "Our Work",
   description:
-    "Live websites designed and built by Yonah Studios, plus studio concept projects that show the full range of what we can create.",
+    "Ten website projects and ten graphic-design projects by Yonah Studios — live client sites plus studio concepts across branding, packaging, posters and type.",
 };
 
 export default function WorkPage() {
@@ -18,52 +19,60 @@ export default function WorkPage() {
     <>
       <PageHeader
         eyebrow="Our work"
-        title="Live projects, and concepts to match."
-        intro="Below are real websites we've designed and built, followed by studio concepts — original demonstrations that show our range. Concepts are clearly labelled as such."
+        title="Websites & graphic design."
+        intro="Ten websites and ten graphic-design projects. Live client sites are marked “Live” and link to the real thing; everything else is a clearly-labelled studio concept — original design we created to show our range."
       />
 
-      {/* Live work */}
+      {/* Websites */}
       <section className="py-12 sm:py-16">
         <Container>
           <Reveal>
-            <Eyebrow>Selected work · Live</Eyebrow>
+            <Eyebrow>Websites · 10</Eyebrow>
             <h2 className="mt-5 font-heading text-3xl leading-tight text-charcoal sm:text-4xl">
-              Real sites, out in the world.
+              From first click to checkout.
             </h2>
           </Reveal>
-          <div className="mt-12 grid gap-x-8 gap-y-14 sm:grid-cols-2">
+          <div className="mt-12 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
             {liveProjects.map((project) => (
               <Reveal key={project.slug}>
                 <LiveWorkCard project={project} />
+              </Reveal>
+            ))}
+            {websiteProjects.map((project) => (
+              <Reveal key={project.slug}>
+                <ProjectCard project={project} />
               </Reveal>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* Concepts */}
+      {/* Graphic design */}
       <section className="border-t border-border py-16 sm:py-20">
         <Container>
-          <Reveal className="max-w-2xl">
-            <Eyebrow>Studio concepts</Eyebrow>
+          <Reveal>
+            <Eyebrow>Graphic design · 10</Eyebrow>
             <h2 className="mt-5 font-heading text-3xl leading-tight text-charcoal sm:text-4xl">
-              Imagined brands, designed end to end.
+              Identities, packaging, posters & type.
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              These are studio concepts — fictional businesses we branded and
-              built to demonstrate what you could receive. They&apos;re not
-              completed client projects.
+            <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
+              Studio concepts across branding and graphic design — each an
+              original piece we designed to show how we think.
             </p>
           </Reveal>
-          <div className="mt-12">
-            <WorkGallery />
+          <div className="mt-12 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+            {graphicProjects.map((project) => (
+              <Reveal key={project.slug}>
+                <ProjectCard project={project} />
+              </Reveal>
+            ))}
           </div>
         </Container>
       </section>
 
       <FinalCTA
         heading="Like what you see? Let's make yours."
-        text="Whether it's a brand-new site or a refresh, we'll design it around your business."
+        text="Whether it's a brand-new site, a rebrand or a full identity, we'll design it around your business."
       />
     </>
   );

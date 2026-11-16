@@ -1,15 +1,17 @@
 import { liveProjects } from "./work";
-import { getProject } from "./projects";
+import { getProject, type Project } from "./projects";
 
 export type ShowcaseItem = {
   name: string;
   sector: string;
   description: string;
-  image: string;
   href: string;
   external: boolean;
   tag: "Live site" | "Studio concept";
   linkLabel: string;
+  /** Live sites carry a screenshot; concepts carry the project for a code-built preview. */
+  image?: string;
+  project?: Project;
 };
 
 const live = (slug: string): ShowcaseItem => {
@@ -18,11 +20,11 @@ const live = (slug: string): ShowcaseItem => {
     name: p.name,
     sector: p.sector,
     description: p.description,
-    image: p.image,
     href: p.url,
     external: true,
     tag: "Live site",
     linkLabel: "Visit live site",
+    image: p.image,
   };
 };
 
@@ -32,20 +34,20 @@ const concept = (slug: string): ShowcaseItem => {
     name: p.name,
     sector: p.sector,
     description: p.summary,
-    image: p.image,
     href: `/work/${p.slug}`,
     external: false,
     tag: "Studio concept",
     linkLabel: "Explore the concept",
+    project: p,
   };
 };
 
-/** Six works in rotation — live sites interleaved with studio concepts. */
+/** Six works in rotation — live sites, website concepts and graphic design. */
 export const showcaseItems: ShowcaseItem[] = [
   live("everafter"),
-  concept("haneul"),
+  concept("dos-monos"),
   live("wilderness-collection"),
-  concept("tavola"),
+  concept("haneul"),
   live("haki-systems"),
-  concept("lela"),
+  concept("verve"),
 ];

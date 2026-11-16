@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 const serviceVisual: Record<string, string> = {
-  branding: "haneul",
+  branding: "marula-and-co",
   web: "sable-and-stone",
   social: "lela",
 };
