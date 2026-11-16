@@ -1,69 +1,182 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Container, Eyebrow } from "@/components/site/container";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
+import { ButtonLink } from "@/components/site/cta";
+import { HomeHero } from "@/components/sections/home-hero";
+import { ProcessSection } from "@/components/sections/process";
+import { FinalCTA } from "@/components/sections/final-cta";
+import { ProjectVisual } from "@/components/concept/project-visual";
+import { ProjectCard } from "@/components/concept/project-card";
+import { services } from "@/lib/data/services";
+import { projects, getProject } from "@/lib/data/projects";
+
+const valuePoints = [
+  { title: "Thoughtful design", text: "Every piece is considered, intentional and made to fit your business." },
+  { title: "Practical solutions", text: "Beautiful work that also does its job — clear, useful and easy to run." },
+  { title: "Affordable & professional", text: "Studio-quality design at prices that make sense for growing businesses." },
+  { title: "Clear communication", text: "No jargon and no guessing. You'll always know what's happening." },
+  { title: "Remote collaboration", text: "Work with us from anywhere — everything is delivered online." },
+];
+
+const serviceVisual: Record<string, string> = {
+  branding: "haneul",
+  web: "sable-and-stone",
+  social: "lela",
+};
+
+const featured = projects.slice(0, 6);
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <>
+      <HomeHero />
+
+      {/* Intro / trust */}
+      <section className="py-20 sm:py-28">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+            <Reveal>
+              <Eyebrow>Who we are</Eyebrow>
+              <h2 className="mt-5 font-heading text-4xl leading-tight text-charcoal sm:text-5xl">
+                A remote creative partner for businesses that want to look
+                their best.
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+                Yonah Studios helps startups, entrepreneurs and established
+                businesses show up online with confidence — through brand
+                design, websites and social media that feel considered,
+                consistent and genuinely yours.
+              </p>
+            </Reveal>
+
+            <Stagger className="grid gap-px self-center overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2">
+              {valuePoints.map((v) => (
+                <StaggerItem key={v.title} className="bg-background p-6">
+                  <div className="h-1.5 w-1.5 rounded-full bg-terracotta" />
+                  <h3 className="mt-4 font-heading text-lg text-charcoal">
+                    {v.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {v.text}
+                  </p>
+                </StaggerItem>
+              ))}
+              <StaggerItem className="hidden bg-sand p-6 sm:block">
+                <p className="font-heading text-lg text-charcoal">
+                  Honest about where we are
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  We're a new studio — so the work you see is our own concept
+                  projects, made to show exactly what you could receive.
+                </p>
+              </StaggerItem>
+            </Stagger>
+          </div>
+        </Container>
+      </section>
+
+      {/* Services preview */}
+      <section className="bg-sand/60 py-20 sm:py-28">
+        <Container>
+          <Reveal className="max-w-2xl">
+            <Eyebrow>What we do</Eyebrow>
+            <h2 className="mt-5 font-heading text-4xl leading-tight text-charcoal sm:text-5xl">
+              Three ways we help you grow.
+            </h2>
+          </Reveal>
+
+          <div className="mt-16 space-y-20">
+            {services.map((service, i) => {
+              const project = getProject(serviceVisual[service.slug])!;
+              const reversed = i % 2 === 1;
+              return (
+                <Reveal key={service.slug}>
+                  <div
+                    className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-16 ${
+                      reversed ? "lg:[&>*:first-child]:order-2" : ""
+                    }`}
+                  >
+                    <div>
+                      <span className="font-heading text-2xl text-terracotta">
+                        {service.number}
+                      </span>
+                      <h3 className="mt-3 font-heading text-3xl text-charcoal">
+                        {service.title}
+                      </h3>
+                      <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+                        {service.description}
+                      </p>
+                      <ul className="mt-6 flex flex-wrap gap-2">
+                        {service.deliverables.slice(0, 5).map((d) => (
+                          <li
+                            key={d}
+                            className="rounded-full border border-border bg-background px-3 py-1 text-xs text-muted-foreground"
+                          >
+                            {d}
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="mt-8">
+                        <ButtonLink
+                          href={`/services/${service.slug}`}
+                          variant="outline"
+                        >
+                          Explore {service.title.split(" ")[0].toLowerCase()}
+                        </ButtonLink>
+                      </div>
+                    </div>
+                    <div>
+                      <ProjectVisual project={project} />
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      {/* Featured work */}
+      <section className="py-20 sm:py-28">
+        <Container>
+          <Reveal className="flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-2xl">
+              <Eyebrow>Selected concepts</Eyebrow>
+              <h2 className="mt-5 font-heading text-4xl leading-tight text-charcoal sm:text-5xl">
+                Concept projects, crafted to show what's possible.
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Each piece below is a studio concept — an imagined brand we
+                designed end to end, so you can picture your own.
+              </p>
+            </div>
+            <Link
+              href="/work"
+              className="group hidden items-center gap-2 text-sm font-medium text-charcoal sm:inline-flex"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+              View all work
+              <span className="transition-transform group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
+          </Reveal>
+
+          <div className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
+
+          <div className="mt-12 sm:hidden">
+            <ButtonLink href="/work" variant="outline">
+              View all work
+            </ButtonLink>
+          </div>
+        </Container>
+      </section>
+
+      <ProcessSection />
+      <FinalCTA />
+    </>
   );
 }
