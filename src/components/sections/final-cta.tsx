@@ -6,7 +6,7 @@ import { whatsappLink } from "@/lib/site";
 
 export function FinalCTA({
   heading = "Your next chapter deserves a better digital presence.",
-  text = "Tell us about your business and what you want to achieve. We'll help you bring it to life — thoughtfully, and beautifully.",
+  text = "Tell us about your business and what you want to achieve. We'll help you bring it to life, thoughtfully and beautifully.",
 }: {
   heading?: string;
   text?: string;

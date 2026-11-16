@@ -31,6 +31,10 @@ export type Project = {
   art: { bg: string; panel: string; ink: string; accent: string; soft: string };
   /** Short all-caps line shown inside poster/packaging pieces. */
   tagline?: string;
+  /** Additional piece types to show alongside the primary variant, so a graphic
+   * project reads as a full identity system (logo + packaging + stationery)
+   * rather than one isolated artifact. */
+  extraVariants?: Variant[];
 };
 
 const p = (
@@ -52,7 +56,7 @@ export const projects: Project[] = [
     variant: "editorial",
     categories: ["Websites", "Branding"],
     summary:
-      "A booking-led website for a safari lodge — slow luxury, wide horizons, quiet confidence.",
+      "A booking-led website for a safari lodge: slow luxury, wide horizons, quiet confidence.",
     direction:
       "Earth and stone, generous imagery space and a refined serif. Accommodation, activities and enquiries breathe, and the booking flow stays effortless.",
     deliverables: ["Website design", "Booking flow", "Brand mark", "Photo art direction"],
@@ -76,7 +80,7 @@ export const projects: Project[] = [
     variant: "center",
     categories: ["Websites", "Social Media"],
     summary:
-      "A warm restaurant site — menu-forward, reservation-ready, and genuinely appetising.",
+      "A warm restaurant site: menu-forward, reservation-ready and genuinely appetising.",
     direction:
       "Charcoal and amber with confident display type. The site centres the menu and reservations with inviting negative space.",
     deliverables: ["Website & digital menu", "Reservations", "Logo refinement", "Launch set"],
@@ -126,7 +130,7 @@ export const projects: Project[] = [
     summary:
       "A soft, modern ecommerce experience for a Korean-inspired skincare brand.",
     direction:
-      "Blush and lilac, airy whitespace and premium product cards create a sense of calm ritual — from homepage to checkout.",
+      "Blush and lilac, airy whitespace and premium product cards create a sense of calm ritual, from homepage to checkout.",
     deliverables: ["Ecommerce design", "Product pages", "Brand identity", "Email templates"],
     palette: [
       { name: "Petal", hex: "#f3dfe4" },
@@ -172,7 +176,7 @@ export const projects: Project[] = [
     variant: "center",
     categories: ["Websites"],
     summary:
-      "A crisp SaaS marketing site — confident, modern and conversion-focused.",
+      "A crisp SaaS marketing site: confident, modern and conversion-focused.",
     direction:
       "Ink and electric blue with a clean grid, bold product claims and clear calls to action for a data startup.",
     deliverables: ["Marketing site", "Pricing page", "Brand system", "Icon set"],
@@ -196,7 +200,7 @@ export const projects: Project[] = [
     variant: "shop",
     categories: ["Websites", "Branding"],
     summary:
-      "A refined fashion storefront — editorial, tactile and built to sell beautifully.",
+      "A refined fashion storefront: editorial, tactile and built to sell beautifully.",
     direction:
       "Bone and oxblood with elegant serif headlines and generous product imagery, balancing fashion editorial with a smooth shop.",
     deliverables: ["Ecommerce design", "Lookbook", "Brand identity", "Campaign art direction"],
@@ -236,6 +240,7 @@ export const projects: Project[] = [
     typography: { heading: "Fraunces", body: "Inter" },
     art: p("#f3efe6", "#ff2d9b", "#141216", "#2b2bff", "#ffe14d"),
     tagline: "Two monkeys, one great beer",
+    extraVariants: ["brand", "poster"],
   },
   {
     slug: "verve",
@@ -246,7 +251,7 @@ export const projects: Project[] = [
     variant: "poster",
     categories: ["Graphic Design", "Branding"],
     summary:
-      "A high-energy festival identity — big type, bold colour, impossible to ignore.",
+      "A high-energy festival identity: big type, bold colour, impossible to ignore.",
     direction:
       "Electric gradients and oversized display type. A poster system that scales from billboards to Instagram stories.",
     deliverables: ["Festival identity", "Poster series", "Lineup graphics", "Wayfinding"],
@@ -284,6 +289,7 @@ export const projects: Project[] = [
     typography: { heading: "Fraunces", body: "Inter" },
     art: p("#ece0cc", "#a8512e", "#3a271d", "#a8512e", "#6f7850"),
     tagline: "Small batch · Big heart",
+    extraVariants: ["type", "brand"],
   },
   {
     slug: "ember",
@@ -308,6 +314,7 @@ export const projects: Project[] = [
     typography: { heading: "Fraunces", body: "Inter" },
     art: p("#1c1a1a", "#e0612a", "#efe6da", "#e0612a", "#c79a53"),
     tagline: "Cooked over fire",
+    extraVariants: ["brand", "social"],
   },
   {
     slug: "lela",
@@ -318,7 +325,7 @@ export const projects: Project[] = [
     variant: "social",
     categories: ["Social Media", "Branding"],
     summary:
-      "A month of coordinated content for a beauty salon — calm, luxe, unmistakably consistent.",
+      "A month of coordinated content for a beauty salon: calm, luxe, unmistakably consistent.",
     direction:
       "Mauve, rose and ivory with soft light and elegant type across a nine-post grid, stories and reel covers.",
     deliverables: ["9-post grid", "Stories & reels", "Content calendar", "Captions"],
@@ -342,7 +349,7 @@ export const projects: Project[] = [
     variant: "brand",
     categories: ["Branding", "Social Media"],
     summary:
-      "A delicate identity and content set for a florist — fresh, seasonal, quietly beautiful.",
+      "A delicate identity and content set for a florist: fresh, seasonal, quietly beautiful.",
     direction:
       "Sage and peach with airy type and lots of light. Hand-tied and personal, scaling from a logo to a full feed.",
     deliverables: ["Logo & identity", "Packaging stickers", "Seasonal campaign", "Signage"],
@@ -356,6 +363,7 @@ export const projects: Project[] = [
     typography: { heading: "Fraunces", body: "Inter" },
     art: p("#f1efe2", "#dfe4cf", "#4b5540", "#d98e7f", "#a7b196"),
     tagline: "Tied by hand",
+    extraVariants: ["packaging", "social"],
   },
   {
     slug: "nova",
@@ -368,7 +376,7 @@ export const projects: Project[] = [
     summary:
       "A clean, trustworthy fintech identity with a flexible mark and bright accent.",
     direction:
-      "Ink navy and a vivid mint, geometric mark and crisp grid — approachable but serious about money.",
+      "Ink navy and a vivid mint, geometric mark and crisp grid, approachable but serious about money.",
     deliverables: ["Logo system", "Brand guidelines", "App icon", "Card design"],
     palette: [
       { name: "Ink", hex: "#10203a" },
@@ -380,6 +388,7 @@ export const projects: Project[] = [
     typography: { heading: "Fraunces", body: "Inter" },
     art: p("#10203a", "#2fd6a6", "#eaf1f8", "#2fd6a6", "#4aa3ff"),
     tagline: "Money, moving forward",
+    extraVariants: ["type"],
   },
   {
     slug: "paramo",
@@ -404,6 +413,7 @@ export const projects: Project[] = [
     typography: { heading: "Fraunces", body: "Inter" },
     art: p("#243b33", "#2e4a40", "#ece6da", "#ef6a30", "#b7c0bd"),
     tagline: "Made for the wild",
+    extraVariants: ["brand"],
   },
   {
     slug: "bloom",
@@ -452,6 +462,7 @@ export const projects: Project[] = [
     typography: { heading: "Fraunces", body: "Inter" },
     art: p("#f2efe9", "#cfccc5", "#2a2a28", "#2a2a28", "#8c857a"),
     tagline: "Form, with intent",
+    extraVariants: ["brand"],
   },
 ];
 

@@ -42,7 +42,7 @@ const concept = (slug: string): ShowcaseItem => {
   };
 };
 
-/** Six works in rotation — live sites, website concepts and graphic design. */
+/** Six works in rotation: live sites, website concepts and graphic design. */
 export const showcaseItems: ShowcaseItem[] = [
   live("everafter"),
   concept("dos-monos"),

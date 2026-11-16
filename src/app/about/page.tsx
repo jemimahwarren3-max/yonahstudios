@@ -10,7 +10,7 @@ import { site } from "@/lib/site";
 const principles = [
   {
     title: "Design with intent",
-    text: "Every choice — a colour, a typeface, a layout — should earn its place and serve the business behind it.",
+    text: "Every choice (a colour, a typeface, a layout) should earn its place and serve the business behind it.",
   },
   {
     title: "Make it useful",
@@ -48,7 +48,7 @@ export default function AboutPage() {
                 Yonah Studios is a remote creative studio working with startups,
                 entrepreneurs, SMEs and established businesses across Zimbabwe,
                 South Africa and beyond. We help brands look considered and
-                professional — from a first logo to a full website and an
+                professional, from a first logo to a full website and an
                 ongoing social presence.
               </p>
             </Reveal>
@@ -77,7 +77,7 @@ export default function AboutPage() {
                 Fully remote, fully focused on you.
               </h2>
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ivory/75">
-                Everything we do is delivered online — from the first
+                Everything we do is delivered online, from the first
                 conversation to final files. That keeps us flexible, keeps your
                 costs down, and means we can work with you wherever your business
                 is based. You share the details and any photos or footage; we

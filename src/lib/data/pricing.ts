@@ -46,12 +46,12 @@ export const pricingGroups: PriceGroup[] = [
       {
         name: "Content creation",
         price: "$45",
-        note: "/month — graphics, captions & a monthly content calendar. You publish.",
+        note: "/month: graphics, captions & a monthly content calendar. You publish.",
       },
       {
         name: "Full social media management",
         price: "$80",
-        note: "/month — content, scheduling, publishing, basic engagement & a monthly report.",
+        note: "/month: content, scheduling, publishing, basic engagement & a monthly report.",
       },
     ],
   },
@@ -61,13 +61,13 @@ export const pricingConditions = [
   "Domain registration and hosting are charged separately where applicable.",
   "Paid advertising spend (e.g. boosting posts) is not included.",
   "Printing and physical production are quoted separately.",
-  "Photography and filming are not included — you supply photos and raw footage digitally.",
+  "Photography and filming are not included. You supply photos and raw footage digitally.",
   "Larger or combined projects can receive a custom quotation.",
 ];
 
 export const inclusions = {
   contentCreation: {
-    title: "Content creation — what's included",
+    title: "Content creation: what's included",
     items: [
       "Designed graphics for your posts",
       "Written captions",
@@ -76,7 +76,7 @@ export const inclusions = {
     ],
   },
   fullManagement: {
-    title: "Full management — what's included",
+    title: "Full management: what's included",
     items: [
       "Everything in content creation",
       "Scheduling and publishing for you",

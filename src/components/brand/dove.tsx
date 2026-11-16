@@ -1,7 +1,7 @@
 import { type SVGProps } from "react";
 
 /**
- * Yonah Studios dove mark — a minimal single-weight line illustration
+ * Yonah Studios dove mark: a minimal single-weight line illustration
  * of a perched dove. Uses currentColor so it inherits text color.
  */
 export function Dove({

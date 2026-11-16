@@ -62,7 +62,7 @@ export function HomeHero() {
         aria-hidden
       />
 
-      {/* floating work — our own designs (desktop) */}
+      {/* floating work: our own designs (desktop) */}
       <Float
         className="absolute left-[2%] top-[13%] hidden w-52 xl:block"
         rotate={-6}

@@ -1,7 +1,7 @@
 import { Container } from "@/components/site/container";
 import { Reveal } from "@/components/motion/reveal";
 
-/** A bold typographic statement band — charcoal, no stock imagery. */
+/** A bold typographic statement band: charcoal, no stock imagery. */
 export function ParallaxBanner({
   eyebrow,
   title,

@@ -19,7 +19,7 @@ export const liveProjects: LiveProject[] = [
     sector: "Luxury weddings & events",
     category: "Website Design & Development",
     description:
-      "A romantic, editorial website for a bespoke wedding and events studio — full-bleed photography, elegant serif type and a calm, timeless layout.",
+      "A romantic, editorial website for a bespoke wedding and events studio: full-bleed photography, elegant serif type and a calm, timeless layout.",
     image: "/work/everafter.png",
   },
   {
@@ -29,7 +29,7 @@ export const liveProjects: LiveProject[] = [
     sector: "Luxury safari travel",
     category: "Website Design & Development",
     description:
-      "A website for a luxury African safari collection — quiet-luxury styling, immersive wildlife imagery and curated lodge and journey pages.",
+      "A website for a luxury African safari collection: quiet-luxury styling, immersive wildlife imagery and curated lodge and journey pages.",
     image: "/work/wilderness.png",
   },
   {
@@ -39,7 +39,7 @@ export const liveProjects: LiveProject[] = [
     sector: "AI engineering & automation",
     category: "Website Design & Development",
     description:
-      "A modern corporate site for an AI engineering and automation consultancy — confident, professional layouts with clear service and industry sections.",
+      "A modern corporate site for an AI engineering and automation consultancy: confident, professional layouts with clear service and industry sections.",
     image: "/work/haki.png",
   },
 ];

@@ -12,7 +12,7 @@ export default function NotFound() {
           This page has flown off somewhere.
         </h1>
         <p className="mx-auto mt-3 max-w-md text-muted-foreground">
-          The page you&apos;re looking for doesn&apos;t exist — but there&apos;s
+          The page you&apos;re looking for doesn&apos;t exist, but there&apos;s
           plenty of beautiful work to explore.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">

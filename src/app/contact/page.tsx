@@ -21,7 +21,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Let's start something."
-        intro="Tell us a little about your business and what you need. We'll get back to you with next steps — and an honest, clear quote."
+        intro="Tell us a little about your business and what you need. We'll get back to you with next steps, and an honest, clear quote."
       />
 
       <section className="py-12 sm:py-16">

@@ -10,14 +10,14 @@ export function LiveWorkCard({ project }: { project: LiveProject }) {
       target="_blank"
       rel="noopener noreferrer"
       className="group flex flex-col"
-      aria-label={`${project.name} — visit the live site`}
+      aria-label={`Visit ${project.name}'s live site`}
     >
       <div className="transition-transform duration-500 group-hover:-translate-y-1.5">
         <BrowserFrame url={host}>
           <div className="relative aspect-[16/10] overflow-hidden bg-sand">
             <Image
               src={project.image}
-              alt={`${project.name} website — ${project.sector}`}
+              alt={`${project.name} website, ${project.sector}`}
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"

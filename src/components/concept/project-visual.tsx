@@ -1,5 +1,5 @@
 import { BrowserFrame } from "./frame";
-import type { Project } from "@/lib/data/projects";
+import type { Project, Variant } from "@/lib/data/projects";
 
 function isDark(hex: string) {
   const h = hex.replace("#", "");
@@ -9,10 +9,18 @@ function isDark(hex: string) {
   return 0.299 * r + 0.587 * g + 0.114 * b < 140;
 }
 
-/** Renders a code-built design preview for a project — website mockup or
- * graphic-design piece — themed from its art-direction tokens. No stock photos. */
-export function ProjectVisual({ project }: { project: Project }) {
-  switch (project.variant) {
+/** Renders a code-built design preview for a project: website mockup or
+ * graphic-design piece, themed from its art-direction tokens. No stock photos.
+ * Pass `variant` to render a specific piece type rather than the project's default
+ * (used by DeliverableGrid to show a brand's packaging, poster and type together). */
+export function ProjectVisual({
+  project,
+  variant,
+}: {
+  project: Project;
+  variant?: Variant;
+}) {
+  switch (variant ?? project.variant) {
     case "poster":
       return <PosterPiece project={project} />;
     case "packaging":
@@ -26,6 +34,28 @@ export function ProjectVisual({ project }: { project: Project }) {
     default:
       return <WebsiteMockup project={project} />;
   }
+}
+
+/**
+ * Shows a graphic-design project as a complete identity system: its primary
+ * piece plus every entry in `project.extraVariants`, laid out as a deliverable
+ * set rather than a single isolated artifact.
+ */
+export function DeliverableGrid({ project }: { project: Project }) {
+  const variants: Variant[] = [project.variant, ...(project.extraVariants ?? [])];
+  if (variants.length === 1) return <ProjectVisual project={project} />;
+  return (
+    <div className="grid grid-cols-2 gap-4 sm:gap-5">
+      <div className="col-span-2 sm:col-span-1">
+        <ProjectVisual project={project} variant={variants[0]} />
+      </div>
+      {variants.slice(1).map((v, i) => (
+        <div key={v + i} className={variants.length === 2 ? "col-span-2 sm:col-span-1" : ""}>
+          <ProjectVisual project={project} variant={v} />
+        </div>
+      ))}
+    </div>
+  );
 }
 
 /* ============================ WEBSITES ============================ */
@@ -138,7 +168,7 @@ function ShopBody({ project }: { project: Project }) {
             />
             <div className="mt-1.5 flex items-center justify-between text-[9px]">
               <span style={{ opacity: 0.7 }}>Product {i + 1}</span>
-              <span style={{ color: a.accent }}>$—</span>
+              <span style={{ color: a.accent }}>Enquire</span>
             </div>
           </div>
         ))}
@@ -389,7 +419,7 @@ function TypePiece({ project }: { project: Project }) {
         <p className="font-heading text-base">ABCDEFGHIJKLM</p>
         <p>abcdefghijklmnopqrstuvwxyz 0123456789</p>
         <p style={{ opacity: 0.6 }}>
-          Display / Heading / Body — one considered system.
+          Display / Heading / Body: one considered system.
         </p>
       </div>
     </div>

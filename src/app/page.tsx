@@ -13,10 +13,10 @@ import { getProject } from "@/lib/data/projects";
 
 const valuePoints = [
   { title: "Thoughtful design", text: "Every piece is considered, intentional and made to fit your business." },
-  { title: "Practical solutions", text: "Beautiful work that also does its job — clear, useful and easy to run." },
+  { title: "Practical solutions", text: "Beautiful work that also does its job: clear, useful and easy to run." },
   { title: "Affordable & professional", text: "Studio-quality design at prices that make sense for growing businesses." },
   { title: "Clear communication", text: "No jargon and no guessing. You'll always know what's happening." },
-  { title: "Remote collaboration", text: "Work with us from anywhere — everything is delivered online." },
+  { title: "Remote collaboration", text: "Work with us from anywhere: everything is delivered online." },
 ];
 
 const serviceVisual: Record<string, string> = {
@@ -44,7 +44,7 @@ export default function Home() {
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
                 Yonah Studios helps startups, entrepreneurs and established
-                businesses show up online with confidence — through brand
+                businesses show up online with confidence, through brand
                 design, websites and social media that feel considered,
                 consistent and genuinely yours.
               </p>
@@ -72,8 +72,8 @@ export default function Home() {
                 Real work, honestly shown
               </p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Alongside live sites we&apos;ve built, we show studio concepts —
-                each clearly labelled — so you always know exactly what
+                Alongside live sites we&apos;ve built, we show studio concepts,
+                each clearly labelled, so you always know exactly what
                 you&apos;re looking at.
               </p>
             </StaggerItem>
@@ -158,7 +158,7 @@ export default function Home() {
                 A showreel of what we make.
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                Live sites and studio concepts, cycling through — pause on any
+                Live sites and studio concepts, cycling through. Pause on any
                 that catches your eye and open it to explore.
               </p>
             </div>

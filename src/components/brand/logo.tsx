@@ -15,7 +15,7 @@ export function Logo({
   return (
     <Link
       href={href}
-      aria-label="Yonah Studios — home"
+      aria-label="Yonah Studios: home"
       className={cn(
         "group inline-flex items-center gap-2.5 transition-colors duration-300",
         light ? "text-white" : "text-charcoal",
@@ -40,7 +40,7 @@ export function Logo({
   );
 }
 
-/** Stacked, centered lockup — for hero marks and large brand moments. */
+/** Stacked, centered lockup, for hero marks and large brand moments. */
 export function LogoStacked({ className }: { className?: string }) {
   return (
     <div className={cn("flex flex-col items-center text-charcoal", className)}>

@@ -5,7 +5,7 @@ import { Container, Eyebrow } from "@/components/site/container";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/site/cta";
 import { BrowserFrame } from "@/components/concept/frame";
-import { ProjectVisual } from "@/components/concept/project-visual";
+import { ProjectVisual, DeliverableGrid } from "@/components/concept/project-visual";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { services } from "@/lib/data/services";
 import { pricingGroups, inclusions } from "@/lib/data/pricing";
@@ -200,7 +200,7 @@ function WebShowcase() {
             Four website concepts, four distinct worlds.
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            A glimpse of the range we design for — from boutique hospitality to
+            A glimpse of the range we design for, from boutique hospitality to
             professional services. Open any concept in the portfolio to explore
             it in full.
           </p>
@@ -243,22 +243,24 @@ function BrandingShowcase() {
             From a name to a complete identity.
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            A logo is just the start. We build the full world around it — colour,
-            type, cards, flyers and social templates — so everything feels like
+            A logo is just the start. We build the full world around it: colour,
+            type, cards, flyers and social templates, so everything feels like
             one considered brand.
           </p>
         </Reveal>
-        <div className="mt-12 grid gap-8 lg:grid-cols-2">
+        <div className="mt-12 grid gap-10 lg:grid-cols-2">
           {[marula, fiore].map((p, i) => (
             <Reveal key={p.slug} delay={i * 0.05}>
               <Link href={`/work/${p.slug}`} className="group block">
                 <div className="transition-transform duration-500 group-hover:-translate-y-1.5">
-                  <ProjectVisual project={p} />
+                  <DeliverableGrid project={p} />
                 </div>
                 <h3 className="mt-5 font-heading text-xl text-charcoal">
                   {p.name}
                 </h3>
-                <p className="mt-1 text-sm text-muted-foreground">{p.sector}</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {p.sector} · {[p.variant, ...(p.extraVariants ?? [])].length} coordinated pieces
+                </p>
               </Link>
             </Reveal>
           ))}
@@ -268,56 +270,74 @@ function BrandingShowcase() {
   );
 }
 
+const socialCampaigns: { project: Project; variant: "social" }[] = [
+  { project: getProject("lela")!, variant: "social" },
+  { project: getProject("ember")!, variant: "social" },
+  { project: getProject("bloom")!, variant: "social" },
+];
+
 function SocialShowcase() {
-  const lela = getProject("lela")!;
   return (
     <section className="bg-sand/60 py-20">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
-            <Eyebrow>What a month looks like</Eyebrow>
-            <h2 className="mt-5 font-heading text-4xl leading-tight text-charcoal">
-              A feed that looks like a brand.
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              We design coordinated monthly content — grids, stories and reel
-              covers — so your social presence looks consistent and intentional.
-            </p>
+        <Reveal className="max-w-2xl">
+          <Eyebrow>Coordinated campaigns</Eyebrow>
+          <h2 className="mt-5 font-heading text-4xl leading-tight text-charcoal">
+            A feed that looks like a brand.
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            We design coordinated monthly content: grids, stories and reel
+            covers, so your social presence looks consistent and intentional,
+            whatever the business.
+          </p>
+        </Reveal>
 
-            <div className="mt-8 grid gap-6 sm:grid-cols-2">
-              <div className="rounded-xl border border-border bg-background p-5">
-                <h3 className="font-heading text-lg text-charcoal">
-                  {inclusions.contentCreation.title}
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {socialCampaigns.map((c, i) => (
+            <Reveal key={c.project.slug} delay={i * 0.05}>
+              <Link href={`/work/${c.project.slug}`} className="group block">
+                <div className="transition-transform duration-500 group-hover:-translate-y-1.5">
+                  <ProjectVisual project={c.project} variant={c.variant} />
+                </div>
+                <h3 className="mt-5 font-heading text-lg text-charcoal">
+                  {c.project.name}
                 </h3>
-                <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-                  {inclusions.contentCreation.items.map((x) => (
-                    <li key={x}>— {x}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="rounded-xl border border-border bg-background p-5">
-                <h3 className="font-heading text-lg text-charcoal">
-                  {inclusions.fullManagement.title}
-                </h3>
-                <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-                  {inclusions.fullManagement.items.map((x) => (
-                    <li key={x}>— {x}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <p className="mt-6 text-sm text-muted-foreground">
-              You supply photos and raw footage digitally — we don't include
-              physical filming or photography sessions.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.1} className="self-center">
-            <div className="mx-auto max-w-sm">
-              <ProjectVisual project={lela} />
-            </div>
-          </Reveal>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {c.project.sector}
+                </p>
+              </Link>
+            </Reveal>
+          ))}
         </div>
+
+        <Reveal delay={0.2}>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+            <div className="rounded-xl border border-border bg-background p-5">
+              <h3 className="font-heading text-lg text-charcoal">
+                {inclusions.contentCreation.title}
+              </h3>
+              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                {inclusions.contentCreation.items.map((x) => (
+                  <li key={x}>&bull; {x}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-xl border border-border bg-background p-5">
+              <h3 className="font-heading text-lg text-charcoal">
+                {inclusions.fullManagement.title}
+              </h3>
+              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                {inclusions.fullManagement.items.map((x) => (
+                  <li key={x}>&bull; {x}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <p className="mt-6 text-sm text-muted-foreground">
+            You supply photos and raw footage digitally. We don't include
+            physical filming or photography sessions.
+          </p>
+        </Reveal>
       </Container>
     </section>
   );

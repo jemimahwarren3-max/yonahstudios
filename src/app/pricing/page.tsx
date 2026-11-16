@@ -24,7 +24,7 @@ export default function PricingPage() {
       <PageHeader
         eyebrow="Pricing"
         title="Honest pricing, no surprises."
-        intro="Transparent USD pricing for every service. Mix and match what you need — and for anything larger or combined, we'll put together a custom quote."
+        intro="Transparent USD pricing for every service. Mix and match what you need. For anything larger or combined, we'll put together a custom quote."
       />
 
       <section className="py-12 sm:py-16">
@@ -87,7 +87,7 @@ export default function PricingPage() {
       <section className="py-12">
         <Container>
           <Reveal>
-            <Eyebrow>Social media — what&apos;s included</Eyebrow>
+            <Eyebrow>Social media: what&apos;s included</Eyebrow>
           </Reveal>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             {[inclusions.contentCreation, inclusions.fullManagement].map(

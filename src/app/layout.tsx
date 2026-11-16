@@ -28,7 +28,7 @@ const siteUrl = "https://yonahstudios.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Yonah Studios — Brand, Web & Social Design Studio",
+    default: "Yonah Studios: Brand, Web & Social Design Studio",
     template: "%s · Yonah Studios",
   },
   description:
@@ -47,13 +47,13 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: "Yonah Studios",
-    title: "Yonah Studios — Brand, Web & Social Design Studio",
+    title: "Yonah Studios: Brand, Web & Social Design Studio",
     description:
       "Thoughtful brands, beautiful websites and digital marketing experiences that help businesses stand out and grow.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yonah Studios — Brand, Web & Social Design Studio",
+    title: "Yonah Studios: Brand, Web & Social Design Studio",
     description:
       "Thoughtful brands, beautiful websites and digital marketing experiences that help businesses stand out and grow.",
   },

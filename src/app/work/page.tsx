@@ -11,7 +11,7 @@ import { websiteProjects, graphicProjects } from "@/lib/data/projects";
 export const metadata: Metadata = {
   title: "Our Work",
   description:
-    "Ten website projects and ten graphic-design projects by Yonah Studios — live client sites plus studio concepts across branding, packaging, posters and type.",
+    "Ten website projects and ten graphic-design projects by Yonah Studios: live client sites plus studio concepts across branding, packaging, posters and type.",
 };
 
 export default function WorkPage() {
@@ -20,7 +20,7 @@ export default function WorkPage() {
       <PageHeader
         eyebrow="Our work"
         title="Websites & graphic design."
-        intro="Ten websites and ten graphic-design projects. Live client sites are marked “Live” and link to the real thing; everything else is a clearly-labelled studio concept — original design we created to show our range."
+        intro="Ten websites and ten graphic-design projects. Live client sites are marked “Live” and link to the real thing; everything else is a clearly-labelled studio concept, original design we created to show our range."
       />
 
       {/* Websites */}
@@ -56,7 +56,7 @@ export default function WorkPage() {
               Identities, packaging, posters & type.
             </h2>
             <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-              Studio concepts across branding and graphic design — each an
+              Studio concepts across branding and graphic design, each an
               original piece we designed to show how we think.
             </p>
           </Reveal>

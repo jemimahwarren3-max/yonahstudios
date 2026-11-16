@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/site/container";
 import { Reveal } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/site/cta";
-import { ProjectVisual } from "@/components/concept/project-visual";
+import { ProjectVisual, DeliverableGrid } from "@/components/concept/project-visual";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { projects, getProject } from "@/lib/data/projects";
 import { whatsappLink } from "@/lib/site";
@@ -20,7 +20,7 @@ export async function generateMetadata({
   const project = getProject(slug);
   if (!project) return { title: "Project not found" };
   return {
-    title: `${project.name} — ${project.sector} (Studio Concept)`,
+    title: `${project.name} · ${project.sector} (Studio Concept)`,
     description: project.summary,
   };
 }
@@ -85,15 +85,19 @@ export default async function ProjectPage({
                   : "rounded-3xl bg-sand p-6 sm:p-10"
               }
             >
-              <div
-                className={
-                  project.discipline === "website"
-                    ? "mx-auto max-w-3xl"
-                    : "mx-auto max-w-md"
-                }
-              >
-                <ProjectVisual project={project} />
-              </div>
+              {project.discipline === "website" ? (
+                <div className="mx-auto max-w-3xl">
+                  <ProjectVisual project={project} />
+                </div>
+              ) : project.extraVariants?.length ? (
+                <div className="mx-auto max-w-2xl">
+                  <DeliverableGrid project={project} />
+                </div>
+              ) : (
+                <div className="mx-auto max-w-md">
+                  <ProjectVisual project={project} />
+                </div>
+              )}
             </div>
           </Reveal>
         </Container>
@@ -155,7 +159,7 @@ export default async function ProjectPage({
                 <div className="mt-8">
                   <ButtonLink
                     href={whatsappLink(
-                      `Hi Yonah Studios, I love the ${project.name} concept — I'd like something similar for my business.`,
+                      `Hi Yonah Studios, I love the ${project.name} concept. I'd like something similar for my business.`,
                     )}
                     external
                   >

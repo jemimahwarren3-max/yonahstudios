@@ -62,7 +62,7 @@ export function ShowcaseCarousel() {
                   <div className="relative aspect-[16/10] overflow-hidden bg-sand">
                     <Image
                       src={item.image}
-                      alt={`${item.name} — ${item.sector}`}
+                      alt={`${item.name}, ${item.sector}`}
                       fill
                       sizes="(max-width: 1024px) 100vw, 560px"
                       className="object-cover object-top"
