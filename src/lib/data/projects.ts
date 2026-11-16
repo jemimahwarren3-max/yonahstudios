@@ -476,6 +476,3 @@ export const categories: Category[] = [
 export function getProject(slug: string) {
   return projects.find((x) => x.slug === slug);
 }
-
-export const websiteProjects = projects.filter((x) => x.discipline === "website");
-export const graphicProjects = projects.filter((x) => x.discipline === "graphic");
