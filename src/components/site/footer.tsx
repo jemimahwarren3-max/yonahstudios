@@ -81,8 +81,8 @@ export function SiteFooter() {
         <div className="mt-14 flex flex-col gap-3 border-t border-ivory/15 pt-6 text-xs text-ivory/45 sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} Yonah Studios. All rights reserved.</p>
           <p>
-            Portfolio pieces are studio concepts, created to demonstrate our
-            work — not completed client projects.
+            Live projects link to the real, published site. Studio concepts are
+            clearly labelled and are original demonstrations, not client work.
           </p>
         </div>
       </Container>

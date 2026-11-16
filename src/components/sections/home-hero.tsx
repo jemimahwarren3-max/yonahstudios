@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/site/container";
 import { SoftBlurInText } from "@/components/soft-blur-in-text";
@@ -121,31 +122,46 @@ export function HomeHero() {
 function HeroSite() {
   const a = lodge.art;
   return (
-    <div className="p-6" style={{ background: a.bg, color: a.ink }}>
-      <div className="flex items-center justify-between text-[9px] uppercase tracking-[0.22em]">
-        <span>Sable &amp; Stone</span>
-        <span style={{ opacity: 0.5 }}>Stay · Safari · Enquire</span>
+    <div style={{ background: a.bg, color: a.ink }}>
+      <div className="relative h-36 sm:h-44">
+        <Image
+          src={lodge.image}
+          alt="Sable & Stone safari lodge concept"
+          fill
+          sizes="600px"
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-black/10" />
+        <div className="absolute inset-0 flex flex-col justify-between p-5 text-white">
+          <div className="flex items-center justify-between text-[9px] uppercase tracking-[0.22em]">
+            <span>Sable &amp; Stone</span>
+            <span className="opacity-80">Stay · Safari · Enquire</span>
+          </div>
+          <p className="font-heading text-xl leading-tight sm:text-2xl">
+            Where the wild feels like home.
+          </p>
+        </div>
       </div>
-      <p className="mt-10 font-heading text-2xl leading-tight sm:text-[1.7rem]">
-        Where the wild feels like home.
-      </p>
-      <div className="mt-4 flex items-center gap-3 text-[10px]">
-        <span
-          className="rounded-full px-3 py-1 font-medium"
-          style={{ background: a.accent, color: a.bg }}
-        >
-          Book a stay
-        </span>
-        <span style={{ opacity: 0.6 }}>Explore the lodge →</span>
-      </div>
-      <div className="mt-6 grid grid-cols-3 gap-2">
-        {[a.soft, a.accent, a.panel].map((c, i) => (
-          <div
-            key={i}
-            className="h-14 rounded-md"
-            style={{ background: `linear-gradient(140deg, ${c}, ${a.ink}22)` }}
-          />
-        ))}
+      <div className="p-5">
+        <div className="flex items-center gap-3 text-[10px]">
+          <span
+            className="rounded-full px-3 py-1 font-medium"
+            style={{ background: a.accent, color: a.bg }}
+          >
+            Book a stay
+          </span>
+          <span style={{ opacity: 0.6 }}>Explore the lodge →</span>
+        </div>
+        <div className="mt-4 grid grid-cols-3 gap-2">
+          {[a.soft, a.accent, a.panel].map((c, i) => (
+            <div
+              key={i}
+              className="h-12 rounded-md"
+              style={{ background: `linear-gradient(140deg, ${c}, ${a.ink}22)` }}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -155,7 +171,15 @@ function HeroPhone() {
   const a = beauty.art;
   return (
     <div className="p-3" style={{ background: a.bg, color: a.ink }}>
-      <div className="h-16 rounded-lg" style={{ background: a.panel }} />
+      <div className="relative h-16 overflow-hidden rounded-lg">
+        <Image
+          src={beauty.image}
+          alt="Haneul skincare concept"
+          fill
+          sizes="160px"
+          className="object-cover"
+        />
+      </div>
       <p className="mt-2 font-heading text-sm leading-tight">Haneul</p>
       <p className="text-[8px]" style={{ opacity: 0.6 }}>
         Skincare, softly done

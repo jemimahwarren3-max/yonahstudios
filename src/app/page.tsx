@@ -6,9 +6,10 @@ import { HomeHero } from "@/components/sections/home-hero";
 import { ProcessSection } from "@/components/sections/process";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { ProjectVisual } from "@/components/concept/project-visual";
-import { ProjectCard } from "@/components/concept/project-card";
+import { LiveWorkCard } from "@/components/concept/live-work-card";
 import { services } from "@/lib/data/services";
-import { projects, getProject } from "@/lib/data/projects";
+import { getProject } from "@/lib/data/projects";
+import { liveProjects } from "@/lib/data/work";
 
 const valuePoints = [
   { title: "Thoughtful design", text: "Every piece is considered, intentional and made to fit your business." },
@@ -23,8 +24,6 @@ const serviceVisual: Record<string, string> = {
   web: "sable-and-stone",
   social: "lela",
 };
-
-const featured = projects.slice(0, 6);
 
 export default function Home() {
   return (
@@ -63,11 +62,12 @@ export default function Home() {
               ))}
               <StaggerItem className="hidden bg-sand p-6 sm:block">
                 <p className="font-heading text-lg text-charcoal">
-                  Honest about where we are
+                  Real work, honestly shown
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  We're a new studio — so the work you see is our own concept
-                  projects, made to show exactly what you could receive.
+                  Alongside live sites we&apos;ve built, we show studio concepts
+                  — each clearly labelled — so you always know exactly what
+                  you&apos;re looking at.
                 </p>
               </StaggerItem>
             </Stagger>
@@ -141,13 +141,13 @@ export default function Home() {
         <Container>
           <Reveal className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
-              <Eyebrow>Selected concepts</Eyebrow>
+              <Eyebrow>Selected work</Eyebrow>
               <h2 className="mt-5 font-heading text-4xl leading-tight text-charcoal sm:text-5xl">
-                Concept projects, crafted to show what's possible.
+                Live sites we've designed and built.
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                Each piece below is a studio concept — an imagined brand we
-                designed end to end, so you can picture your own.
+                Real websites, out in the world — explore a few below, then see
+                our studio concepts for the full range of what we can create.
               </p>
             </div>
             <Link
@@ -161,9 +161,9 @@ export default function Home() {
             </Link>
           </Reveal>
 
-          <div className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
+          <div className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2">
+            {liveProjects.map((project) => (
+              <LiveWorkCard key={project.slug} project={project} />
             ))}
           </div>
 

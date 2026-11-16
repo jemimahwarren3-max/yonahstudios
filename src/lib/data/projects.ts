@@ -10,6 +10,8 @@ export type Project = {
   categories: Category[];
   /** Primary visual treatment for the auto-generated mockup. */
   kind: "website" | "branding" | "social";
+  /** Themed photograph (Pexels CDN) used for cards and the detail hero. */
+  image: string;
   summary: string;
   direction: string;
   deliverables: string[];
@@ -19,9 +21,14 @@ export type Project = {
   art: { bg: string; panel: string; ink: string; accent: string; soft: string };
 };
 
+/** Build an optimized Pexels CDN url for a photo id. */
+const pexels = (id: number) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1600`;
+
 export const projects: Project[] = [
   {
     slug: "sable-and-stone",
+    image: pexels(13869948),
     name: "Sable & Stone",
     business: "Sable & Stone Safari Lodge",
     sector: "Luxury hospitality",
@@ -50,6 +57,7 @@ export const projects: Project[] = [
   },
   {
     slug: "haneul",
+    image: pexels(34939754),
     name: "Haneul",
     business: "Haneul Skincare",
     sector: "K-beauty skincare",
@@ -78,6 +86,7 @@ export const projects: Project[] = [
   },
   {
     slug: "tavola",
+    image: pexels(30469692),
     name: "Tavola",
     business: "Tavola Trattoria",
     sector: "Restaurant & dining",
@@ -106,6 +115,7 @@ export const projects: Project[] = [
   },
   {
     slug: "meridian",
+    image: pexels(3801167),
     name: "Meridian",
     business: "Meridian Partners",
     sector: "Professional services",
@@ -134,6 +144,7 @@ export const projects: Project[] = [
   },
   {
     slug: "marula-and-co",
+    image: pexels(38429395),
     name: "Marula & Co",
     business: "Marula & Co Coffee Roasters",
     sector: "Artisan coffee",
@@ -162,6 +173,7 @@ export const projects: Project[] = [
   },
   {
     slug: "lela",
+    image: pexels(6899550),
     name: "Lelà",
     business: "Lelà Beauty & Spa",
     sector: "Beauty & wellness",
@@ -190,6 +202,7 @@ export const projects: Project[] = [
   },
   {
     slug: "atrium",
+    image: pexels(31804342),
     name: "Atrium",
     business: "Atrium Property",
     sector: "Real estate",
@@ -218,6 +231,7 @@ export const projects: Project[] = [
   },
   {
     slug: "fiore",
+    image: pexels(4466585),
     name: "Fiore",
     business: "Fiore Florals",
     sector: "Boutique florist",

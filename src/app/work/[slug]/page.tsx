@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/site/container";
 import { Reveal } from "@/components/motion/reveal";
@@ -74,7 +75,25 @@ export default async function ProjectPage({
         </Container>
       </section>
 
-      {/* Feature visual */}
+      {/* Photo */}
+      <section className="pb-8">
+        <Container>
+          <Reveal>
+            <div className="relative aspect-[16/9] overflow-hidden rounded-3xl bg-sand">
+              <Image
+                src={project.image}
+                alt={`${project.name} — ${project.sector}`}
+                fill
+                priority
+                sizes="(max-width: 1152px) 100vw, 1152px"
+                className="object-cover"
+              />
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* Design mockup */}
       <section className="pb-16">
         <Container>
           <Reveal>
@@ -82,6 +101,12 @@ export default async function ProjectPage({
               className="rounded-3xl p-6 sm:p-16"
               style={{ background: project.art.bg }}
             >
+              <p
+                className="eyebrow mb-8 text-center"
+                style={{ color: project.art.ink, opacity: 0.55 }}
+              >
+                The design
+              </p>
               <div className="mx-auto max-w-2xl">
                 <ProjectVisual project={project} />
               </div>
