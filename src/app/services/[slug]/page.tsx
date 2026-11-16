@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Container, Eyebrow } from "@/components/site/container";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
@@ -12,7 +11,6 @@ import { services } from "@/lib/data/services";
 import { pricingGroups, inclusions } from "@/lib/data/pricing";
 import { getProject, type Project } from "@/lib/data/projects";
 import { whatsappLink } from "@/lib/site";
-import { siteImages } from "@/lib/img";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -35,12 +33,6 @@ export default async function ServicePage({
   if (!service) notFound();
 
   const pricing = pricingGroups.find((g) => g.slug === slug);
-  const heroImage =
-    slug === "web"
-      ? siteImages.bannerWarm
-      : slug === "branding"
-        ? siteImages.intro
-        : siteImages.about;
 
   return (
     <>
@@ -70,24 +62,6 @@ export default async function ServicePage({
               <ButtonLink href="/pricing" variant="outline">
                 See pricing
               </ButtonLink>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
-
-      {/* Hero photo */}
-      <section className="pb-6">
-        <Container>
-          <Reveal>
-            <div className="relative aspect-[21/9] overflow-hidden rounded-3xl bg-sand">
-              <Image
-                src={heroImage}
-                alt={`${service.title} — concept imagery`}
-                fill
-                priority
-                sizes="(max-width: 1152px) 100vw, 1152px"
-                className="object-cover"
-              />
             </div>
           </Reveal>
         </Container>

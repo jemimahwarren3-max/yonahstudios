@@ -29,8 +29,8 @@ export function SiteHeader() {
     };
   }, [open]);
 
-  // At the top of the homepage the header sits over the dark hero image.
-  const onDarkHero = pathname === "/" && !scrolled;
+  // The hero is light, so the header always uses dark text.
+  const onDarkHero = false;
 
   return (
     <header

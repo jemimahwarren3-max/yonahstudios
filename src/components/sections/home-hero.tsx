@@ -1,76 +1,112 @@
 "use client";
 
-import { useRef } from "react";
-import Image from "next/image";
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "motion/react";
+import { type ReactNode } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/site/container";
 import { SoftBlurInText } from "@/components/soft-blur-in-text";
 import { ButtonLink } from "@/components/site/cta";
-import { siteImages } from "@/lib/img";
+import { ProjectVisual } from "@/components/concept/project-visual";
+import { getProject } from "@/lib/data/projects";
 import { whatsappLink } from "@/lib/site";
 
-export function HomeHero() {
-  const reduce = useReducedMotion();
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  // Background drifts down + fades as you scroll (parallax).
-  const bgY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 140]);
-  const contentY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    reduce ? [0, 0] : [0, 80],
-  );
-  const overlayOpacity = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
+const poster = getProject("verve")!;
+const can = getProject("dos-monos")!;
+const site = getProject("sable-and-stone")!;
+const brand = getProject("fiore")!;
 
+function Float({
+  children,
+  className,
+  delay = 0,
+  rotate = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  rotate?: number;
+}) {
+  const reduce = useReducedMotion();
   return (
-    <section
-      ref={ref}
-      className="relative flex min-h-[94vh] items-end overflow-hidden"
+    <motion.div
+      className={className}
+      initial={reduce ? { opacity: 0 } : { opacity: 0, y: 30, scale: 0.92 }}
+      animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
+      style={{ rotate }}
     >
-      {/* Background image */}
-      <motion.div style={{ y: bgY }} className="absolute inset-[-8%] -z-10">
-        <Image
-          src={siteImages.hero}
-          alt="A warm, considered creative studio workspace"
-          fill
-          priority
-          sizes="100vw"
-          className="animate-kenburns object-cover"
-        />
-      </motion.div>
-      {/* Warm legibility gradient */}
       <motion.div
-        style={{ opacity: overlayOpacity }}
-        className="absolute inset-0 -z-10 bg-gradient-to-t from-black/80 via-black/45 to-black/35"
+        animate={reduce ? undefined : { y: [0, -12, 0] }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay,
+        }}
+      >
+        {children}
+      </motion.div>
+    </motion.div>
+  );
+}
+
+export function HomeHero() {
+  return (
+    <section className="relative flex min-h-[92vh] items-center overflow-hidden">
+      {/* warm ambient glows */}
+      <div
+        className="pointer-events-none absolute -top-40 right-0 h-[34rem] w-[34rem] rounded-full bg-peach/40 blur-[130px]"
+        aria-hidden
       />
       <div
-        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_30%_20%,rgba(194,104,63,0.25),transparent_60%)]"
+        className="pointer-events-none absolute -left-32 bottom-0 h-[30rem] w-[30rem] rounded-full bg-blush/35 blur-[130px]"
         aria-hidden
       />
 
-      <Container className="relative pb-24 pt-40 sm:pb-28">
-        <motion.div style={{ y: contentY }} className="max-w-3xl">
+      {/* floating work — our own designs (desktop) */}
+      <Float
+        className="absolute left-[2%] top-[13%] hidden w-52 xl:block"
+        rotate={-6}
+        delay={0.35}
+      >
+        <ProjectVisual project={poster} />
+      </Float>
+      <Float
+        className="absolute bottom-[7%] left-[6%] hidden w-36 lg:block"
+        rotate={5}
+        delay={0.55}
+      >
+        <ProjectVisual project={can} />
+      </Float>
+      <Float
+        className="absolute right-[3%] top-[11%] hidden w-[17rem] lg:block"
+        rotate={5}
+        delay={0.45}
+      >
+        <ProjectVisual project={site} />
+      </Float>
+      <Float
+        className="absolute bottom-[9%] right-[6%] hidden w-44 xl:block"
+        rotate={-5}
+        delay={0.65}
+      >
+        <ProjectVisual project={brand} />
+      </Float>
+
+      <Container className="relative z-10 text-center">
+        <div className="mx-auto max-w-3xl">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="eyebrow inline-flex items-center gap-3 text-white/80"
+            className="eyebrow inline-flex items-center gap-3 text-muted-foreground"
           >
-            <span className="h-px w-8 bg-current opacity-60" />
+            <span className="h-px w-8 bg-current opacity-50" />
             Creative studio · Fully remote
           </motion.p>
 
-          <h1 className="mt-6 font-heading text-[2.8rem] font-semibold leading-[1.03] tracking-tight text-white sm:text-7xl">
+          <h1 className="mt-6 font-heading text-[2.8rem] font-semibold leading-[1.02] tracking-tight text-charcoal sm:text-7xl">
             <SoftBlurInText text="Good businesses deserve " stagger={0.026} />
-            <span className="italic text-[color:var(--peach)]">
+            <span className="italic text-terracotta">
               <SoftBlurInText text="beautiful" stagger={0.026} delay={0.6} />
             </span>
             <SoftBlurInText
@@ -84,7 +120,7 @@ export function HomeHero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.25 }}
-            className="mt-7 max-w-xl text-lg leading-relaxed text-white/85 sm:text-xl"
+            className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl"
           >
             We craft thoughtful brands, beautiful websites and digital marketing
             that help businesses stand out, connect with customers and grow.
@@ -94,24 +130,19 @@ export function HomeHero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.4 }}
-            className="mt-10 flex flex-col gap-4 sm:flex-row"
+            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
-            <ButtonLink
-              href="/work"
-              className="bg-white text-charcoal hover:bg-terracotta hover:text-white"
-            >
-              Explore our work
-            </ButtonLink>
-            <ButtonLink href={whatsappLink()} variant="light" external>
+            <ButtonLink href="/work">Explore our work</ButtonLink>
+            <ButtonLink href={whatsappLink()} variant="outline" external>
               Start a project
             </ButtonLink>
           </motion.div>
-        </motion.div>
+        </div>
       </Container>
 
       {/* Scroll cue */}
       <div className="absolute inset-x-0 bottom-6 flex justify-center">
-        <div className="flex flex-col items-center gap-2 text-white/70">
+        <div className="flex flex-col items-center gap-2 text-muted-foreground">
           <span className="eyebrow text-[0.6rem]">Scroll</span>
           <span className="animate-scrollcue text-lg">↓</span>
         </div>

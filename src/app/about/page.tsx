@@ -6,7 +6,6 @@ import { LogoStacked } from "@/components/brand/logo";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { ParallaxBanner } from "@/components/sections/parallax-banner";
 import { site } from "@/lib/site";
-import { siteImages } from "@/lib/img";
 
 const principles = [
   {
@@ -62,15 +61,11 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Image band */}
-      <div className="py-8">
-        <ParallaxBanner
-          image={siteImages.about}
-          alt="A considered, crafted workspace"
-          eyebrow="Our craft"
-          title="Details done well, every time."
-        />
-      </div>
+      {/* Statement band */}
+      <ParallaxBanner
+        eyebrow="Our craft"
+        title="Details done well, every time."
+      />
 
       {/* Remote model */}
       <section className="py-16">

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Container } from "@/components/site/container";
 import { PageHeader } from "@/components/site/page-header";
 import { Reveal } from "@/components/motion/reveal";
 import { ContactForm } from "@/components/site/contact-form";
+import { ProjectVisual } from "@/components/concept/project-visual";
 import { site, whatsappLink, mailtoLink } from "@/lib/site";
-import { siteImages } from "@/lib/img";
+import { getProject } from "@/lib/data/projects";
+
+const contactPiece = getProject("fiore")!;
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -31,15 +33,7 @@ export default function ContactPage() {
 
             <Reveal delay={0.1}>
               <div className="space-y-6">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-sand">
-                  <Image
-                    src={siteImages.contact}
-                    alt="A warm, welcoming studio space"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                    className="object-cover"
-                  />
-                </div>
+                <ProjectVisual project={contactPiece} />
                 <div className="rounded-2xl border border-border bg-sand/50 p-7">
                   <h2 className="font-heading text-xl text-charcoal">
                     Prefer to chat?

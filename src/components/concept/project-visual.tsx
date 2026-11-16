@@ -1,6 +1,14 @@
 import { BrowserFrame } from "./frame";
 import type { Project } from "@/lib/data/projects";
 
+function isDark(hex: string) {
+  const h = hex.replace("#", "");
+  const r = parseInt(h.slice(0, 2), 16);
+  const g = parseInt(h.slice(2, 4), 16);
+  const b = parseInt(h.slice(4, 6), 16);
+  return 0.299 * r + 0.587 * g + 0.114 * b < 140;
+}
+
 /** Renders a code-built design preview for a project — website mockup or
  * graphic-design piece — themed from its art-direction tokens. No stock photos. */
 export function ProjectVisual({ project }: { project: Project }) {
@@ -184,54 +192,131 @@ function PosterPiece({ project }: { project: Project }) {
   );
 }
 
-function Starburst({ fill, className }: { fill: string; className?: string }) {
-  // 16-point die-cut badge
-  const pts = Array.from({ length: 32 }, (_, i) => {
-    const ang = (Math.PI * 2 * i) / 32;
-    const r = i % 2 === 0 ? 50 : 41;
-    return `${50 + r * Math.cos(ang)},${50 + r * Math.sin(ang)}`;
-  }).join(" ");
+const cylinder = (c: string) =>
+  `linear-gradient(90deg, color-mix(in srgb, ${c} 68%, #000), ${c} 28%, color-mix(in srgb, ${c} 62%, #fff) 50%, ${c} 72%, color-mix(in srgb, ${c} 66%, #000))`;
+
+function Label({
+  project,
+  dark,
+}: {
+  project: Project;
+  dark: string;
+}) {
+  const a = project.art;
   return (
-    <svg viewBox="0 0 100 100" className={className}>
-      <polygon points={pts} fill={fill} />
-    </svg>
+    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 px-3 text-center">
+      <p
+        className="text-[7px] font-medium uppercase tracking-[0.2em]"
+        style={{ color: dark, opacity: 0.75 }}
+      >
+        {project.sector}
+      </p>
+      <p
+        className="font-heading text-lg font-semibold leading-none"
+        style={{ color: dark }}
+      >
+        {project.name}
+      </p>
+      <div
+        className="mx-auto mt-1.5 h-[3px] w-9 rounded"
+        style={{ background: a.soft }}
+      />
+      <p
+        className="mt-1.5 text-[6px] uppercase leading-snug tracking-[0.14em]"
+        style={{ color: dark, opacity: 0.7 }}
+      >
+        {project.tagline}
+      </p>
+    </div>
+  );
+}
+
+/** Beverage can mockup. */
+function Can({ project }: { project: Project }) {
+  const a = project.art;
+  const labelInk = "#f7f3ea";
+  return (
+    <div className="relative" style={{ width: 118, height: 214 }}>
+      {/* lid */}
+      <div
+        className="absolute left-1/2 top-0 z-10 h-[10px] w-[98px] -translate-x-1/2 rounded-[50%]"
+        style={{ background: "linear-gradient(90deg,#8d8d8d,#ededed 50%,#8d8d8d)" }}
+      />
+      {/* body */}
+      <div
+        className="absolute inset-x-0 bottom-0 top-[5px] overflow-hidden rounded-[13px]"
+        style={{ background: cylinder(a.accent) }}
+      >
+        <div
+          className="absolute inset-x-0 top-0 h-2"
+          style={{ background: "#ffffff", opacity: 0.18 }}
+        />
+        <div
+          className="absolute inset-x-0 bottom-0 h-3"
+          style={{ background: "#000000", opacity: 0.18 }}
+        />
+        <Label project={project} dark={labelInk} />
+      </div>
+    </div>
+  );
+}
+
+/** Stand-up pouch / bag mockup. */
+function Bag({ project }: { project: Project }) {
+  const a = project.art;
+  const onDark = isDark(a.accent);
+  const labelInk = onDark ? "#f7f3ea" : a.ink;
+  return (
+    <div className="relative" style={{ width: 138, height: 198 }}>
+      {/* crimped top seal */}
+      <div
+        className="absolute inset-x-2 top-0 z-10 h-4 rounded-[3px]"
+        style={{
+          background: `repeating-linear-gradient(90deg, ${a.ink}, ${a.ink} 4px, color-mix(in srgb, ${a.ink} 55%, #fff) 4px, color-mix(in srgb, ${a.ink} 55%, #fff) 8px)`,
+          opacity: 0.9,
+        }}
+      />
+      {/* body */}
+      <div
+        className="absolute inset-x-0 bottom-0 top-3 overflow-hidden rounded-b-[10px] rounded-t-[4px]"
+        style={{ background: cylinder(a.accent) }}
+      >
+        <div
+          className="absolute inset-y-0 left-0 w-2"
+          style={{ background: "#000", opacity: 0.12 }}
+        />
+        <Label project={project} dark={labelInk} />
+      </div>
+    </div>
   );
 }
 
 function PackagingPiece({ project }: { project: Project }) {
   const a = project.art;
+  const Product = project.slug === "dos-monos" ? Can : Bag;
   return (
     <div
-      className="relative flex aspect-[4/5] items-center justify-center overflow-hidden rounded-xl p-6"
-      style={{ background: a.bg }}
+      className="relative flex aspect-[4/5] items-center justify-center overflow-hidden rounded-xl"
+      style={{
+        background: `linear-gradient(180deg, color-mix(in srgb, ${a.panel} 70%, #fff), ${a.panel})`,
+      }}
     >
       <div
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0 opacity-[0.12]"
         style={{
-          backgroundImage: `radial-gradient(${a.ink}22 1px, transparent 1px)`,
-          backgroundSize: "12px 12px",
+          backgroundImage: `radial-gradient(${a.ink} 1px, transparent 1px)`,
+          backgroundSize: "14px 14px",
         }}
       />
-      <div className="relative h-56 w-56">
-        <Starburst fill={a.accent} className="absolute inset-0 h-full w-full drop-shadow-xl" />
-        <Starburst
-          fill={a.soft}
-          className="absolute inset-0 h-full w-full -rotate-[10deg] scale-[0.82] opacity-90"
-        />
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-          <span
-            className="max-w-[64%] font-heading text-2xl font-semibold leading-[0.95]"
-            style={{ color: a.ink }}
-          >
-            {project.name}
-          </span>
-          <span
-            className="mt-2 max-w-[62%] text-[7px] font-medium uppercase leading-snug tracking-[0.18em]"
-            style={{ color: a.ink, opacity: 0.8 }}
-          >
-            {project.tagline}
-          </span>
+      <div className="relative flex flex-col items-center">
+        <div className="drop-shadow-[0_24px_24px_rgba(0,0,0,0.28)]">
+          <Product project={project} />
         </div>
+        {/* contact shadow */}
+        <div
+          className="mt-1 h-3 w-28 rounded-[50%] blur-md"
+          style={{ background: "#000", opacity: 0.25 }}
+        />
       </div>
     </div>
   );

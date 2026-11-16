@@ -11,7 +11,6 @@ import {
   inclusions,
 } from "@/lib/data/pricing";
 import { whatsappLink } from "@/lib/site";
-import { siteImages } from "@/lib/img";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -78,15 +77,11 @@ export default function PricingPage() {
         </Container>
       </section>
 
-      {/* Image band */}
-      <div className="py-8">
-        <ParallaxBanner
-          image={siteImages.pricing}
-          alt="A calm, considered interior"
-          eyebrow="Fair & flexible"
-          title="Great design, priced for growing businesses."
-        />
-      </div>
+      {/* Statement band */}
+      <ParallaxBanner
+        eyebrow="Fair & flexible"
+        title="Great design, priced for growing businesses."
+      />
 
       {/* Social inclusions */}
       <section className="py-12">

@@ -6,12 +6,10 @@ import { HomeHero } from "@/components/sections/home-hero";
 import { ParallaxBanner } from "@/components/sections/parallax-banner";
 import { ProcessSection } from "@/components/sections/process";
 import { FinalCTA } from "@/components/sections/final-cta";
-import Image from "next/image";
 import { ProjectVisual } from "@/components/concept/project-visual";
 import { ShowcaseCarousel } from "@/components/sections/showcase-carousel";
 import { services } from "@/lib/data/services";
 import { getProject } from "@/lib/data/projects";
-import { siteImages } from "@/lib/img";
 
 const valuePoints = [
   { title: "Thoughtful design", text: "Every piece is considered, intentional and made to fit your business." },
@@ -26,6 +24,8 @@ const serviceVisual: Record<string, string> = {
   web: "sable-and-stone",
   social: "lela",
 };
+
+const introPiece = getProject("nova")!;
 
 export default function Home() {
   return (
@@ -50,16 +50,8 @@ export default function Home() {
               </p>
             </Reveal>
 
-            <Reveal delay={0.1}>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-sand shadow-[0_40px_80px_-40px_rgba(40,30,20,0.45)]">
-                <Image
-                  src={siteImages.intro}
-                  alt="Inside the way Yonah Studios works"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
+            <Reveal delay={0.1} className="mx-auto w-full max-w-sm lg:max-w-none">
+              <ProjectVisual project={introPiece} />
             </Reveal>
           </div>
 
@@ -91,8 +83,6 @@ export default function Home() {
 
       {/* Parallax statement */}
       <ParallaxBanner
-        image={siteImages.bannerWarm}
-        alt="A warm, beautifully designed interior space"
         eyebrow="Our promise"
         title="We make the kind of work people remember."
       />
