@@ -34,7 +34,7 @@ export default function Home() {
       {/* Intro / trust */}
       <section className="py-20 sm:py-28">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
             <Reveal>
               <Eyebrow>Who we are</Eyebrow>
               <h2 className="mt-5 font-heading text-4xl leading-tight text-charcoal sm:text-5xl">
@@ -49,30 +49,42 @@ export default function Home() {
               </p>
             </Reveal>
 
-            <Stagger className="grid gap-px self-center overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2">
-              {valuePoints.map((v) => (
-                <StaggerItem key={v.title} className="bg-background p-6">
-                  <div className="h-1.5 w-1.5 rounded-full bg-terracotta" />
-                  <h3 className="mt-4 font-heading text-lg text-charcoal">
-                    {v.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {v.text}
-                  </p>
-                </StaggerItem>
-              ))}
-              <StaggerItem className="hidden bg-sand p-6 sm:block">
-                <p className="font-heading text-lg text-charcoal">
-                  Real work, honestly shown
-                </p>
+            <Reveal delay={0.1}>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-sand shadow-[0_40px_80px_-40px_rgba(40,30,20,0.45)]">
+                <Image
+                  src={siteImages.intro}
+                  alt="Inside the way Yonah Studios works"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+          </div>
+
+          <Stagger className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+            {valuePoints.map((v) => (
+              <StaggerItem key={v.title} className="bg-background p-6">
+                <div className="h-1.5 w-1.5 rounded-full bg-terracotta" />
+                <h3 className="mt-4 font-heading text-lg text-charcoal">
+                  {v.title}
+                </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  Alongside live sites we&apos;ve built, we show studio concepts
-                  — each clearly labelled — so you always know exactly what
-                  you&apos;re looking at.
+                  {v.text}
                 </p>
               </StaggerItem>
-            </Stagger>
-          </div>
+            ))}
+            <StaggerItem className="bg-sand p-6">
+              <p className="font-heading text-lg text-charcoal">
+                Real work, honestly shown
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Alongside live sites we&apos;ve built, we show studio concepts —
+                each clearly labelled — so you always know exactly what
+                you&apos;re looking at.
+              </p>
+            </StaggerItem>
+          </Stagger>
         </Container>
       </section>
 

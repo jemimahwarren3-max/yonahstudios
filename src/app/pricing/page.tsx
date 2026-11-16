@@ -4,12 +4,14 @@ import { PageHeader } from "@/components/site/page-header";
 import { Reveal } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/site/cta";
 import { FinalCTA } from "@/components/sections/final-cta";
+import { ParallaxBanner } from "@/components/sections/parallax-banner";
 import {
   pricingGroups,
   pricingConditions,
   inclusions,
 } from "@/lib/data/pricing";
 import { whatsappLink } from "@/lib/site";
+import { siteImages } from "@/lib/img";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -75,6 +77,16 @@ export default function PricingPage() {
           </div>
         </Container>
       </section>
+
+      {/* Image band */}
+      <div className="py-8">
+        <ParallaxBanner
+          image={siteImages.pricing}
+          alt="A calm, considered interior"
+          eyebrow="Fair & flexible"
+          title="Great design, priced for growing businesses."
+        />
+      </div>
 
       {/* Social inclusions */}
       <section className="py-12">
