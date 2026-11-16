@@ -220,14 +220,14 @@ function PackagingPiece({ project }: { project: Project }) {
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
           <span
-            className="font-heading text-3xl font-semibold leading-none"
-            style={{ color: a.bg }}
+            className="max-w-[64%] font-heading text-2xl font-semibold leading-[0.95]"
+            style={{ color: a.ink }}
           >
             {project.name}
           </span>
           <span
-            className="mt-2 text-[9px] uppercase tracking-[0.2em]"
-            style={{ color: a.bg, opacity: 0.85 }}
+            className="mt-2 max-w-[62%] text-[7px] font-medium uppercase leading-snug tracking-[0.18em]"
+            style={{ color: a.ink, opacity: 0.8 }}
           >
             {project.tagline}
           </span>

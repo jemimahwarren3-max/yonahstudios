@@ -78,12 +78,18 @@ export default async function ProjectPage({
       <section className="pb-16">
         <Container>
           <Reveal>
-            <div className="rounded-3xl bg-sand p-6 sm:p-16">
+            <div
+              className={
+                project.discipline === "website"
+                  ? "rounded-3xl bg-sand p-6 sm:p-16"
+                  : "rounded-3xl bg-sand p-6 sm:p-10"
+              }
+            >
               <div
                 className={
                   project.discipline === "website"
                     ? "mx-auto max-w-3xl"
-                    : "mx-auto max-w-sm"
+                    : "mx-auto max-w-md"
                 }
               >
                 <ProjectVisual project={project} />
