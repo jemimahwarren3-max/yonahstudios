@@ -156,6 +156,25 @@
   }
 }
 
+/* Slow cinematic zoom for hero/banner images */
+@keyframes kenburns {
+  from { transform: scale(1.04); }
+  to { transform: scale(1.16); }
+}
+.animate-kenburns {
+  animation: kenburns 22s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-kenburns { animation: none; }
+}
+
+/* Subtle bounce for the scroll cue */
+@keyframes scrollcue {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+.animate-scrollcue { animation: scrollcue 1.8s ease-in-out infinite; }
+
 /* Thin tracked-out label, used for eyebrows/kickers */
 .eyebrow {
   font-family: var(--font-sans);

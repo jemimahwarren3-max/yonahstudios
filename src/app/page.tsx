@@ -3,12 +3,14 @@ import { Container, Eyebrow } from "@/components/site/container";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/site/cta";
 import { HomeHero } from "@/components/sections/home-hero";
+import { ParallaxBanner } from "@/components/sections/parallax-banner";
 import { ProcessSection } from "@/components/sections/process";
 import { FinalCTA } from "@/components/sections/final-cta";
-import { ProjectVisual } from "@/components/concept/project-visual";
+import Image from "next/image";
 import { ShowcaseCarousel } from "@/components/sections/showcase-carousel";
 import { services } from "@/lib/data/services";
 import { getProject } from "@/lib/data/projects";
+import { siteImages } from "@/lib/img";
 
 const valuePoints = [
   { title: "Thoughtful design", text: "Every piece is considered, intentional and made to fit your business." },
@@ -74,6 +76,14 @@ export default function Home() {
         </Container>
       </section>
 
+      {/* Parallax statement */}
+      <ParallaxBanner
+        image={siteImages.bannerWarm}
+        alt="A warm, beautifully designed interior space"
+        eyebrow="Our promise"
+        title="We make the kind of work people remember."
+      />
+
       {/* Services preview */}
       <section className="bg-sand/60 py-20 sm:py-28">
         <Container>
@@ -124,8 +134,14 @@ export default function Home() {
                         </ButtonLink>
                       </div>
                     </div>
-                    <div>
-                      <ProjectVisual project={project} />
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-sand shadow-[0_30px_60px_-30px_rgba(40,30,20,0.4)]">
+                      <Image
+                        src={project.image}
+                        alt={`${service.title} — ${project.name} concept`}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-cover transition-transform duration-[1200ms] ease-out hover:scale-105"
+                      />
                     </div>
                   </div>
                 </Reveal>

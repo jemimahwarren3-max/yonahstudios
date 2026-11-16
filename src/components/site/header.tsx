@@ -29,6 +29,9 @@ export function SiteHeader() {
     };
   }, [open]);
 
+  // At the top of the homepage the header sits over the dark hero image.
+  const onDarkHero = pathname === "/" && !scrolled;
+
   return (
     <header
       className={cn(
@@ -39,7 +42,7 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
-        <Logo />
+        <Logo light={onDarkHero} />
 
         <nav className="hidden items-center gap-8 md:flex">
           {nav.map((item) => {
@@ -52,8 +55,14 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative text-sm transition-colors hover:text-charcoal",
-                  active ? "text-charcoal" : "text-muted-foreground",
+                  "relative text-sm transition-colors",
+                  onDarkHero
+                    ? active
+                      ? "text-white"
+                      : "text-white/70 hover:text-white"
+                    : active
+                      ? "text-charcoal"
+                      : "text-muted-foreground hover:text-charcoal",
                 )}
               >
                 {item.label}
@@ -70,7 +79,12 @@ export function SiteHeader() {
             href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 rounded-full bg-charcoal px-5 py-2.5 text-sm font-medium text-ivory transition-colors hover:bg-terracotta"
+            className={cn(
+              "group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors",
+              onDarkHero
+                ? "bg-white text-charcoal hover:bg-terracotta hover:text-white"
+                : "bg-charcoal text-ivory hover:bg-terracotta",
+            )}
           >
             Start a Project
             <span className="transition-transform duration-300 group-hover:translate-x-0.5">
@@ -83,7 +97,10 @@ export function SiteHeader() {
           type="button"
           onClick={() => setOpen(true)}
           aria-label="Open menu"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-charcoal md:hidden"
+          className={cn(
+            "inline-flex h-10 w-10 items-center justify-center rounded-full md:hidden",
+            onDarkHero ? "text-white" : "text-charcoal",
+          )}
         >
           <Menu className="h-5 w-5" />
         </button>

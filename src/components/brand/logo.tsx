@@ -6,16 +6,19 @@ import { cn } from "@/lib/utils";
 export function Logo({
   className,
   href = "/",
+  light = false,
 }: {
   className?: string;
   href?: string;
+  light?: boolean;
 }) {
   return (
     <Link
       href={href}
       aria-label="Yonah Studios — home"
       className={cn(
-        "group inline-flex items-center gap-2.5 text-charcoal",
+        "group inline-flex items-center gap-2.5 transition-colors duration-300",
+        light ? "text-white" : "text-charcoal",
         className,
       )}
     >
@@ -24,7 +27,12 @@ export function Logo({
         <span className="font-heading text-lg font-semibold tracking-tight">
           Yonah Studios
         </span>
-        <span className="eyebrow mt-1 text-[0.55rem] text-muted-foreground">
+        <span
+          className={cn(
+            "eyebrow mt-1 text-[0.55rem]",
+            light ? "text-white/60" : "text-muted-foreground",
+          )}
+        >
           Brand · Web · Social
         </span>
       </span>
