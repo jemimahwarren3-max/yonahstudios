@@ -24,7 +24,6 @@ export const services: Service[] = [
       "Company profiles",
       "Banners",
       "Receipt book designs",
-      "CV & résumé designs",
       "Pitch decks",
     ],
     accent: "#c2683f",

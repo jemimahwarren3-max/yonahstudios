@@ -175,6 +175,12 @@
 }
 .animate-scrollcue { animation: scrollcue 1.8s ease-in-out infinite; }
 
+/* Fills the active showreel dot to show it counting down to the next slide */
+@keyframes showreel-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
 /* Thin tracked-out label, used for eyebrows/kickers */
 .eyebrow {
   font-family: var(--font-sans);

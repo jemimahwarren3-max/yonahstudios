@@ -19,8 +19,7 @@ export const pricingGroups: PriceGroup[] = [
       { name: "Flyer / poster design", price: "$10" },
       { name: "Business card design", price: "$10" },
       { name: "Banner design", price: "$10" },
-      { name: "Receipt book design", price: "$10" },
-      { name: "CV / résumé design", price: "$12" },
+      { name: "Receipt book design", price: "$5" },
       { name: "Pitch deck (up to 10 slides)", price: "$50" },
     ],
   },
@@ -32,7 +31,7 @@ export const pricingGroups: PriceGroup[] = [
     items: [
       { name: "Landing page (1 page)", price: "$80" },
       { name: "Brochure website (3–4 pages)", price: "$150" },
-      { name: "Full website (5–7 pages)", price: "$250" },
+      { name: "Full website (7–10 pages)", price: "$250" },
       { name: "Google Business Profile setup", price: "$20" },
     ],
   },

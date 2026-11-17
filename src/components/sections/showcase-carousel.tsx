@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
@@ -136,12 +136,28 @@ export function ShowcaseCarousel() {
               onClick={() => select(i)}
               aria-label={`Show ${s.name}`}
               aria-current={i === index}
-              className={`h-2 rounded-full transition-all duration-300 ${
+              className={`relative h-2 overflow-hidden rounded-full transition-all duration-300 ${
                 i === index
-                  ? "w-8 bg-terracotta"
+                  ? "w-8 bg-border"
                   : "w-2 bg-border hover:bg-muted-foreground/50"
               }`}
-            />
+            >
+              {i === index && !reduce && (
+                <span
+                  key={index}
+                  className="absolute inset-y-0 left-0 w-full origin-left scale-x-0 animate-[showreel-progress_var(--showreel-duration)_linear_forwards] bg-terracotta"
+                  style={
+                    {
+                      "--showreel-duration": `${INTERVAL}ms`,
+                      animationPlayState: paused ? "paused" : "running",
+                    } as CSSProperties
+                  }
+                />
+              )}
+              {i === index && reduce && (
+                <span className="absolute inset-0 bg-terracotta" />
+              )}
+            </button>
           ))}
         </div>
 
