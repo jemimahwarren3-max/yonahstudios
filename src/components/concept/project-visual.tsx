@@ -533,17 +533,22 @@ function TypePiece({ project }: { project: Project }) {
 
 function SocialPiece({ project }: { project: Project }) {
   const a = project.art;
-  const cells = [
-    { background: a.panel },
-    { background: a.accent },
-    { background: a.soft },
-    { background: a.soft },
-    { background: a.ink, color: a.bg },
-    { background: a.panel },
-    { background: a.accent },
-    { background: a.bg, border: `1px solid ${a.ink}22` },
-    { background: a.soft },
-  ];
+  const photos = project.socialPhotos ?? [];
+  // Photo cells go around the edges; the centre stays a styled name card.
+  const photoSlots = [0, 1, 2, 3, 5, 6, 7, 8];
+  const colorFallback = [a.panel, a.accent, a.soft, a.soft, a.panel, a.accent, a.bg, a.soft];
+
+  type Cell = { center: true } | { photo: string } | { background: string };
+  const cells: Cell[] = Array.from({ length: 9 }, (_, i): Cell => {
+    if (i === 4) return { center: true };
+    const slotIndex = photoSlots.indexOf(i);
+    if (photos.length > 0 && slotIndex !== -1 && slotIndex < photos.length) {
+      return { photo: photos[slotIndex] as string };
+    }
+    const fallbackIndex = slotIndex === -1 ? 0 : slotIndex % colorFallback.length;
+    return { background: colorFallback[fallbackIndex] as string };
+  });
+
   return (
     <div
       className="flex aspect-[4/5] flex-col rounded-xl p-5"
@@ -564,19 +569,31 @@ function SocialPiece({ project }: { project: Project }) {
         <PlatformRow style={{ color: a.ink }} />
       </div>
       <div className="grid flex-1 grid-cols-3 gap-1.5">
-        {cells.map((style, i) => (
-          <div
-            key={i}
-            className="flex items-center justify-center rounded-md"
-            style={style}
-          >
-            {i === 4 && (
-              <span className="px-1 text-center font-heading text-sm leading-tight">
-                {project.name}
-              </span>
-            )}
-          </div>
-        ))}
+        {cells.map((cell, i) =>
+          "photo" in cell ? (
+            <div key={i} className="relative overflow-hidden rounded-md">
+              <Image
+                src={cell.photo}
+                alt={`${project.name} social content`}
+                fill
+                sizes="140px"
+                className="object-cover"
+              />
+            </div>
+          ) : (
+            <div
+              key={i}
+              className="flex items-center justify-center rounded-md"
+              style={"center" in cell ? { background: a.ink, color: a.bg } : cell}
+            >
+              {"center" in cell && (
+                <span className="px-1 text-center font-heading text-sm leading-tight">
+                  {project.name}
+                </span>
+              )}
+            </div>
+          ),
+        )}
       </div>
     </div>
   );

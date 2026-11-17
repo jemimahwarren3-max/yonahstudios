@@ -38,6 +38,9 @@ export type Project = {
   /** A real reference image (local, in /public/concepts) to show instead of
    * the code-built mockup, when one exists for this concept. */
   image?: string;
+  /** Real product/lifestyle photos (local, in /public/social) to fill the
+   * social-media grid mockup, in place of flat colour swatches. */
+  socialPhotos?: string[];
 };
 
 const p = (
@@ -99,6 +102,7 @@ export const projects: Project[] = [
     art: p("#26211d", "#312a24", "#efe7d8", "#d08a3e", "#b5543a"),
     tagline: "A table worth travelling for",
     image: "/concepts/maison-olive.png",
+    socialPhotos: ["/social/maison-olive-1.png"],
   },
   {
     slug: "atrium",
@@ -355,7 +359,7 @@ export const projects: Project[] = [
     sector: "Artisan coffee",
     discipline: "graphic",
     variant: "packaging",
-    categories: ["Branding", "Graphic Design"],
+    categories: ["Branding", "Graphic Design", "Social Media"],
     summary:
       "A handcrafted identity and bag system for a small-batch coffee roaster.",
     direction:
@@ -373,6 +377,7 @@ export const projects: Project[] = [
     tagline: "Small batch · Big heart",
     extraVariants: ["type", "brand"],
     image: "/concepts/kopa-coffee.png",
+    socialPhotos: ["/social/kopa-coffee-1.png"],
   },
   {
     slug: "ember",
@@ -500,27 +505,28 @@ export const projects: Project[] = [
   },
   {
     slug: "bloom",
-    name: "Bloom",
-    business: "Bloom Bakehouse",
-    sector: "Bakery",
+    name: "Bloom Beauty",
+    business: "Bloom Beauty",
+    sector: "Skincare",
     discipline: "graphic",
     variant: "packaging",
-    categories: ["Branding", "Graphic Design"],
+    categories: ["Branding", "Graphic Design", "Social Media"],
     summary:
-      "A sweet, wholesome packaging and brand system for a neighbourhood bakery.",
+      "A warm, considered packaging and social campaign for a skincare line.",
     direction:
-      "Butter yellow, berry and a friendly rounded mark. Boxes, bags and labels feel handmade and inviting.",
-    deliverables: ["Packaging", "Logo", "Loyalty card", "Market signage"],
+      "Beige, rose gold and a friendly rounded mark. Bottles, boxes and a coordinated feed feel calm, warm and inviting.",
+    deliverables: ["Packaging", "Logo", "Social campaign", "Loyalty card"],
     palette: [
-      { name: "Butter", hex: "#f6d774" },
-      { name: "Berry", hex: "#b23a5b" },
-      { name: "Cream", hex: "#fbf3df" },
+      { name: "Beige", hex: "#e9ddc8" },
+      { name: "Rose", hex: "#c98b86" },
+      { name: "Cream", hex: "#faf5ea" },
       { name: "Cocoa", hex: "#4a2f26" },
-      { name: "Leaf", hex: "#7fa06a" },
+      { name: "Gold", hex: "#b8964f" },
     ],
     typography: { heading: "Fraunces", body: "Inter" },
-    art: p("#fbf3df", "#f6d774", "#4a2f26", "#b23a5b", "#7fa06a"),
-    tagline: "Baked fresh daily",
+    art: p("#faf5ea", "#e9ddc8", "#4a2f26", "#c98b86", "#b8964f"),
+    tagline: "Glow, every day",
+    socialPhotos: ["/social/bloom-beauty-1.png", "/social/bloom-beauty-2.png"],
   },
   {
     slug: "studio-kin",

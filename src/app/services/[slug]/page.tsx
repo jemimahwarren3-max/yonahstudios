@@ -283,9 +283,9 @@ function BrandingShowcase() {
 }
 
 const socialCampaigns: { project: Project; variant: "social" }[] = [
-  { project: getProject("lela")!, variant: "social" },
-  { project: getProject("ember")!, variant: "social" },
   { project: getProject("bloom")!, variant: "social" },
+  { project: getProject("marula-and-co")!, variant: "social" },
+  { project: getProject("tavola")!, variant: "social" },
 ];
 
 function SocialShowcase() {
