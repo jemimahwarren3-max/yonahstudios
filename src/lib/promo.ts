@@ -5,8 +5,8 @@
  * the Pricing page back to normal — nothing else needs to change.
  */
 export const PROMO_ACTIVE = true;
-export const PROMO_PERCENT = 20;
-export const PROMO_MESSAGE = "Launch offer: 20% off everything, for a limited time.";
+export const PROMO_PERCENT = 15;
+export const PROMO_MESSAGE = "Launch offer: 15% off everything, for a limited time.";
 
 /** Parses a "$NN" price string and returns the discounted "$NN" string. */
 export function discountedPrice(price: string): string {
