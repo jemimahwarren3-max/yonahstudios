@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "Graphic design & branding, website design & development, and social media management: everything a growing business needs to look professional online.",
+  alternates: { canonical: "/services" },
 };
 
 const serviceVisual: Record<string, string> = {

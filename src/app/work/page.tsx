@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Our Work",
   description:
     "Website and graphic-design projects by Yonah Studios: live client sites plus studio concepts across branding, packaging, posters and type.",
+  alternates: { canonical: "/work" },
 };
 
 export default function WorkPage() {

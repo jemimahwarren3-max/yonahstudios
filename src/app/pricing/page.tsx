@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   title: "Pricing",
   description:
     "Clear, honest pricing in USD for branding, websites and social media. Custom packages available for larger projects.",
+  alternates: { canonical: "/pricing" },
 };
 
 const icons = { branding: Palette, web: Globe, social: Megaphone } as const;

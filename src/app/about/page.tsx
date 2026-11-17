@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Yonah Studios is a remote creative studio working with businesses across Zimbabwe, South Africa and beyond. Here's who we are and how we work.",
+  alternates: { canonical: "/about" },
 };
 
 const principles = [

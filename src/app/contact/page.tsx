@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Start a project with Yonah Studios. Tell us about your business and we'll help bring your brand, website or social media to life.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
