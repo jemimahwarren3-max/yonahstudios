@@ -5,6 +5,8 @@ import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/site/container";
 import { SoftBlurInText } from "@/components/soft-blur-in-text";
 import { ButtonLink } from "@/components/site/cta";
+import { Tilt } from "@/components/motion/tilt";
+import { Magnetic } from "@/components/motion/magnetic";
 import { ProjectVisual } from "@/components/concept/project-visual";
 import { getProject } from "@/lib/data/projects";
 import { whatsappLink } from "@/lib/site";
@@ -62,34 +64,42 @@ export function HomeHero() {
         aria-hidden
       />
 
-      {/* floating work: our own designs (desktop) */}
+      {/* floating work: our own designs (desktop), tilting toward the cursor */}
       <Float
         className="absolute left-[2%] top-[13%] hidden w-52 xl:block"
         rotate={-6}
         delay={0.35}
       >
-        <ProjectVisual project={poster} />
+        <Tilt strength={12}>
+          <ProjectVisual project={poster} />
+        </Tilt>
       </Float>
       <Float
         className="absolute bottom-[7%] left-[6%] hidden w-36 lg:block"
         rotate={5}
         delay={0.55}
       >
-        <ProjectVisual project={can} />
+        <Tilt strength={14}>
+          <ProjectVisual project={can} />
+        </Tilt>
       </Float>
       <Float
         className="absolute right-[3%] top-[11%] hidden w-[17rem] lg:block"
         rotate={5}
         delay={0.45}
       >
-        <ProjectVisual project={site} />
+        <Tilt strength={8}>
+          <ProjectVisual project={site} />
+        </Tilt>
       </Float>
       <Float
         className="absolute bottom-[9%] right-[6%] hidden w-44 xl:block"
         rotate={-5}
         delay={0.65}
       >
-        <ProjectVisual project={brand} />
+        <Tilt strength={12}>
+          <ProjectVisual project={brand} />
+        </Tilt>
       </Float>
 
       <Container className="relative z-10 text-center">
@@ -132,10 +142,14 @@ export function HomeHero() {
             transition={{ duration: 0.7, delay: 1.4 }}
             className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
-            <ButtonLink href="/work">Explore our work</ButtonLink>
-            <ButtonLink href={whatsappLink()} variant="outline" external>
-              Start a project
-            </ButtonLink>
+            <Magnetic>
+              <ButtonLink href="/work">Explore our work</ButtonLink>
+            </Magnetic>
+            <Magnetic>
+              <ButtonLink href={whatsappLink()} variant="outline" external>
+                Start a project
+              </ButtonLink>
+            </Magnetic>
           </motion.div>
         </div>
       </Container>

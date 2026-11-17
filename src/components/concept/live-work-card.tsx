@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { BrowserFrame } from "./frame";
+import { Tilt } from "@/components/motion/tilt";
 import type { LiveProject } from "@/lib/data/work";
 
 export function LiveWorkCard({ project }: { project: LiveProject }) {
@@ -13,17 +14,19 @@ export function LiveWorkCard({ project }: { project: LiveProject }) {
       aria-label={`Visit ${project.name}'s live site`}
     >
       <div className="transition-transform duration-500 group-hover:-translate-y-1.5">
-        <BrowserFrame url={host}>
-          <div className="relative aspect-[16/10] overflow-hidden bg-sand">
-            <Image
-              src={project.image}
-              alt={`${project.name} website, ${project.sector}`}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-            />
-          </div>
-        </BrowserFrame>
+        <Tilt strength={6} scale={1.015} className="rounded-xl">
+          <BrowserFrame url={host}>
+            <div className="relative aspect-[16/10] overflow-hidden bg-sand">
+              <Image
+                src={project.image}
+                alt={`${project.name} website, ${project.sector}`}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover object-top"
+              />
+            </div>
+          </BrowserFrame>
+        </Tilt>
       </div>
 
       <div className="mt-5 flex items-start justify-between gap-4 px-1">

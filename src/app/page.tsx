@@ -3,6 +3,8 @@ import { Container, Eyebrow } from "@/components/site/container";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/site/cta";
 import { HomeHero } from "@/components/sections/home-hero";
+import { StatsStrip } from "@/components/sections/stats-strip";
+import { Marquee } from "@/components/sections/marquee";
 import { ParallaxBanner } from "@/components/sections/parallax-banner";
 import { ProcessSection } from "@/components/sections/process";
 import { FinalCTA } from "@/components/sections/final-cta";
@@ -27,10 +29,24 @@ const serviceVisual: Record<string, string> = {
 
 const introPiece = getProject("nova")!;
 
+const sectors = [
+  "Hospitality",
+  "Beauty & Skincare",
+  "Restaurants",
+  "Real Estate",
+  "Fashion",
+  "Healthcare",
+  "Education",
+  "Interior Design",
+  "Coffee & Beverage",
+  "Fintech",
+];
+
 export default function Home() {
   return (
     <>
       <HomeHero />
+      <StatsStrip />
 
       {/* Intro / trust */}
       <section className="py-20 sm:py-28">
@@ -185,6 +201,7 @@ export default function Home() {
         </Container>
       </section>
 
+      <Marquee items={sectors} />
       <ProcessSection />
       <FinalCTA />
     </>
