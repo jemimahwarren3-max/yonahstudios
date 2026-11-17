@@ -61,17 +61,29 @@ export function DeliverableGrid({ project }: { project: Project }) {
 
 /* ============================ WEBSITES ============================ */
 
+const FEATURE_LABELS = ["Thoughtful design", "Built to convert", "Fast and reliable"];
+
 function WebsiteMockup({ project }: { project: Project }) {
   const a = project.art;
   const nav = ["Home", "About", "Work", "Contact"];
   return (
     <BrowserFrame url={`${project.slug}.com`}>
       <div
-        className="flex aspect-[16/11] flex-col p-6 sm:p-7"
+        className="relative flex aspect-[3/4] flex-col overflow-hidden p-6 sm:p-7"
         style={{ background: a.bg, color: a.ink }}
       >
+        {/* ambient texture so whitespace never reads as empty */}
+        <div
+          className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full blur-3xl"
+          style={{ background: a.accent, opacity: 0.16 }}
+        />
+        <div
+          className="pointer-events-none absolute -bottom-20 -left-16 h-56 w-56 rounded-full blur-3xl"
+          style={{ background: a.soft, opacity: 0.18 }}
+        />
+
         {/* nav */}
-        <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.2em]">
+        <div className="relative flex items-center justify-between text-[10px] uppercase tracking-[0.2em]">
           <span className="font-heading text-sm normal-case tracking-normal">
             {project.name}
           </span>
@@ -82,11 +94,36 @@ function WebsiteMockup({ project }: { project: Project }) {
           </span>
         </div>
 
-        {project.variant === "shop" ? (
-          <ShopBody project={project} />
-        ) : (
-          <HeroBody project={project} />
-        )}
+        <div className="relative flex flex-1 flex-col justify-center py-8">
+          {project.variant === "shop" ? (
+            <ShopBody project={project} />
+          ) : (
+            <HeroBody project={project} />
+          )}
+        </div>
+
+        {/* feature row, so the page reads as a full site, not a single banner */}
+        <div className="relative grid grid-cols-3 gap-3 border-t pt-5" style={{ borderColor: `${a.ink}18` }}>
+          {FEATURE_LABELS.map((label, i) => (
+            <div key={label}>
+              <span
+                className="block h-1.5 w-5 rounded-full"
+                style={{ background: [a.accent, a.soft, a.accent][i] }}
+              />
+              <p className="mt-2 text-[9px] font-medium leading-tight" style={{ opacity: 0.8 }}>
+                {label}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div
+          className="relative mt-4 flex items-center justify-between text-[8px] uppercase tracking-[0.18em]"
+          style={{ opacity: 0.45 }}
+        >
+          <span>{project.name}</span>
+          <span>{project.sector}</span>
+        </div>
       </div>
     </BrowserFrame>
   );
@@ -97,11 +134,7 @@ function HeroBody({ project }: { project: Project }) {
   const center = project.variant === "center";
   const split = project.variant === "split";
   return (
-    <div
-      className={`mt-auto grid gap-5 pt-8 ${split ? "grid-cols-[1.1fr_0.9fr] items-end" : ""} ${
-        center ? "text-center" : ""
-      }`}
-    >
+    <div className={center ? "text-center" : ""}>
       <div className={center ? "mx-auto max-w-md" : ""}>
         <p
           className="text-[10px] uppercase tracking-[0.25em]"
@@ -109,11 +142,14 @@ function HeroBody({ project }: { project: Project }) {
         >
           {project.sector}
         </p>
-        <p className="mt-2 font-heading text-2xl leading-[1.05] sm:text-[1.9rem]">
+        <p className="mt-3 font-heading text-[1.7rem] leading-[1.08] sm:text-3xl">
           {project.tagline ?? "Beautifully made."}
         </p>
+        <p className="mt-3 max-w-xs text-[11px] leading-relaxed" style={{ opacity: 0.65 }}>
+          {project.summary}
+        </p>
         <div
-          className={`mt-4 flex items-center gap-3 ${center ? "justify-center" : ""}`}
+          className={`mt-5 flex items-center gap-3 ${center ? "justify-center" : ""}`}
         >
           <span
             className="rounded-full px-4 py-1.5 text-[11px] font-medium"
@@ -126,22 +162,19 @@ function HeroBody({ project }: { project: Project }) {
           </span>
         </div>
       </div>
-      {split ? (
-        <div
-          className="h-24 rounded-lg"
-          style={{ background: `linear-gradient(135deg, ${a.soft}, ${a.accent})` }}
-        />
-      ) : (
-        <div className="grid grid-cols-3 gap-2">
-          {[a.soft, a.accent, a.panel].map((c, i) => (
-            <div
-              key={i}
-              className="h-12 rounded-md"
-              style={{ background: `linear-gradient(140deg, ${c}, ${a.ink}22)` }}
-            />
-          ))}
-        </div>
-      )}
+      <div className={`mt-7 grid gap-2.5 ${split ? "grid-cols-2" : "grid-cols-3"}`}>
+        {(split ? [a.soft, a.accent] : [a.soft, a.accent, a.panel]).map((c, i) => (
+          <div
+            key={i}
+            className="flex h-20 items-end rounded-lg p-2.5"
+            style={{ background: `linear-gradient(150deg, ${c}, ${a.ink}22)` }}
+          >
+            <span className="text-[8px] font-medium uppercase tracking-wide text-white/80">
+              0{i + 1}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -149,18 +182,24 @@ function HeroBody({ project }: { project: Project }) {
 function ShopBody({ project }: { project: Project }) {
   const a = project.art;
   return (
-    <div className="mt-auto pt-6">
-      <div className="flex items-end justify-between">
-        <p className="font-heading text-xl leading-tight">{project.tagline}</p>
+    <div>
+      <p
+        className="text-[10px] uppercase tracking-[0.25em]"
+        style={{ color: a.accent }}
+      >
+        {project.sector}
+      </p>
+      <div className="mt-3 flex items-end justify-between">
+        <p className="font-heading text-2xl leading-tight">{project.tagline}</p>
         <span className="text-[10px]" style={{ opacity: 0.6 }}>
           Shop all →
         </span>
       </div>
-      <div className="mt-4 grid grid-cols-3 gap-3">
+      <div className="mt-6 grid grid-cols-3 gap-3">
         {[0, 1, 2].map((i) => (
           <div key={i}>
             <div
-              className="h-16 rounded-lg"
+              className="h-24 rounded-lg"
               style={{
                 background: `linear-gradient(160deg, ${
                   [a.soft, a.panel, a.accent][i]
@@ -357,10 +396,24 @@ function BrandPiece({ project }: { project: Project }) {
   const a = project.art;
   return (
     <div
-      className="flex aspect-[4/5] flex-col justify-between rounded-xl p-7"
+      className="relative flex aspect-[4/5] flex-col gap-6 overflow-hidden rounded-xl p-7"
       style={{ background: a.bg, color: a.ink }}
     >
-      <div className="flex items-center gap-4">
+      {/* ambient texture, keeps the board from ever reading as empty */}
+      <div
+        className="pointer-events-none absolute -right-14 -top-14 h-48 w-48 rounded-full blur-3xl"
+        style={{ background: a.accent, opacity: 0.2 }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage: `radial-gradient(${a.ink} 1px, transparent 1px)`,
+          backgroundSize: "14px 14px",
+        }}
+      />
+
+      {/* header lockup */}
+      <div className="relative flex items-center gap-4">
         <div
           className="flex h-16 w-16 items-center justify-center rounded-full font-heading text-3xl"
           style={{ background: a.accent, color: a.bg }}
@@ -370,7 +423,7 @@ function BrandPiece({ project }: { project: Project }) {
         <div>
           <p className="font-heading text-2xl leading-none">{project.name}</p>
           <p
-            className="mt-1 text-[10px] uppercase tracking-[0.22em]"
+            className="mt-1.5 text-[10px] uppercase tracking-[0.22em]"
             style={{ opacity: 0.6 }}
           >
             {project.sector}
@@ -378,22 +431,52 @@ function BrandPiece({ project }: { project: Project }) {
         </div>
       </div>
 
-      <div>
-        <p className="font-heading text-6xl leading-none">Aa</p>
-        <p className="mt-2 text-xs" style={{ opacity: 0.6 }}>
-          {project.typography.heading} · {project.typography.body}
+      {/* oversized decorative wordmark */}
+      <div className="relative">
+        <p
+          className="font-heading text-[3.2rem] font-semibold leading-[0.85] tracking-tight"
+          style={{ color: a.accent, opacity: 0.9 }}
+        >
+          {project.name}
+        </p>
+        {project.tagline && (
+          <p className="mt-2 max-w-[90%] text-xs leading-relaxed" style={{ opacity: 0.65 }}>
+            {project.tagline}
+          </p>
+        )}
+      </div>
+
+      {/* type specimen */}
+      <div className="relative flex items-end justify-between border-t pt-5" style={{ borderColor: `${a.ink}18` }}>
+        <div>
+          <p className="font-heading text-5xl leading-none">Aa</p>
+          <p className="mt-2 text-[10px]" style={{ opacity: 0.6 }}>
+            {project.typography.heading} · {project.typography.body}
+          </p>
+        </div>
+        <p className="max-w-[40%] text-right text-[9px] uppercase leading-snug tracking-[0.12em]" style={{ opacity: 0.55 }}>
+          ABCDEFGH
+          <br />
+          abcdefgh 0123
         </p>
       </div>
 
-      <div className="flex gap-1.5">
-        {project.palette.map((s) => (
-          <div
-            key={s.hex}
-            className="h-10 flex-1 rounded-md"
-            style={{ background: s.hex }}
-            title={s.name}
-          />
-        ))}
+      {/* palette strip with labels, filling the base of the board */}
+      <div className="relative mt-auto">
+        <div className="flex gap-1.5">
+          {project.palette.map((s) => (
+            <div
+              key={s.hex}
+              className="h-12 flex-1 rounded-md"
+              style={{ background: s.hex }}
+              title={s.name}
+            />
+          ))}
+        </div>
+        <div className="mt-1.5 flex justify-between text-[7px] uppercase tracking-wide" style={{ opacity: 0.5 }}>
+          <span>{project.palette[0]?.name}</span>
+          <span>{project.palette[project.palette.length - 1]?.name}</span>
+        </div>
       </div>
     </div>
   );
