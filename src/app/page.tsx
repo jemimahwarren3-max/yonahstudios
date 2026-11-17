@@ -9,6 +9,7 @@ import { ParallaxBanner } from "@/components/sections/parallax-banner";
 import { ProcessSection } from "@/components/sections/process";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { ProjectVisual } from "@/components/concept/project-visual";
+import { Tilt } from "@/components/motion/tilt";
 import { ShowcaseCarousel } from "@/components/sections/showcase-carousel";
 import { services } from "@/lib/data/services";
 import { getProject } from "@/lib/data/projects";
@@ -27,7 +28,7 @@ const serviceVisual: Record<string, string> = {
   social: "bloom",
 };
 
-const introPiece = getProject("nova")!;
+const introPiece = getProject("atelier-form")!;
 
 const sectors = [
   "Hospitality",
@@ -66,8 +67,10 @@ export default function Home() {
               </p>
             </Reveal>
 
-            <Reveal delay={0.1} className="mx-auto w-full max-w-sm lg:max-w-none">
-              <ProjectVisual project={introPiece} />
+            <Reveal delay={0.1} className="mx-auto w-full max-w-sm lg:max-w-md">
+              <Tilt strength={6} scale={1.015} className="rounded-xl shadow-[0_40px_80px_-48px_rgba(40,30,20,0.4)]">
+                <ProjectVisual project={introPiece} />
+              </Tilt>
             </Reveal>
           </div>
 
