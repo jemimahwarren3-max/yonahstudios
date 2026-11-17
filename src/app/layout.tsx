@@ -3,6 +3,7 @@ import { Fraunces, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
+import { PromoBanner } from "@/components/site/promo-banner";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} ${fraunces.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        <PromoBanner />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

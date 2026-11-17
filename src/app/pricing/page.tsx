@@ -12,6 +12,7 @@ import {
 } from "@/lib/data/pricing";
 import { services } from "@/lib/data/services";
 import { whatsappLink } from "@/lib/site";
+import { PROMO_ACTIVE, PROMO_PERCENT, discountedPrice } from "@/lib/promo";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -36,6 +37,11 @@ export default function PricingPage() {
         />
         <Container className="relative max-w-3xl">
           <Reveal>
+            {PROMO_ACTIVE && (
+              <span className="mb-5 inline-block rounded-full bg-terracotta px-4 py-1.5 text-xs font-medium uppercase tracking-[0.1em] text-ivory">
+                Launch offer: {PROMO_PERCENT}% off everything
+              </span>
+            )}
             <Eyebrow>Pricing</Eyebrow>
             <h1 className="mt-6 font-heading text-5xl font-semibold leading-[1.05] tracking-tight text-charcoal sm:text-6xl">
               Honest pricing, no surprises.
@@ -84,9 +90,23 @@ export default function PricingPage() {
                         >
                           <div className="flex items-baseline justify-between gap-4">
                             <span className="text-charcoal">{item.name}</span>
-                            <span className="font-heading text-xl text-charcoal">
-                              {item.price}
-                            </span>
+                            {PROMO_ACTIVE ? (
+                              <span className="flex items-baseline gap-2">
+                                <span className="text-sm text-muted-foreground line-through">
+                                  {item.price}
+                                </span>
+                                <span
+                                  className="font-heading text-xl"
+                                  style={{ color: accent }}
+                                >
+                                  {discountedPrice(item.price)}
+                                </span>
+                              </span>
+                            ) : (
+                              <span className="font-heading text-xl text-charcoal">
+                                {item.price}
+                              </span>
+                            )}
                           </div>
                           {item.note && (
                             <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">

@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
 import { nav, whatsappLink } from "@/lib/site";
+import { PROMO_ACTIVE } from "@/lib/promo";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
@@ -35,7 +36,8 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+        PROMO_ACTIVE ? "fixed inset-x-0 top-9 z-50" : "fixed inset-x-0 top-0 z-50",
+        "transition-all duration-500",
         scrolled
           ? "border-b border-border/70 bg-background/80 backdrop-blur-md"
           : "border-b border-transparent",
@@ -113,7 +115,7 @@ export function SiteHeader() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 flex flex-col bg-background md:hidden"
+            className="fixed inset-0 z-[70] flex flex-col bg-background md:hidden"
           >
             <div className="flex h-18 items-center justify-between px-5 py-4">
               <Logo />
