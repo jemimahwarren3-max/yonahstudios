@@ -4,6 +4,7 @@ import { Container, Eyebrow } from "@/components/site/container";
 import { Reveal } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/site/cta";
 import { ProjectVisual, DeliverableGrid } from "@/components/concept/project-visual";
+import type { Project, Variant } from "@/lib/data/projects";
 import { ProcessSection } from "@/components/sections/process";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { services } from "@/lib/data/services";
@@ -17,15 +18,15 @@ export const metadata: Metadata = {
 };
 
 const serviceVisual: Record<string, string> = {
-  branding: "marula-and-co",
+  branding: "fiore",
   web: "sable-and-stone",
-  social: "lela",
+  social: "marula-and-co",
 };
 
-const heroPieces = [
+const heroPieces: { project: Project; rotate: number; variant?: Variant }[] = [
   { project: getProject("sable-and-stone")!, rotate: -4 },
-  { project: getProject("fiore")!, rotate: 3 },
-  { project: getProject("lela")!, rotate: -2 },
+  { project: getProject("aurelle")!, rotate: 3 },
+  { project: getProject("tavola")!, rotate: -2, variant: "social" },
 ];
 
 export default function ServicesPage() {
@@ -58,7 +59,7 @@ export default function ServicesPage() {
                   className="transition-transform duration-500 hover:scale-[1.03]"
                   style={{ transform: `rotate(${h.rotate}deg)` }}
                 >
-                  <ProjectVisual project={h.project} />
+                  <ProjectVisual project={h.project} variant={h.variant} />
                 </div>
               </Reveal>
             ))}
@@ -116,7 +117,10 @@ export default function ServicesPage() {
                       {service.slug === "branding" ? (
                         <DeliverableGrid project={project} />
                       ) : (
-                        <ProjectVisual project={project} />
+                        <ProjectVisual
+                          project={project}
+                          variant={service.slug === "social" ? "social" : undefined}
+                        />
                       )}
                     </div>
                   </div>

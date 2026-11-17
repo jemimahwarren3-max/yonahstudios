@@ -24,7 +24,7 @@ const valuePoints = [
 const serviceVisual: Record<string, string> = {
   branding: "marula-and-co",
   web: "sable-and-stone",
-  social: "lela",
+  social: "bloom",
 };
 
 const introPiece = getProject("nova")!;
@@ -154,7 +154,10 @@ export default function Home() {
                       </div>
                     </div>
                     <div>
-                      <ProjectVisual project={project} />
+                      <ProjectVisual
+                        project={project}
+                        variant={service.slug === "social" ? "social" : undefined}
+                      />
                     </div>
                   </div>
                 </Reveal>
