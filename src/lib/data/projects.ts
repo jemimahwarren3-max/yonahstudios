@@ -51,6 +51,10 @@ const p = (
   soft: string,
 ) => ({ bg, panel, ink, accent, soft });
 
+/** Pexels CDN url for a photo id, used to fill out social-grid mockups. */
+const pexels = (id: number) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=600`;
+
 export const projects: Project[] = [
   /* ---------------- WEBSITES (concepts) ---------------- */
   {
@@ -102,7 +106,13 @@ export const projects: Project[] = [
     art: p("#26211d", "#312a24", "#efe7d8", "#d08a3e", "#b5543a"),
     tagline: "A table worth travelling for",
     image: "/concepts/maison-olive.png",
-    socialPhotos: ["/social/maison-olive-1.png"],
+    socialPhotos: [
+      "/social/maison-olive-1.png",
+      pexels(30469692),
+      pexels(16550822),
+      pexels(17761081),
+      pexels(306059),
+    ],
   },
   {
     slug: "atrium",
@@ -377,7 +387,13 @@ export const projects: Project[] = [
     tagline: "Small batch · Big heart",
     extraVariants: ["type", "brand"],
     image: "/concepts/kopa-coffee.png",
-    socialPhotos: ["/social/kopa-coffee-1.png"],
+    socialPhotos: [
+      "/social/kopa-coffee-1.png",
+      pexels(29621584),
+      pexels(30707445),
+      pexels(35464065),
+      pexels(39475008),
+    ],
   },
   {
     slug: "ember",
@@ -526,7 +542,15 @@ export const projects: Project[] = [
     typography: { heading: "Fraunces", body: "Inter" },
     art: p("#faf5ea", "#e9ddc8", "#4a2f26", "#c98b86", "#b8964f"),
     tagline: "Glow, every day",
-    socialPhotos: ["/social/bloom-beauty-1.png", "/social/bloom-beauty-2.png"],
+    socialPhotos: [
+      "/social/bloom-beauty-1.png",
+      "/social/bloom-beauty-2.png",
+      pexels(34939703),
+      pexels(39281980),
+      pexels(32565191),
+      pexels(7796160),
+      pexels(34939739),
+    ],
   },
   {
     slug: "studio-kin",
