@@ -1,4 +1,5 @@
 import { BrowserFrame } from "./frame";
+import { PlatformRow } from "@/components/brand/social-icons";
 import type { Project, Variant } from "@/lib/data/projects";
 
 function isDark(hex: string) {
@@ -444,16 +445,19 @@ function SocialPiece({ project }: { project: Project }) {
       className="flex aspect-[4/5] flex-col rounded-xl p-5"
       style={{ background: a.bg }}
     >
-      <div className="mb-3 flex items-center gap-2 px-1">
-        <div
-          className="flex h-7 w-7 items-center justify-center rounded-full font-heading text-xs"
-          style={{ background: a.accent, color: a.bg }}
-        >
-          {project.name.charAt(0)}
+      <div className="mb-3 flex items-center justify-between gap-2 px-1">
+        <div className="flex items-center gap-2">
+          <div
+            className="flex h-7 w-7 items-center justify-center rounded-full font-heading text-xs"
+            style={{ background: a.accent, color: a.bg }}
+          >
+            {project.name.charAt(0)}
+          </div>
+          <span className="text-[11px] font-medium" style={{ color: a.ink }}>
+            @{project.slug.replace(/-/g, "")}
+          </span>
         </div>
-        <span className="text-[11px] font-medium" style={{ color: a.ink }}>
-          @{project.slug.replace(/-/g, "")}
-        </span>
+        <PlatformRow style={{ color: a.ink }} />
       </div>
       <div className="grid flex-1 grid-cols-3 gap-1.5">
         {cells.map((style, i) => (
