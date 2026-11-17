@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { BrowserFrame } from "./frame";
 import { PlatformRow } from "@/components/brand/social-icons";
 import type { Project, Variant } from "@/lib/data/projects";
@@ -21,6 +22,22 @@ export function ProjectVisual({
   project: Project;
   variant?: Variant;
 }) {
+  // When no specific piece type is requested and a real reference photo
+  // exists, show that instead of the code-built mockup.
+  if (!variant && project.image) {
+    return (
+      <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-sand">
+        <Image
+          src={project.image}
+          alt={`${project.name} — ${project.sector}`}
+          fill
+          sizes="(max-width: 640px) 100vw, 400px"
+          className="object-cover"
+        />
+      </div>
+    );
+  }
+
   switch (variant ?? project.variant) {
     case "poster":
       return <PosterPiece project={project} />;
@@ -43,15 +60,18 @@ export function ProjectVisual({
  * set rather than a single isolated artifact.
  */
 export function DeliverableGrid({ project }: { project: Project }) {
-  const variants: Variant[] = [project.variant, ...(project.extraVariants ?? [])];
-  if (variants.length === 1) return <ProjectVisual project={project} />;
+  const extras = project.extraVariants ?? [];
+  // No variant passed, so ProjectVisual shows the real photo when one exists,
+  // or the primary code-built piece otherwise; extras are always code-built,
+  // supporting pieces beside it.
+  const primary = <ProjectVisual project={project} />;
+  if (extras.length === 0) return primary;
+
   return (
     <div className="grid grid-cols-2 gap-4 sm:gap-5">
-      <div className="col-span-2 sm:col-span-1">
-        <ProjectVisual project={project} variant={variants[0]} />
-      </div>
-      {variants.slice(1).map((v, i) => (
-        <div key={v + i} className={variants.length === 2 ? "col-span-2 sm:col-span-1" : ""}>
+      <div className="col-span-2 sm:col-span-1">{primary}</div>
+      {extras.map((v, i) => (
+        <div key={v + i} className={extras.length === 1 ? "col-span-2 sm:col-span-1" : ""}>
           <ProjectVisual project={project} variant={v} />
         </div>
       ))}

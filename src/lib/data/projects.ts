@@ -35,6 +35,9 @@ export type Project = {
    * project reads as a full identity system (logo + packaging + stationery)
    * rather than one isolated artifact. */
   extraVariants?: Variant[];
+  /** A real reference image (local, in /public/concepts) to show instead of
+   * the code-built mockup, when one exists for this concept. */
+  image?: string;
 };
 
 const p = (
@@ -70,11 +73,12 @@ export const projects: Project[] = [
     typography: { heading: "Fraunces", body: "Inter" },
     art: p("#efe9dc", "#e3d8c4", "#3a3228", "#b07a52", "#5c6149"),
     tagline: "Where the wild feels like home",
+    image: "/concepts/sable-and-stone.png",
   },
   {
     slug: "tavola",
-    name: "Tavola",
-    business: "Tavola Trattoria",
+    name: "Maison Olive",
+    business: "Maison Olive Restaurant",
     sector: "Restaurant & dining",
     discipline: "website",
     variant: "center",
@@ -94,11 +98,12 @@ export const projects: Project[] = [
     typography: { heading: "Fraunces", body: "Inter" },
     art: p("#26211d", "#312a24", "#efe7d8", "#d08a3e", "#b5543a"),
     tagline: "A table worth travelling for",
+    image: "/concepts/maison-olive.png",
   },
   {
     slug: "atrium",
-    name: "Atrium",
-    business: "Atrium Property",
+    name: "Forma Estates",
+    business: "Forma Estates",
     sector: "Real estate",
     discipline: "website",
     variant: "split",
@@ -117,7 +122,8 @@ export const projects: Project[] = [
     ],
     typography: { heading: "Fraunces", body: "Inter" },
     art: p("#eee8da", "#2f4237", "#2f4237", "#6c7a5e", "#b9ac93"),
-    tagline: "Spaces that tell a story",
+    tagline: "Modern living, timeless design",
+    image: "/concepts/forma-estates.png",
   },
   {
     slug: "haneul",
@@ -193,8 +199,8 @@ export const projects: Project[] = [
   },
   {
     slug: "coraline",
-    name: "Coraline",
-    business: "Coraline Studio",
+    name: "Naya",
+    business: "Naya Fashion",
     sector: "Fashion ecommerce",
     discipline: "website",
     variant: "shop",
@@ -213,7 +219,83 @@ export const projects: Project[] = [
     ],
     typography: { heading: "Fraunces", body: "Inter" },
     art: p("#f1ece3", "#e2d7c7", "#241f1d", "#6e2b2f", "#c98b86"),
-    tagline: "Dress the part",
+    tagline: "Fashion. Culture. You.",
+    image: "/concepts/naya.png",
+  },
+  {
+    slug: "wellspring",
+    name: "WellSpring Clinic",
+    business: "WellSpring Clinic",
+    sector: "Healthcare",
+    discipline: "website",
+    variant: "split",
+    categories: ["Websites", "Branding"],
+    summary:
+      "A welcoming clinic website that makes booking care feel simple and reassuring.",
+    direction:
+      "Soft sage and warm white with accessible, friendly typography. Clear services and an easy appointment path build trust from the first screen.",
+    deliverables: ["Website design", "Appointment booking", "Practitioner profiles", "Brand refinement"],
+    palette: [
+      { name: "Sage", hex: "#6a8f6f" },
+      { name: "Mist", hex: "#eef2ec" },
+      { name: "Charcoal", hex: "#2b2f2a" },
+      { name: "Clay", hex: "#c9a98c" },
+      { name: "Paper", hex: "#faf8f3" },
+    ],
+    typography: { heading: "Fraunces", body: "Inter" },
+    art: p("#eef2ec", "#d9e3d6", "#2b2f2a", "#6a8f6f", "#c9a98c"),
+    tagline: "Better care. Brighter lives.",
+    image: "/concepts/wellspring.png",
+  },
+  {
+    slug: "atlas-academy",
+    name: "Atlas Academy",
+    business: "Atlas Academy",
+    sector: "Education",
+    discipline: "website",
+    variant: "center",
+    categories: ["Websites", "Branding"],
+    summary:
+      "A confident education website that makes enrolling feel like the start of something.",
+    direction:
+      "Deep navy and warm gold with centred, declarative type. Courses and outcomes lead, with a clear path to registration throughout.",
+    deliverables: ["Website design", "Course pages", "Instructor profiles", "Enrolment flow"],
+    palette: [
+      { name: "Navy", hex: "#16213a" },
+      { name: "Gold", hex: "#c6a05c" },
+      { name: "Mist", hex: "#e9ecf3" },
+      { name: "Ink", hex: "#10152a" },
+      { name: "Paper", hex: "#f6f4ee" },
+    ],
+    typography: { heading: "Fraunces", body: "Inter" },
+    art: p("#16213a", "#1d2c4d", "#f6f4ee", "#c6a05c", "#e9ecf3"),
+    tagline: "Learn. Grow. Lead.",
+    image: "/concepts/atlas-academy.png",
+  },
+  {
+    slug: "atelier-form",
+    name: "Atelier Form",
+    business: "Atelier Form Interiors",
+    sector: "Interior design",
+    discipline: "website",
+    variant: "editorial",
+    categories: ["Websites", "Branding"],
+    summary:
+      "An immersive interior-design website that lets the work and materials speak first.",
+    direction:
+      "Warm neutrals, brass accents and generous whitespace. Projects and material palettes are shown with the same care as the interiors themselves.",
+    deliverables: ["Website design", "Project case studies", "Material palette pages", "Consultation enquiry"],
+    palette: [
+      { name: "Cream", hex: "#f1ece2" },
+      { name: "Brass", hex: "#b08d57" },
+      { name: "Walnut", hex: "#4a3b2f" },
+      { name: "Linen", hex: "#e5ddcd" },
+      { name: "Ink", hex: "#2a2420" },
+    ],
+    typography: { heading: "Fraunces", body: "Inter" },
+    art: p("#f1ece2", "#e5ddcd", "#2a2420", "#b08d57", "#4a3b2f"),
+    tagline: "Spaces, considered",
+    image: "/concepts/atelier-form.png",
   },
 
   /* ---------------- GRAPHIC DESIGN (concepts) ---------------- */
@@ -268,8 +350,8 @@ export const projects: Project[] = [
   },
   {
     slug: "marula-and-co",
-    name: "Marula & Co",
-    business: "Marula & Co Coffee Roasters",
+    name: "Kopa Coffee",
+    business: "Kopa Coffee Roasters",
     sector: "Artisan coffee",
     discipline: "graphic",
     variant: "packaging",
@@ -290,6 +372,7 @@ export const projects: Project[] = [
     art: p("#ece0cc", "#a8512e", "#3a271d", "#a8512e", "#6f7850"),
     tagline: "Small batch · Big heart",
     extraVariants: ["type", "brand"],
+    image: "/concepts/kopa-coffee.png",
   },
   {
     slug: "ember",
@@ -463,6 +546,32 @@ export const projects: Project[] = [
     art: p("#f2efe9", "#cfccc5", "#2a2a28", "#2a2a28", "#8c857a"),
     tagline: "Form, with intent",
     extraVariants: ["brand"],
+  },
+  {
+    slug: "aurelle",
+    name: "Aurelle",
+    business: "Aurelle Beauty",
+    sector: "Luxury skincare",
+    discipline: "graphic",
+    variant: "packaging",
+    categories: ["Branding", "Graphic Design"],
+    summary:
+      "A quietly luxurious identity and packaging system for a premium skincare line.",
+    direction:
+      "Warm beige and brushed gold with a restrained monogram. Bottle, box and labels all carry the same calm, considered mark.",
+    deliverables: ["Packaging system", "Logo & monogram", "Brand guidelines", "Box & label design"],
+    palette: [
+      { name: "Beige", hex: "#e9ddc8" },
+      { name: "Gold", hex: "#b8964f" },
+      { name: "Olive", hex: "#5c5a3f" },
+      { name: "Cream", hex: "#f6f1e6" },
+      { name: "Ink", hex: "#2f2b22" },
+    ],
+    typography: { heading: "Fraunces", body: "Inter" },
+    art: p("#f6f1e6", "#e9ddc8", "#2f2b22", "#b8964f", "#5c5a3f"),
+    tagline: "Beauty, considered",
+    extraVariants: ["brand", "social"],
+    image: "/concepts/aurelle.png",
   },
 ];
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/site/container";
 import { Reveal } from "@/components/motion/reveal";
@@ -77,29 +78,58 @@ export default async function ProjectPage({
       {/* Design preview */}
       <section className="pb-16">
         <Container>
-          <Reveal>
-            <div
-              className={
-                project.discipline === "website"
-                  ? "rounded-3xl bg-sand p-6 sm:p-16"
-                  : "rounded-3xl bg-sand p-6 sm:p-10"
-              }
-            >
-              {project.discipline === "website" ? (
-                <div className="mx-auto max-w-3xl">
-                  <ProjectVisual project={project} />
+          {project.image ? (
+            <>
+              <Reveal>
+                <div className="relative mx-auto aspect-[3/5] max-w-md overflow-hidden rounded-3xl bg-sand sm:aspect-[4/5]">
+                  <Image
+                    src={project.image}
+                    alt={`${project.name} — ${project.sector}`}
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 600px"
+                    className="object-cover"
+                  />
                 </div>
-              ) : project.extraVariants?.length ? (
-                <div className="mx-auto max-w-2xl">
-                  <DeliverableGrid project={project} />
-                </div>
-              ) : (
-                <div className="mx-auto max-w-md">
-                  <ProjectVisual project={project} />
-                </div>
-              )}
-            </div>
-          </Reveal>
+              </Reveal>
+              {project.extraVariants?.length ? (
+                <Reveal delay={0.1} className="mt-8">
+                  <p className="eyebrow text-center text-muted-foreground">
+                    More from this identity
+                  </p>
+                  <div className="mx-auto mt-5 grid max-w-2xl grid-cols-2 gap-4 sm:gap-5">
+                    {project.extraVariants.map((v) => (
+                      <ProjectVisual key={v} project={project} variant={v} />
+                    ))}
+                  </div>
+                </Reveal>
+              ) : null}
+            </>
+          ) : (
+            <Reveal>
+              <div
+                className={
+                  project.discipline === "website"
+                    ? "rounded-3xl bg-sand p-6 sm:p-16"
+                    : "rounded-3xl bg-sand p-6 sm:p-10"
+                }
+              >
+                {project.discipline === "website" ? (
+                  <div className="mx-auto max-w-3xl">
+                    <ProjectVisual project={project} />
+                  </div>
+                ) : project.extraVariants?.length ? (
+                  <div className="mx-auto max-w-2xl">
+                    <DeliverableGrid project={project} />
+                  </div>
+                ) : (
+                  <div className="mx-auto max-w-md">
+                    <ProjectVisual project={project} />
+                  </div>
+                )}
+              </div>
+            </Reveal>
+          )}
         </Container>
       </section>
 

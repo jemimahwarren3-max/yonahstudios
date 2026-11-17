@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Container, Eyebrow } from "@/components/site/container";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
@@ -142,24 +143,39 @@ const webConcepts: { project: Project; label: string; blurb: string }[] = [
     blurb: "Rooms, activities, galleries and effortless booking enquiries.",
   },
   {
-    project: getProject("haneul")!,
-    label: "Beauty & skincare store",
-    blurb: "Premium product cards and a polished shopping experience.",
-  },
-  {
     project: getProject("tavola")!,
     label: "Restaurant",
     blurb: "Appetising imagery, a digital menu and reservations.",
   },
   {
-    project: getProject("meridian")!,
-    label: "Corporate & services",
-    blurb: "Confident layouts, clear services and strong enquiry CTAs.",
+    project: getProject("atrium")!,
+    label: "Real estate",
+    blurb: "Image-led listings and a calm, confident enquiry path.",
+  },
+  {
+    project: getProject("wellspring")!,
+    label: "Healthcare",
+    blurb: "A welcoming layout that makes booking care feel simple.",
   },
 ];
 
-function MiniSite({ project, headline }: { project: Project; headline: string }) {
+function MiniSite({ project }: { project: Project }) {
   const a = project.art;
+  if (project.image) {
+    // The reference photo already depicts its own device mockup, so it
+    // isn't wrapped in another browser frame on top.
+    return (
+      <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-sand">
+        <Image
+          src={project.image}
+          alt={`${project.name} — ${project.sector}`}
+          fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className="object-cover"
+        />
+      </div>
+    );
+  }
   return (
     <BrowserFrame url={`${project.slug}.com`}>
       <div className="p-5" style={{ background: a.bg, color: a.ink }}>
@@ -167,7 +183,9 @@ function MiniSite({ project, headline }: { project: Project; headline: string })
           <span>{project.name}</span>
           <span style={{ opacity: 0.5 }}>Menu</span>
         </div>
-        <p className="mt-8 font-heading text-xl leading-tight">{headline}</p>
+        <p className="mt-8 font-heading text-xl leading-tight">
+          {project.tagline ?? "Beautifully made."}
+        </p>
         <span
           className="mt-3 inline-block rounded-full px-3 py-1 text-[10px] font-medium"
           style={{ background: a.accent, color: a.bg }}
@@ -185,12 +203,6 @@ function MiniSite({ project, headline }: { project: Project; headline: string })
 }
 
 function WebShowcase() {
-  const heads = [
-    "Where the wild feels like home.",
-    "Skincare, softly done.",
-    "A table worth travelling for.",
-    "Built on trust and precision.",
-  ];
   return (
     <section className="bg-sand/60 py-20">
       <Container>
@@ -210,7 +222,7 @@ function WebShowcase() {
             <Reveal key={c.project.slug} delay={i * 0.05}>
               <Link href={`/work/${c.project.slug}`} className="group block">
                 <div className="transition-transform duration-500 group-hover:-translate-y-1.5">
-                  <MiniSite project={c.project} headline={heads[i]} />
+                  <MiniSite project={c.project} />
                 </div>
                 <h3 className="mt-5 font-heading text-xl text-charcoal">
                   {c.label}
@@ -232,7 +244,7 @@ function WebShowcase() {
 }
 
 function BrandingShowcase() {
-  const fiore = getProject("fiore")!;
+  const aurelle = getProject("aurelle")!;
   const marula = getProject("marula-and-co")!;
   return (
     <section className="bg-sand/60 py-20">
@@ -249,7 +261,7 @@ function BrandingShowcase() {
           </p>
         </Reveal>
         <div className="mt-12 grid gap-10 lg:grid-cols-2">
-          {[marula, fiore].map((p, i) => (
+          {[marula, aurelle].map((p, i) => (
             <Reveal key={p.slug} delay={i * 0.05}>
               <Link href={`/work/${p.slug}`} className="group block">
                 <div className="transition-transform duration-500 group-hover:-translate-y-1.5">
