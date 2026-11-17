@@ -63,47 +63,48 @@ export function DeliverableGrid({ project }: { project: Project }) {
 
 const FEATURE_LABELS = ["Thoughtful design", "Built to convert", "Fast and reliable"];
 
+/** A moody, always-dark photographic-feeling gradient, independent of the
+ * project's light/dark role assignment, so every hero reads like a real
+ * photographed banner rather than a flat colour fill. */
+function heroImageGradient(a: Project["art"]) {
+  return `radial-gradient(circle at 25% 20%, color-mix(in srgb, ${a.accent} 55%, transparent), transparent 55%),
+          radial-gradient(circle at 80% 85%, color-mix(in srgb, ${a.soft} 45%, transparent), transparent 55%),
+          linear-gradient(145deg, color-mix(in srgb, ${a.accent} 65%, #10090a), color-mix(in srgb, ${a.soft} 55%, #0d0b08) 60%, color-mix(in srgb, ${a.ink} 40%, #0a0908))`;
+}
+
 function WebsiteMockup({ project }: { project: Project }) {
   const a = project.art;
   const nav = ["Home", "About", "Work", "Contact"];
   return (
     <BrowserFrame url={`${project.slug}.com`}>
-      <div
-        className="relative flex aspect-[3/4] flex-col overflow-hidden p-6 sm:p-7"
-        style={{ background: a.bg, color: a.ink }}
-      >
-        {/* ambient texture so whitespace never reads as empty */}
+      <div className="flex aspect-[3/4] flex-col" style={{ background: a.bg, color: a.ink }}>
+        {/* photographic-feeling hero image block */}
         <div
-          className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full blur-3xl"
-          style={{ background: a.accent, opacity: 0.16 }}
-        />
-        <div
-          className="pointer-events-none absolute -bottom-20 -left-16 h-56 w-56 rounded-full blur-3xl"
-          style={{ background: a.soft, opacity: 0.18 }}
-        />
+          className="relative flex flex-1 flex-col overflow-hidden p-6 text-white sm:p-7"
+          style={{ background: heroImageGradient(a) }}
+        >
+          <div className="relative flex items-center justify-between text-[10px] uppercase tracking-[0.2em]">
+            <span className="font-heading text-sm normal-case tracking-normal">
+              {project.name}
+            </span>
+            <span className="hidden gap-4 sm:flex" style={{ opacity: 0.75 }}>
+              {nav.map((n) => (
+                <span key={n}>{n}</span>
+              ))}
+            </span>
+          </div>
 
-        {/* nav */}
-        <div className="relative flex items-center justify-between text-[10px] uppercase tracking-[0.2em]">
-          <span className="font-heading text-sm normal-case tracking-normal">
-            {project.name}
-          </span>
-          <span className="hidden gap-4 sm:flex" style={{ opacity: 0.55 }}>
-            {nav.map((n) => (
-              <span key={n}>{n}</span>
-            ))}
-          </span>
-        </div>
-
-        <div className="relative flex flex-1 flex-col justify-center py-8">
-          {project.variant === "shop" ? (
-            <ShopBody project={project} />
-          ) : (
-            <HeroBody project={project} />
-          )}
+          <div className="relative mt-auto">
+            {project.variant === "shop" ? (
+              <ShopBody project={project} />
+            ) : (
+              <HeroBody project={project} />
+            )}
+          </div>
         </div>
 
         {/* feature row, so the page reads as a full site, not a single banner */}
-        <div className="relative grid grid-cols-3 gap-3 border-t pt-5" style={{ borderColor: `${a.ink}18` }}>
+        <div className="relative grid grid-cols-3 gap-3 p-6 pt-5 sm:p-7 sm:pt-5">
           {FEATURE_LABELS.map((label, i) => (
             <div key={label}>
               <span
@@ -118,7 +119,7 @@ function WebsiteMockup({ project }: { project: Project }) {
         </div>
 
         <div
-          className="relative mt-4 flex items-center justify-between text-[8px] uppercase tracking-[0.18em]"
+          className="flex items-center justify-between px-6 pb-6 text-[8px] uppercase tracking-[0.18em] sm:px-7 sm:pb-7"
           style={{ opacity: 0.45 }}
         >
           <span>{project.name}</span>
@@ -138,7 +139,7 @@ function HeroBody({ project }: { project: Project }) {
       <div className={center ? "mx-auto max-w-md" : ""}>
         <p
           className="text-[10px] uppercase tracking-[0.25em]"
-          style={{ color: a.accent }}
+          style={{ opacity: 0.85 }}
         >
           {project.sector}
         </p>
@@ -185,7 +186,7 @@ function ShopBody({ project }: { project: Project }) {
     <div>
       <p
         className="text-[10px] uppercase tracking-[0.25em]"
-        style={{ color: a.accent }}
+        style={{ opacity: 0.85 }}
       >
         {project.sector}
       </p>
