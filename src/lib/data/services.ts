@@ -13,7 +13,7 @@ export const services: Service[] = [
     slug: "branding",
     number: "01",
     title: "Graphic Design & Branding",
-    short: "Identities that make small businesses feel considered and premium.",
+    short: "Logo design and branding for businesses in Zimbabwe and South Africa: identities that feel considered and premium.",
     description:
       "We shape how a business looks and feels: from the logo and colour story to the everyday pieces that build trust. Thoughtful, consistent, and made to work everywhere your customers meet you.",
     deliverables: [
@@ -32,7 +32,7 @@ export const services: Service[] = [
     slug: "web",
     number: "02",
     title: "Website Design & Development",
-    short: "Beautiful, fast websites that turn visitors into enquiries.",
+    short: "Website design in Zimbabwe and South Africa: beautiful, fast sites that turn visitors into enquiries.",
     description:
       "We design and build responsive websites that look expensive and load quickly: from single landing pages to multi-page business sites and simple online stores. Clear structure, elegant motion, and calls to action that convert.",
     deliverables: [
@@ -49,7 +49,7 @@ export const services: Service[] = [
     slug: "social",
     number: "03",
     title: "Social Media & Digital Marketing",
-    short: "Coordinated content that makes a feed look like a brand.",
+    short: "Social media management in Zimbabwe and South Africa: coordinated content that makes a feed look like a brand.",
     description:
       "We plan and design monthly content that feels consistent and intentional: grids, stories, reels covers and campaigns, so your social presence looks as professional as your business is. Available as content creation or full management.",
     deliverables: [

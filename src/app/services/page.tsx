@@ -12,9 +12,9 @@ import { getProject } from "@/lib/data/projects";
 import { whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Web Design, Branding & Social Media Services",
   description:
-    "Graphic design & branding, website design & development, and social media management: everything a growing business needs to look professional online.",
+    "Website design, graphic design & branding, and social media management for businesses in Zimbabwe and South Africa. Clear pricing, remote delivery.",
   alternates: { canonical: "/services" },
 };
 

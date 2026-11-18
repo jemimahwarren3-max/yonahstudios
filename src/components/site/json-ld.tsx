@@ -1,20 +1,27 @@
 import { site } from "@/lib/site";
+import { services } from "@/lib/data/services";
 
-/** Organization + WebSite structured data, for richer search results. */
+/** ProfessionalService + WebSite structured data, for richer, locally-relevant
+ * search results (Google knowledge panels, service listings). */
 export function JsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
+        "@type": "ProfessionalService",
         "@id": `${site.url}/#organization`,
         name: site.name,
         url: site.url,
         logo: `${site.url}/icon.svg`,
+        image: `${site.url}/icon.svg`,
         description: site.description,
         email: site.email,
         telephone: `+${site.phoneRaw}`,
-        areaServed: ["Zimbabwe", "South Africa", "Worldwide"],
+        priceRange: "$5-$250",
+        areaServed: [
+          { "@type": "Country", name: "Zimbabwe" },
+          { "@type": "Country", name: "South Africa" },
+        ],
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "customer service",
@@ -22,6 +29,22 @@ export function JsonLd() {
           email: site.email,
           areaServed: ["ZW", "ZA"],
           availableLanguage: ["English"],
+        },
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Services",
+          itemListElement: services.map((s) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: s.title,
+              description: s.short,
+              areaServed: [
+                { "@type": "Country", name: "Zimbabwe" },
+                { "@type": "Country", name: "South Africa" },
+              ],
+            },
+          })),
         },
       },
       {

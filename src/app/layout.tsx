@@ -30,19 +30,21 @@ const siteUrl = "https://www.yonahstudios.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Yonah Studios: Brand, Web & Social Design Studio",
+    default: "Yonah Studios | Web Design, Branding & Social Media in Zimbabwe & South Africa",
     template: "%s · Yonah Studios",
   },
   description:
-    "Yonah Studios is a remote creative studio crafting thoughtful brands, beautiful websites and digital marketing for businesses across Zimbabwe, South Africa and beyond.",
+    "Yonah Studios designs websites, brand identities and social media for businesses in Zimbabwe and South Africa. Remote, affordable and fast. See our work and get a quote today.",
   keywords: [
-    "creative agency",
-    "branding",
-    "web design",
-    "social media management",
-    "graphic design",
-    "Zimbabwe",
-    "South Africa",
+    "web design Zimbabwe",
+    "website design Zimbabwe",
+    "website design Harare",
+    "graphic design Zimbabwe",
+    "branding agency Zimbabwe",
+    "social media management Zimbabwe",
+    "web design South Africa",
+    "logo design Zimbabwe",
+    "creative agency Zimbabwe",
     "Yonah Studios",
   ],
   alternates: {
@@ -61,13 +63,13 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: "Yonah Studios",
-    title: "Yonah Studios: Brand, Web & Social Design Studio",
+    title: "Web Design, Branding & Social Media in Zimbabwe & South Africa",
     description:
       "Thoughtful brands, beautiful websites and digital marketing experiences that help businesses stand out and grow.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yonah Studios: Brand, Web & Social Design Studio",
+    title: "Web Design, Branding & Social Media in Zimbabwe & South Africa",
     description:
       "Thoughtful brands, beautiful websites and digital marketing experiences that help businesses stand out and grow.",
   },

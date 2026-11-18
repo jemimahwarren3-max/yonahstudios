@@ -7,6 +7,7 @@ import { StatsStrip } from "@/components/sections/stats-strip";
 import { Marquee } from "@/components/sections/marquee";
 import { ParallaxBanner } from "@/components/sections/parallax-banner";
 import { ProcessSection } from "@/components/sections/process";
+import { FaqSection } from "@/components/sections/faq-section";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { ProjectVisual } from "@/components/concept/project-visual";
 import { Tilt } from "@/components/motion/tilt";
@@ -209,6 +210,7 @@ export default function Home() {
 
       <Marquee items={sectors} />
       <ProcessSection />
+      <FaqSection />
       <FinalCTA />
     </>
   );
