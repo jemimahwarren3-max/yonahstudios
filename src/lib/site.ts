@@ -1,7 +1,7 @@
 export const site = {
   name: "Yonah Studios",
-  domain: "yonahstudios.com",
-  url: "https://yonahstudios.com",
+  domain: "www.yonahstudios.com",
+  url: "https://www.yonahstudios.com",
   tagline: "Brand, web & social design studio",
   description:
     "A remote creative studio crafting thoughtful brands, beautiful websites and digital marketing for businesses across Zimbabwe, South Africa and beyond.",
