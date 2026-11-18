@@ -93,7 +93,7 @@ export default function AboutPage() {
       </section>
 
       {/* A glimpse of the work */}
-      <section className="py-16">
+      <section className="py-12 sm:py-16">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
             <Reveal>
@@ -136,7 +136,7 @@ export default function AboutPage() {
       />
 
       {/* Remote model */}
-      <section className="py-16">
+      <section className="py-12 sm:py-16">
         <Container>
           <Reveal>
             <div className="rounded-3xl bg-charcoal p-8 text-ivory sm:p-14">
@@ -159,7 +159,7 @@ export default function AboutPage() {
       </section>
 
       {/* Principles */}
-      <section className="py-16">
+      <section className="py-12 sm:py-16">
         <Container>
           <Reveal className="max-w-2xl">
             <Eyebrow>What we value</Eyebrow>
@@ -167,7 +167,7 @@ export default function AboutPage() {
               The principles behind the work.
             </h2>
           </Reveal>
-          <Stagger className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2">
+          <Stagger className="mt-9 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:mt-12 sm:grid-cols-2">
             {principles.map((p) => (
               <StaggerItem key={p.title} className="bg-background p-8">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-terracotta/12 text-terracotta">

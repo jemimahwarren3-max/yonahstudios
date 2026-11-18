@@ -12,10 +12,10 @@ export function FinalCTA({
   text?: string;
 }) {
   return (
-    <section className="pb-24">
+    <section className="pb-16 sm:pb-24">
       <Container>
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl bg-charcoal px-6 py-16 text-center text-ivory sm:px-16 sm:py-24">
+          <div className="relative overflow-hidden rounded-3xl bg-charcoal px-6 py-12 text-center text-ivory sm:px-16 sm:py-24">
             <Dove className="mx-auto h-12 w-12 text-ivory/80" />
             <h2 className="mx-auto mt-8 max-w-2xl font-heading text-4xl leading-tight sm:text-5xl">
               {heading}

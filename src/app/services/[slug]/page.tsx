@@ -73,7 +73,7 @@ export default async function ServicePage({
       </section>
 
       {/* Deliverables */}
-      <section className="py-16">
+      <section className="py-12 sm:py-16">
         <Container>
           <Reveal>
             <Eyebrow>What you can receive</Eyebrow>
@@ -99,7 +99,7 @@ export default async function ServicePage({
 
       {/* Pricing teaser */}
       {pricing && (
-        <section className="py-16">
+        <section className="py-12 sm:py-16">
           <Container>
             <Reveal>
               <div className="rounded-3xl border border-border bg-sand/50 p-8 sm:p-12">
@@ -208,7 +208,7 @@ function MiniSite({ project }: { project: Project }) {
 
 function WebShowcase() {
   return (
-    <section className="bg-sand/60 py-20">
+    <section className="bg-sand/60 py-14 sm:py-20">
       <Container>
         <Reveal className="max-w-2xl">
           <Eyebrow>Interactive concepts</Eyebrow>
@@ -221,7 +221,7 @@ function WebShowcase() {
             it in full.
           </p>
         </Reveal>
-        <div className="mt-12 grid gap-8 sm:grid-cols-2">
+        <div className="mt-9 sm:mt-12 grid gap-8 sm:grid-cols-2">
           {webConcepts.map((c, i) => (
             <Reveal key={c.project.slug} delay={i * 0.05}>
               <Link href={`/work/${c.project.slug}`} className="group block">
@@ -251,7 +251,7 @@ function BrandingShowcase() {
   const aurelle = getProject("aurelle")!;
   const marula = getProject("marula-and-co")!;
   return (
-    <section className="bg-sand/60 py-20">
+    <section className="bg-sand/60 py-14 sm:py-20">
       <Container>
         <Reveal className="max-w-2xl">
           <Eyebrow>A brand, transformed</Eyebrow>
@@ -264,7 +264,7 @@ function BrandingShowcase() {
             one considered brand.
           </p>
         </Reveal>
-        <div className="mt-12 grid gap-10 lg:grid-cols-2">
+        <div className="mt-9 sm:mt-12 grid gap-10 lg:grid-cols-2">
           {[marula, aurelle].map((p, i) => (
             <Reveal key={p.slug} delay={i * 0.05}>
               <Link href={`/work/${p.slug}`} className="group block">
@@ -294,7 +294,7 @@ const socialCampaigns: { project: Project; variant: "social" }[] = [
 
 function SocialShowcase() {
   return (
-    <section className="bg-sand/60 py-20">
+    <section className="bg-sand/60 py-14 sm:py-20">
       <Container>
         <Reveal className="max-w-2xl">
           <Eyebrow>Coordinated campaigns</Eyebrow>
@@ -308,7 +308,7 @@ function SocialShowcase() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-9 sm:mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {socialCampaigns.map((c, i) => (
             <Reveal key={c.project.slug} delay={i * 0.05}>
               <Link href={`/work/${c.project.slug}`} className="group block">
@@ -327,7 +327,7 @@ function SocialShowcase() {
         </div>
 
         <Reveal delay={0.2}>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          <div className="mt-9 sm:mt-12 grid gap-6 sm:grid-cols-2">
             <div className="rounded-xl border border-border bg-background p-5">
               <h3 className="font-heading text-lg text-charcoal">
                 {inclusions.contentCreation.title}

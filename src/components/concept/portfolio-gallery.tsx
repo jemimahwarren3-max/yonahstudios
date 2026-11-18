@@ -55,7 +55,7 @@ export function PortfolioGallery() {
 
       <motion.div
         layout
-        className="mt-12 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3"
+        className="mt-8 grid gap-x-8 gap-y-10 sm:mt-12 sm:grid-cols-2 sm:gap-y-14 lg:grid-cols-3"
       >
         <AnimatePresence mode="popLayout">
           {visible.map((entry) => (

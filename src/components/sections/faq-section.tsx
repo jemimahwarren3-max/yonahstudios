@@ -23,7 +23,7 @@ export function FaqSection() {
   };
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-14 sm:py-28">
       <Container size="narrow">
         <Reveal className="text-center">
           <Eyebrow>Questions</Eyebrow>
@@ -32,7 +32,7 @@ export function FaqSection() {
           </h2>
         </Reveal>
 
-        <div className="mt-12 divide-y divide-border border-y border-border">
+        <div className="mt-8 divide-y divide-border border-y border-border sm:mt-12">
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (

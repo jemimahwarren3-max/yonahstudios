@@ -8,9 +8,9 @@ const year = new Date().getFullYear();
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24 border-t border-border bg-charcoal text-ivory">
-      <Container className="py-16">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
+    <footer className="mt-16 border-t border-border bg-charcoal text-ivory sm:mt-24">
+      <Container className="py-12 sm:py-16">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr] md:gap-12">
           <div className="max-w-sm">
             <div className="flex items-center gap-3">
               <Dove className="h-9 w-9 text-ivory" />
@@ -78,7 +78,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-ivory/15 pt-6 text-xs text-ivory/45 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-3 border-t border-ivory/15 pt-6 text-xs text-ivory/45 sm:mt-14 sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} Yonah Studios. All rights reserved.</p>
           <p>
             Live projects link to the real, published site. Studio concepts are

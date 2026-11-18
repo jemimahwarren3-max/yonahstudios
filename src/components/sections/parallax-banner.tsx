@@ -14,7 +14,7 @@ export function ParallaxBanner({
   return (
     <section className="py-8">
       <Container>
-        <div className="relative overflow-hidden rounded-3xl bg-charcoal px-6 py-20 text-center text-ivory sm:py-28">
+        <div className="relative overflow-hidden rounded-3xl bg-charcoal px-6 py-14 text-center text-ivory sm:py-28">
           <div
             className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-terracotta/25 blur-3xl"
             aria-hidden

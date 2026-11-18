@@ -141,10 +141,12 @@
   }
   html {
     @apply font-sans scroll-smooth;
+    overflow-x: hidden;
   }
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "ss01", "cv05";
+    overflow-x: hidden;
   }
   h1, h2, h3, h4 {
     @apply font-heading;

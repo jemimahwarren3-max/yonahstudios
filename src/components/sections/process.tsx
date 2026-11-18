@@ -9,7 +9,7 @@ export function ProcessSection() {
         className="pointer-events-none absolute -right-24 top-0 h-80 w-80 rounded-full bg-terracotta/15 blur-3xl"
         aria-hidden
       />
-      <Container className="relative py-20 sm:py-28">
+      <Container className="relative py-14 sm:py-28">
         <Reveal className="max-w-2xl">
           <Eyebrow className="text-ivory/60">How we work</Eyebrow>
           <h2 className="mt-5 font-heading text-4xl leading-tight sm:text-5xl">
@@ -21,7 +21,7 @@ export function ProcessSection() {
           </p>
         </Reveal>
 
-        <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <Stagger className="mt-10 grid gap-5 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((step) => (
             <StaggerItem
               key={step.number}

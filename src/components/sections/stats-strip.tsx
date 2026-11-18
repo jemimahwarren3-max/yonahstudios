@@ -16,7 +16,7 @@ const stats = [
 
 export function StatsStrip() {
   return (
-    <section className="border-y border-border bg-sand/40 py-14">
+    <section className="border-y border-border bg-sand/40 py-10 sm:py-14">
       <Container>
         <Stagger className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           {stats.map((s) => (

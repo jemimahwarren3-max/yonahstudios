@@ -51,9 +51,9 @@ export default function Home() {
       <StatsStrip />
 
       {/* Intro / trust */}
-      <section className="py-20 sm:py-28">
+      <section className="py-14 sm:py-28">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
             <Reveal>
               <Eyebrow>Who we are</Eyebrow>
               <h2 className="mt-5 font-heading text-4xl leading-tight text-charcoal sm:text-5xl">
@@ -75,7 +75,7 @@ export default function Home() {
             </Reveal>
           </div>
 
-          <Stagger className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          <Stagger className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:mt-14 sm:grid-cols-2 lg:grid-cols-3">
             {valuePoints.map((v) => (
               <StaggerItem key={v.title} className="bg-background p-6">
                 <div className="h-1.5 w-1.5 rounded-full bg-terracotta" />
@@ -108,7 +108,7 @@ export default function Home() {
       />
 
       {/* Services preview */}
-      <section className="bg-sand/60 py-20 sm:py-28">
+      <section className="bg-sand/60 py-14 sm:py-28">
         <Container>
           <Reveal className="max-w-2xl">
             <Eyebrow>What we do</Eyebrow>
@@ -117,7 +117,7 @@ export default function Home() {
             </h2>
           </Reveal>
 
-          <div className="mt-16 space-y-20">
+          <div className="mt-10 space-y-14 sm:mt-16 sm:space-y-20">
             {services.map((service, i) => {
               const project = getProject(serviceVisual[service.slug])!;
               const reversed = i % 2 === 1;
@@ -172,7 +172,7 @@ export default function Home() {
       </section>
 
       {/* Featured work */}
-      <section className="py-20 sm:py-28">
+      <section className="py-14 sm:py-28">
         <Container>
           <Reveal className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">

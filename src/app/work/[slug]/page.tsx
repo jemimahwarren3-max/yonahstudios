@@ -77,7 +77,7 @@ export default async function ProjectPage({
       </section>
 
       {/* Design preview */}
-      <section className="pb-16">
+      <section className="pb-12 sm:pb-16">
         <Container>
           {project.image ? (
             <>
@@ -135,7 +135,7 @@ export default async function ProjectPage({
       </section>
 
       {/* Direction + meta */}
-      <section className="pb-20">
+      <section className="pb-14 sm:pb-20">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-20">
             <Reveal>

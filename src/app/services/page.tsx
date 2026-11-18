@@ -53,7 +53,7 @@ export default function ServicesPage() {
             </div>
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-3 gap-5 sm:gap-8">
+          <div className="mt-10 grid grid-cols-3 gap-5 sm:mt-14 sm:gap-8">
             {heroPieces.map((h, i) => (
               <Reveal key={h.project.slug} delay={i * 0.1}>
                 <div
@@ -68,9 +68,9 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="py-12 sm:py-20">
         <Container>
-          <div className="space-y-20">
+          <div className="space-y-14 sm:space-y-20">
             {services.map((service, i) => {
               const project = getProject(serviceVisual[service.slug])!;
               const reversed = i % 2 === 1;
