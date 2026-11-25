@@ -53,9 +53,9 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "text-[13px] font-medium uppercase tracking-[0.08em] transition-colors",
+                  "relative text-[13px] font-medium uppercase tracking-[0.08em] transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-[2px] after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:scale-x-100",
                   active
-                    ? "text-charcoal"
+                    ? "text-charcoal after:scale-x-100"
                     : "text-muted-foreground hover:text-charcoal",
                 )}
               >

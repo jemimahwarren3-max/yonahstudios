@@ -90,11 +90,11 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* Statement band */}
-      <section className="bg-charcoal py-20 sm:py-32">
+      {/* Statement band — vivid color block */}
+      <section className="bg-coral py-20 sm:py-32">
         <Container>
           <Reveal>
-            <h2 className="mx-auto max-w-4xl text-center text-4xl leading-[1.05] tracking-tight text-ivory sm:text-7xl">
+            <h2 className="mx-auto max-w-4xl text-center text-4xl leading-[1.05] tracking-tight text-white sm:text-7xl">
               We make the kind of work people remember.
             </h2>
           </Reveal>
@@ -115,22 +115,22 @@ export default function Home() {
             {services.map((service) => (
               <StaggerItem
                 key={service.slug}
-                className="group relative bg-background p-8 transition-colors hover:bg-sand/50 sm:p-10"
+                className="group relative bg-background p-8 transition-all duration-300 hover:bg-charcoal hover:text-ivory sm:p-10"
               >
-                <span className="font-heading text-6xl font-bold text-border">
+                <span className="font-heading text-6xl font-bold text-border transition-colors duration-300 group-hover:text-ivory/20">
                   {service.number}
                 </span>
-                <h3 className="mt-6 font-heading text-2xl font-bold tracking-tight text-charcoal">
+                <h3 className="mt-6 font-heading text-2xl font-bold tracking-tight text-charcoal transition-colors duration-300 group-hover:text-ivory">
                   {service.title}
                 </h3>
-                <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-ivory/60">
                   {service.description}
                 </p>
                 <ul className="mt-6 flex flex-wrap gap-2">
                   {service.deliverables.slice(0, 4).map((d) => (
                     <li
                       key={d}
-                      className="border border-border bg-background px-3 py-1 text-xs text-muted-foreground"
+                      className="border border-border bg-background px-3 py-1 text-xs text-muted-foreground transition-all duration-300 group-hover:border-ivory/20 group-hover:bg-transparent group-hover:text-ivory/60"
                     >
                       {d}
                     </li>
@@ -139,7 +139,7 @@ export default function Home() {
                 <div className="mt-8">
                   <Link
                     href={`/services/${service.slug}`}
-                    className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.04em] text-charcoal transition-colors hover:text-terracotta"
+                    className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.04em] text-charcoal transition-colors duration-300 group-hover:text-ivory hover:text-terracotta"
                   >
                     Explore {service.title.split(" ")[0].toLowerCase()}
                     <span className="transition-transform group-hover:translate-x-1">→</span>

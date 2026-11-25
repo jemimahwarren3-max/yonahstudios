@@ -16,15 +16,15 @@ const stats = [
 
 export function StatsStrip() {
   return (
-    <section className="border-y border-border py-10 sm:py-14">
+    <section className="bg-cobalt py-12 sm:py-16">
       <Container>
         <Stagger className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           {stats.map((s) => (
             <StaggerItem key={s.label} className="text-center">
-              <p className="font-heading text-5xl font-bold tracking-tighter text-charcoal sm:text-6xl">
+              <p className="font-heading text-5xl font-bold tracking-tighter text-white sm:text-6xl">
                 <CountUp to={s.value} />
               </p>
-              <p className="mt-3 text-xs font-medium uppercase tracking-[0.1em] text-muted-foreground">
+              <p className="mt-3 text-xs font-medium uppercase tracking-[0.1em] text-white/60">
                 {s.label}
               </p>
             </StaggerItem>
