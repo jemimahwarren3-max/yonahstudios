@@ -86,11 +86,11 @@ export function ContactForm() {
 
   if (sent) {
     return (
-      <div className="rounded-3xl border border-border bg-sand/50 p-8 text-center sm:p-12">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-terracotta text-2xl text-ivory">
+      <div className="border border-border bg-sand/50 p-8 text-center sm:p-12">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center bg-terracotta text-2xl text-ivory">
           ✓
         </div>
-        <h2 className="mt-6 font-heading text-2xl text-charcoal">
+        <h2 className="mt-6 font-heading text-2xl font-bold text-charcoal">
           Thanks, {fields.name.split(" ")[0] || "there"}!
         </h2>
         <p className="mx-auto mt-3 max-w-md text-muted-foreground">
@@ -102,13 +102,13 @@ export function ContactForm() {
             href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-charcoal px-6 py-3 text-sm font-medium text-ivory transition-colors hover:bg-terracotta"
+            className="bg-charcoal px-6 py-3 text-sm font-medium text-ivory transition-colors hover:bg-terracotta"
           >
             Open WhatsApp
           </a>
           <a
             href={mailtoLink}
-            className="rounded-full border border-charcoal/25 px-6 py-3 text-sm font-medium text-charcoal transition-colors hover:border-charcoal"
+            className="border border-charcoal/25 px-6 py-3 text-sm font-medium text-charcoal transition-colors hover:border-charcoal"
           >
             Email us instead
           </a>
@@ -208,7 +208,7 @@ export function ContactForm() {
 
       <button
         type="submit"
-        className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-charcoal px-6 py-4 text-sm font-medium text-ivory transition-colors hover:bg-terracotta sm:w-auto"
+        className="group inline-flex w-full items-center justify-center gap-2 bg-charcoal px-6 py-4 text-sm font-medium uppercase tracking-[0.04em] text-ivory transition-colors hover:bg-terracotta sm:w-auto"
       >
         Send via WhatsApp
         <span className="transition-transform group-hover:translate-x-0.5">→</span>
@@ -250,7 +250,7 @@ function Field({
 
 function inputClass(hasError: boolean) {
   return [
-    "w-full rounded-xl border bg-background px-4 py-3 text-charcoal outline-none transition-colors placeholder:text-muted-foreground/70",
+    "w-full border bg-background px-4 py-3 text-charcoal outline-none transition-colors placeholder:text-muted-foreground/70",
     hasError
       ? "border-destructive focus:border-destructive"
       : "border-border focus:border-charcoal",

@@ -8,7 +8,7 @@ const styles: Record<Variant, string> = {
   primary:
     "bg-charcoal text-ivory hover:bg-terracotta",
   outline:
-    "border border-charcoal/25 text-charcoal hover:border-charcoal hover:bg-charcoal hover:text-ivory",
+    "border border-charcoal/20 text-charcoal hover:border-charcoal hover:bg-charcoal hover:text-ivory",
   light:
     "border border-ivory/30 text-ivory hover:bg-ivory hover:text-charcoal",
 };
@@ -27,7 +27,7 @@ export function ButtonLink({
   className?: string;
 }) {
   const classes = cn(
-    "group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors duration-300",
+    "group inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium uppercase tracking-[0.04em] transition-all duration-300",
     styles[variant],
     className,
   );

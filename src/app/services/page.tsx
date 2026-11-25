@@ -33,15 +33,14 @@ const heroPieces: { project: Project; rotate: number; variant?: Variant }[] = [
 export default function ServicesPage() {
   return (
     <>
-      {/* Hero */}
       <section className="pt-36 pb-16 sm:pt-44 sm:pb-20">
         <Container>
-          <Reveal className="max-w-3xl">
+          <Reveal className="max-w-4xl">
             <Eyebrow>Services</Eyebrow>
-            <h1 className="mt-6 font-heading text-5xl font-semibold leading-[1.05] tracking-tight text-charcoal sm:text-6xl">
+            <h1 className="mt-6 text-5xl leading-[1.05] tracking-tight text-charcoal sm:text-7xl">
               Everything your business needs to be seen beautifully.
             </h1>
-            <p className="mt-6 text-xl leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-2xl text-xl leading-relaxed text-muted-foreground">
               From thoughtful brand identities to beautiful websites and
               digital campaigns, we create the visual and digital foundations
               that help businesses make their mark.
@@ -83,12 +82,12 @@ export default function ServicesPage() {
                   >
                     <div>
                       <span
-                        className="font-heading text-2xl"
+                        className="font-heading text-2xl font-bold"
                         style={{ color: service.accent }}
                       >
                         {service.number}
                       </span>
-                      <h2 className="mt-3 font-heading text-3xl text-charcoal sm:text-4xl">
+                      <h2 className="mt-3 text-3xl tracking-tight text-charcoal sm:text-4xl">
                         {service.title}
                       </h2>
                       <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
@@ -98,7 +97,7 @@ export default function ServicesPage() {
                         {service.deliverables.map((d) => (
                           <li
                             key={d}
-                            className="rounded-full border border-border bg-background px-3 py-1 text-xs text-muted-foreground"
+                            className="border border-border bg-background px-3 py-1 text-xs text-muted-foreground"
                           >
                             {d}
                           </li>
@@ -106,12 +105,10 @@ export default function ServicesPage() {
                       </ul>
                       <Link
                         href={`/services/${service.slug}`}
-                        className="group mt-8 inline-flex items-center gap-2 font-medium text-charcoal"
+                        className="group mt-8 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.04em] text-charcoal"
                       >
                         Explore this service
-                        <span className="transition-transform group-hover:translate-x-1">
-                          →
-                        </span>
+                        <span className="transition-transform group-hover:translate-x-1">→</span>
                       </Link>
                     </div>
                     <div>

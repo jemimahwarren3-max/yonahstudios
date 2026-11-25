@@ -51,10 +51,10 @@ export default async function ServicePage({
               <span className="transition-transform group-hover:-translate-x-1">←</span>
               All services
             </Link>
-            <p className="mt-8 font-heading text-3xl" style={{ color: service.accent }}>
+            <p className="mt-8 font-heading text-3xl font-bold" style={{ color: service.accent }}>
               {service.number}
             </p>
-            <h1 className="mt-3 font-heading text-5xl font-semibold leading-tight tracking-tight text-charcoal sm:text-6xl">
+            <h1 className="mt-3 text-5xl leading-[1.05] tracking-tight text-charcoal sm:text-7xl">
               {service.title}
             </h1>
             <p className="mt-6 text-xl leading-relaxed text-muted-foreground">
@@ -78,11 +78,11 @@ export default async function ServicePage({
           <Reveal>
             <Eyebrow>What you can receive</Eyebrow>
           </Reveal>
-          <Stagger className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          <Stagger className="mt-8 grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
             {service.deliverables.map((d) => (
               <StaggerItem key={d} className="flex items-center gap-3 bg-background p-6">
                 <span
-                  className="h-2 w-2 shrink-0 rounded-full"
+                  className="h-1.5 w-1.5 shrink-0"
                   style={{ background: service.accent }}
                 />
                 <span className="text-charcoal">{d}</span>
@@ -102,11 +102,11 @@ export default async function ServicePage({
         <section className="py-12 sm:py-16">
           <Container>
             <Reveal>
-              <div className="rounded-3xl border border-border bg-sand/50 p-8 sm:p-12">
+              <div className="border border-border bg-sand/50 p-8 sm:p-12">
                 <div className="flex flex-wrap items-end justify-between gap-6">
                   <div>
                     <Eyebrow>Pricing</Eyebrow>
-                    <h2 className="mt-4 font-heading text-3xl text-charcoal">
+                    <h2 className="mt-4 text-3xl tracking-tight text-charcoal">
                       {pricing.title}
                     </h2>
                   </div>
@@ -169,7 +169,7 @@ function MiniSite({ project }: { project: Project }) {
     // The reference photo already depicts its own device mockup, so it
     // isn't wrapped in another browser frame on top.
     return (
-      <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-sand">
+      <div className="relative aspect-[4/3] overflow-hidden bg-sand">
         <Image
           src={project.image}
           alt={`${project.name} — ${project.sector}`}
@@ -212,7 +212,7 @@ function WebShowcase() {
       <Container>
         <Reveal className="max-w-2xl">
           <Eyebrow>Interactive concepts</Eyebrow>
-          <h2 className="mt-5 font-heading text-4xl leading-tight text-charcoal">
+          <h2 className="mt-6 text-4xl leading-[1.05] tracking-tight text-charcoal">
             Four website concepts, four distinct worlds.
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
@@ -237,7 +237,7 @@ function WebShowcase() {
           ))}
         </div>
         <Reveal className="mt-10">
-          <p className="rounded-xl border border-border bg-background p-5 text-sm text-muted-foreground">
+          <p className="border border-border bg-background p-5 text-sm text-muted-foreground">
             Domain registration, hosting and any third-party services are
             charged separately, and quoted clearly before we begin.
           </p>
@@ -255,7 +255,7 @@ function BrandingShowcase() {
       <Container>
         <Reveal className="max-w-2xl">
           <Eyebrow>A brand, transformed</Eyebrow>
-          <h2 className="mt-5 font-heading text-4xl leading-tight text-charcoal">
+          <h2 className="mt-6 text-4xl leading-[1.05] tracking-tight text-charcoal">
             From a name to a complete identity.
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
@@ -298,7 +298,7 @@ function SocialShowcase() {
       <Container>
         <Reveal className="max-w-2xl">
           <Eyebrow>Coordinated campaigns</Eyebrow>
-          <h2 className="mt-5 font-heading text-4xl leading-tight text-charcoal">
+          <h2 className="mt-6 text-4xl leading-[1.05] tracking-tight text-charcoal">
             A feed that looks like a brand.
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
@@ -328,8 +328,8 @@ function SocialShowcase() {
 
         <Reveal delay={0.2}>
           <div className="mt-9 sm:mt-12 grid gap-6 sm:grid-cols-2">
-            <div className="rounded-xl border border-border bg-background p-5">
-              <h3 className="font-heading text-lg text-charcoal">
+            <div className="border border-border bg-background p-5">
+              <h3 className="font-heading text-lg font-bold text-charcoal">
                 {inclusions.contentCreation.title}
               </h3>
               <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
@@ -338,8 +338,8 @@ function SocialShowcase() {
                 ))}
               </ul>
             </div>
-            <div className="rounded-xl border border-border bg-background p-5">
-              <h3 className="font-heading text-lg text-charcoal">
+            <div className="border border-border bg-background p-5">
+              <h3 className="font-heading text-lg font-bold text-charcoal">
                 {inclusions.fullManagement.title}
               </h3>
               <ul className="mt-3 space-y-2 text-sm text-muted-foreground">

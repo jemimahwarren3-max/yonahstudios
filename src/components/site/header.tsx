@@ -22,7 +22,6 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock scroll when the mobile menu is open.
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -30,23 +29,20 @@ export function SiteHeader() {
     };
   }, [open]);
 
-  // The hero is light, so the header always uses dark text.
-  const onDarkHero = false;
-
   return (
     <header
       className={cn(
         PROMO_ACTIVE ? "fixed inset-x-0 top-9 z-50" : "fixed inset-x-0 top-0 z-50",
-        "transition-all duration-500",
+        "transition-all duration-300",
         scrolled
-          ? "border-b border-border/70 bg-background/80 backdrop-blur-md"
-          : "border-b border-transparent",
+          ? "bg-background/90 backdrop-blur-lg"
+          : "",
       )}
     >
-      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
-        <Logo light={onDarkHero} />
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
+        <Logo />
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-7 md:flex">
           {nav.map((item) => {
             const active =
               item.href === "/"
@@ -57,20 +53,13 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative text-sm transition-colors",
-                  onDarkHero
-                    ? active
-                      ? "text-white"
-                      : "text-white/70 hover:text-white"
-                    : active
-                      ? "text-charcoal"
-                      : "text-muted-foreground hover:text-charcoal",
+                  "text-[13px] font-medium uppercase tracking-[0.08em] transition-colors",
+                  active
+                    ? "text-charcoal"
+                    : "text-muted-foreground hover:text-charcoal",
                 )}
               >
                 {item.label}
-                {active && (
-                  <span className="absolute -bottom-1.5 left-0 h-px w-full bg-terracotta" />
-                )}
               </Link>
             );
           })}
@@ -81,12 +70,7 @@ export function SiteHeader() {
             href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className={cn(
-              "group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors",
-              onDarkHero
-                ? "bg-white text-charcoal hover:bg-terracotta hover:text-white"
-                : "bg-charcoal text-ivory hover:bg-terracotta",
-            )}
+            className="inline-flex items-center gap-2 bg-charcoal px-5 py-2 text-[13px] font-medium uppercase tracking-[0.06em] text-ivory transition-colors hover:bg-terracotta"
           >
             Start a Project
             <span className="transition-transform duration-300 group-hover:translate-x-0.5">
@@ -99,10 +83,7 @@ export function SiteHeader() {
           type="button"
           onClick={() => setOpen(true)}
           aria-label="Open menu"
-          className={cn(
-            "inline-flex h-10 w-10 items-center justify-center rounded-full md:hidden",
-            onDarkHero ? "text-white" : "text-charcoal",
-          )}
+          className="inline-flex h-10 w-10 items-center justify-center md:hidden"
         >
           <Menu className="h-5 w-5" />
         </button>
@@ -114,32 +95,32 @@ export function SiteHeader() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.25 }}
             className="fixed inset-0 z-[70] flex flex-col bg-background md:hidden"
           >
-            <div className="flex h-18 items-center justify-between px-5 py-4">
+            <div className="flex h-16 items-center justify-between px-5">
               <Logo />
               <button
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full text-charcoal"
+                className="inline-flex h-10 w-10 items-center justify-center"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <nav className="flex flex-1 flex-col justify-center gap-2 px-6">
+            <nav className="flex flex-1 flex-col justify-center gap-1 px-6">
               {nav.map((item, i) => (
                 <motion.div
                   key={item.href}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.06 * i + 0.1 }}
+                  transition={{ delay: 0.04 * i + 0.08 }}
                 >
                   <Link
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="block font-heading text-4xl text-charcoal"
+                    className="block py-2 font-heading text-5xl font-bold tracking-tight text-charcoal"
                   >
                     {item.label}
                   </Link>
@@ -152,7 +133,7 @@ export function SiteHeader() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
-                className="flex items-center justify-center gap-2 rounded-full bg-charcoal px-6 py-4 text-base font-medium text-ivory"
+                className="flex items-center justify-center gap-2 bg-charcoal px-6 py-4 text-sm font-medium uppercase tracking-[0.06em] text-ivory"
               >
                 Start a Project →
               </Link>

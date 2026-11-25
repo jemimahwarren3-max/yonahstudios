@@ -42,7 +42,6 @@ export function ShowcaseCarousel() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Stage */}
       <div className="relative min-h-[26rem] sm:min-h-[22rem]">
         <AnimatePresence custom={direction} mode="wait">
           <motion.div
@@ -52,10 +51,9 @@ export function ShowcaseCarousel() {
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, ease: [0.65, 0, 0.45, 1] }}
             className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14"
           >
-            {/* Preview */}
             <div className="order-1">
               {item.image ? (
                 <BrowserFrame url={previewUrl(item)}>
@@ -76,21 +74,20 @@ export function ShowcaseCarousel() {
               ) : null}
             </div>
 
-            {/* Copy */}
             <div className="order-2">
               <span
-                className={`inline-block rounded-full px-3 py-1 text-[10px] font-medium uppercase tracking-[0.14em] ${
+                className={`inline-block px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] ${
                   item.external
-                    ? "bg-terracotta/12 text-terracotta"
+                    ? "bg-terracotta/10 text-terracotta"
                     : "bg-sand text-muted-foreground"
                 }`}
               >
                 {item.tag}
               </span>
-              <h3 className="mt-5 font-heading text-3xl leading-tight text-charcoal sm:text-4xl">
+              <h3 className="mt-5 font-heading text-3xl font-bold leading-tight tracking-tight text-charcoal sm:text-4xl">
                 {item.name}
               </h3>
-              <p className="mt-1 text-sm uppercase tracking-[0.12em] text-muted-foreground">
+              <p className="mt-1 text-sm font-medium uppercase tracking-[0.1em] text-muted-foreground">
                 {item.sector}
               </p>
               <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
@@ -102,22 +99,18 @@ export function ShowcaseCarousel() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 rounded-full bg-charcoal px-6 py-3 text-sm font-medium text-ivory transition-colors hover:bg-terracotta"
+                    className="group inline-flex items-center gap-2 bg-charcoal px-6 py-3 text-sm font-medium uppercase tracking-[0.04em] text-ivory transition-colors hover:bg-terracotta"
                   >
                     {item.linkLabel}
-                    <span className="transition-transform group-hover:translate-x-0.5">
-                      ↗
-                    </span>
+                    <span className="transition-transform group-hover:translate-x-0.5">↗</span>
                   </a>
                 ) : (
                   <Link
                     href={item.href}
-                    className="group inline-flex items-center gap-2 rounded-full border border-charcoal/25 px-6 py-3 text-sm font-medium text-charcoal transition-colors hover:border-charcoal hover:bg-charcoal hover:text-ivory"
+                    className="group inline-flex items-center gap-2 border border-charcoal/20 px-6 py-3 text-sm font-medium uppercase tracking-[0.04em] text-charcoal transition-colors hover:border-charcoal hover:bg-charcoal hover:text-ivory"
                   >
                     {item.linkLabel}
-                    <span className="transition-transform group-hover:translate-x-0.5">
-                      →
-                    </span>
+                    <span className="transition-transform group-hover:translate-x-0.5">→</span>
                   </Link>
                 )}
               </div>
@@ -136,16 +129,16 @@ export function ShowcaseCarousel() {
               onClick={() => select(i)}
               aria-label={`Show ${s.name}`}
               aria-current={i === index}
-              className={`relative h-2 overflow-hidden rounded-full transition-all duration-300 ${
+              className={`relative h-1.5 overflow-hidden transition-all duration-300 ${
                 i === index
-                  ? "w-8 bg-border"
-                  : "w-2 bg-border hover:bg-muted-foreground/50"
+                  ? "w-10 bg-border"
+                  : "w-1.5 bg-border hover:bg-muted-foreground/50"
               }`}
             >
               {i === index && !reduce && (
                 <span
                   key={index}
-                  className="absolute inset-y-0 left-0 w-full origin-left scale-x-0 animate-[showreel-progress_var(--showreel-duration)_linear_forwards] bg-terracotta"
+                  className="absolute inset-y-0 left-0 w-full origin-left scale-x-0 animate-[showreel-progress_var(--showreel-duration)_linear_forwards] bg-charcoal"
                   style={
                     {
                       "--showreel-duration": `${INTERVAL}ms`,
@@ -155,14 +148,14 @@ export function ShowcaseCarousel() {
                 />
               )}
               {i === index && reduce && (
-                <span className="absolute inset-0 bg-terracotta" />
+                <span className="absolute inset-0 bg-charcoal" />
               )}
             </button>
           ))}
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="font-heading text-sm text-muted-foreground tabular-nums">
+          <span className="font-heading text-sm font-bold text-muted-foreground tabular-nums">
             {String(index + 1).padStart(2, "0")}
             <span className="opacity-40"> / {String(n).padStart(2, "0")}</span>
           </span>
@@ -171,7 +164,7 @@ export function ShowcaseCarousel() {
               type="button"
               onClick={() => go(-1)}
               aria-label="Previous"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-charcoal transition-colors hover:border-charcoal"
+              className="flex h-9 w-9 items-center justify-center border border-border text-charcoal transition-colors hover:border-charcoal hover:bg-charcoal hover:text-ivory"
             >
               ←
             </button>
@@ -179,7 +172,7 @@ export function ShowcaseCarousel() {
               type="button"
               onClick={() => go(1)}
               aria-label="Next"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-charcoal transition-colors hover:border-charcoal"
+              className="flex h-9 w-9 items-center justify-center border border-border text-charcoal transition-colors hover:border-charcoal hover:bg-charcoal hover:text-ivory"
             >
               →
             </button>

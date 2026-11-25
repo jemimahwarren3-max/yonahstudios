@@ -26,28 +26,19 @@ const icons = { branding: Palette, web: Globe, social: Megaphone } as const;
 export default function PricingPage() {
   return (
     <>
-      {/* Hero, with the same ambient warmth as other pages */}
-      <section className="relative overflow-hidden pt-36 pb-6 sm:pt-44">
-        <div
-          className="pointer-events-none absolute -top-32 right-0 h-96 w-96 rounded-full bg-peach/40 blur-[110px]"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute left-0 top-40 h-80 w-80 rounded-full bg-blush/30 blur-[110px]"
-          aria-hidden
-        />
-        <Container className="relative max-w-3xl">
+      <section className="pt-36 pb-6 sm:pt-44">
+        <Container className="max-w-4xl">
           <Reveal>
             {PROMO_ACTIVE && (
-              <span className="mb-5 inline-block rounded-full bg-terracotta px-4 py-1.5 text-xs font-medium uppercase tracking-[0.1em] text-ivory">
+              <span className="mb-5 inline-block bg-terracotta px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-ivory">
                 Launch offer: {PROMO_PERCENT}% off everything
               </span>
             )}
             <Eyebrow>Pricing</Eyebrow>
-            <h1 className="mt-6 font-heading text-5xl font-semibold leading-[1.05] tracking-tight text-charcoal sm:text-6xl">
+            <h1 className="mt-6 text-5xl leading-[1.05] tracking-tight text-charcoal sm:text-7xl">
               Honest pricing, no surprises.
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               Transparent USD pricing for every service. Mix and match what
               you need. For anything larger or combined, we&apos;ll put
               together a custom quote.
@@ -58,26 +49,21 @@ export default function PricingPage() {
 
       <section className="py-12 sm:py-16">
         <Container>
-          <div className="grid gap-8 lg:grid-cols-3">
+          <div className="grid gap-px overflow-hidden border border-border bg-border lg:grid-cols-3">
             {pricingGroups.map((group, i) => {
               const service = services.find((s) => s.slug === group.slug);
               const accent = service?.accent ?? "#c2683f";
               const Icon = icons[group.slug as keyof typeof icons] ?? Sparkles;
               return (
                 <Reveal key={group.slug} delay={i * 0.08}>
-                  <div className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-background p-8">
+                  <div className="flex h-full flex-col bg-background p-8">
                     <div
-                      className="absolute inset-x-0 top-0 h-1.5"
-                      style={{ background: accent }}
-                      aria-hidden
-                    />
-                    <div
-                      className="flex h-12 w-12 items-center justify-center rounded-full"
-                      style={{ background: `${accent}1a`, color: accent }}
+                      className="flex h-10 w-10 items-center justify-center"
+                      style={{ background: `${accent}15`, color: accent }}
                     >
                       <Icon className="h-5 w-5" />
                     </div>
-                    <h2 className="mt-5 font-heading text-2xl text-charcoal">
+                    <h2 className="mt-5 font-heading text-2xl font-bold text-charcoal">
                       {group.title}
                     </h2>
                     <p className="mt-2 text-sm text-muted-foreground">
@@ -97,14 +83,14 @@ export default function PricingPage() {
                                   {item.price}
                                 </span>
                                 <span
-                                  className="font-heading text-xl"
+                                  className="font-heading text-xl font-bold"
                                   style={{ color: accent }}
                                 >
                                   {discountedPrice(item.price)}
                                 </span>
                               </span>
                             ) : (
-                              <span className="font-heading text-xl text-charcoal">
+                              <span className="font-heading text-xl font-bold text-charcoal">
                                 {item.price}
                               </span>
                             )}
@@ -136,24 +122,22 @@ export default function PricingPage() {
         </Container>
       </section>
 
-      {/* Statement band */}
       <ParallaxBanner
         eyebrow="Fair & flexible"
         title="Great design, priced for growing businesses."
       />
 
-      {/* Social inclusions */}
       <section className="py-12">
         <Container>
           <Reveal>
             <Eyebrow>Social media: what&apos;s included</Eyebrow>
           </Reveal>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <div className="mt-8 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-2">
             {[inclusions.contentCreation, inclusions.fullManagement].map(
               (block) => (
                 <Reveal key={block.title}>
-                  <div className="rounded-2xl border border-border bg-sand/50 p-8">
-                    <h3 className="font-heading text-xl text-charcoal">
+                  <div className="bg-background p-8">
+                    <h3 className="font-heading text-xl font-bold text-charcoal">
                       {block.title}
                     </h3>
                     <ul className="mt-5 space-y-3">
@@ -162,7 +146,7 @@ export default function PricingPage() {
                           key={item}
                           className="flex items-start gap-3 text-sm text-charcoal"
                         >
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta" />
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-terracotta" />
                           {item}
                         </li>
                       ))}
@@ -175,19 +159,18 @@ export default function PricingPage() {
         </Container>
       </section>
 
-      {/* Conditions */}
       <section className="py-12">
         <Container>
           <Reveal>
-            <div className="rounded-3xl bg-charcoal p-8 text-ivory sm:p-12">
-              <h2 className="eyebrow text-ivory/60">Good to know</h2>
+            <div className="bg-charcoal p-8 text-ivory sm:p-12">
+              <h2 className="eyebrow text-ivory/50">Good to know</h2>
               <ul className="mt-6 grid gap-4 sm:grid-cols-2">
                 {pricingConditions.map((c) => (
                   <li
                     key={c}
-                    className="flex items-start gap-3 text-sm text-ivory/85"
+                    className="flex items-start gap-3 text-sm text-ivory/80"
                   >
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta" />
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-terracotta" />
                     {c}
                   </li>
                 ))}

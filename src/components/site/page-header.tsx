@@ -16,13 +16,13 @@ export function PageHeader({
   return (
     <section className="pt-36 pb-6 sm:pt-44">
       <Container>
-        <Reveal className="max-w-3xl">
+        <Reveal className="max-w-4xl">
           <Eyebrow>{eyebrow}</Eyebrow>
-          <h1 className="mt-6 font-heading text-5xl font-semibold leading-[1.05] tracking-tight text-charcoal sm:text-6xl">
+          <h1 className="mt-6 text-5xl leading-[1.05] tracking-tight text-charcoal sm:text-7xl">
             {title}
           </h1>
           {intro && (
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               {intro}
             </p>
           )}

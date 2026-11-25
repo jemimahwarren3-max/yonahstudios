@@ -17,7 +17,7 @@ export function PromoBanner() {
       )}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed inset-x-0 top-0 z-[60] flex h-9 items-center justify-center bg-charcoal px-4 text-center text-xs font-medium text-ivory hover:bg-terracotta sm:text-sm"
+      className="fixed inset-x-0 top-0 z-[60] flex h-9 items-center justify-center bg-charcoal px-4 text-center text-xs font-semibold uppercase tracking-[0.06em] text-ivory hover:bg-terracotta sm:text-sm"
     >
       {PROMO_MESSAGE}
     </a>

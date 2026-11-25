@@ -1,7 +1,6 @@
 import { type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-/** A realistic browser chrome around a concept website preview. */
 export function BrowserFrame({
   children,
   className,
@@ -14,7 +13,7 @@ export function BrowserFrame({
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-xl border border-black/10 bg-white shadow-[0_30px_60px_-25px_rgba(40,30,20,0.35)]",
+        "overflow-hidden border border-black/10 bg-white",
         className,
       )}
     >
@@ -22,7 +21,7 @@ export function BrowserFrame({
         <span className="h-2.5 w-2.5 rounded-full bg-neutral-300" />
         <span className="h-2.5 w-2.5 rounded-full bg-neutral-300" />
         <span className="h-2.5 w-2.5 rounded-full bg-neutral-300" />
-        <span className="ml-3 hidden flex-1 truncate rounded-full bg-white px-3 py-1 text-[10px] text-neutral-400 sm:block">
+        <span className="ml-3 hidden flex-1 truncate bg-white px-3 py-1 text-[10px] text-neutral-400 sm:block">
           {url}
         </span>
       </div>
@@ -31,7 +30,6 @@ export function BrowserFrame({
   );
 }
 
-/** A phone outline around a concept mobile preview. */
 export function PhoneFrame({
   children,
   className,
@@ -42,7 +40,7 @@ export function PhoneFrame({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-[2rem] border-[6px] border-neutral-900 bg-neutral-900 shadow-[0_30px_60px_-25px_rgba(40,30,20,0.45)]",
+        "relative overflow-hidden rounded-[2rem] border-[6px] border-neutral-900 bg-neutral-900",
         className,
       )}
     >

@@ -12,16 +12,16 @@ export function FinalCTA({
   text?: string;
 }) {
   return (
-    <section className="pb-16 sm:pb-24">
+    <section className="pb-20 sm:pb-32">
       <Container>
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl bg-charcoal px-6 py-12 text-center text-ivory sm:px-16 sm:py-24">
-            <Dove className="mx-auto h-12 w-12 text-ivory/80" />
-            <h2 className="mx-auto mt-8 max-w-2xl font-heading text-4xl leading-tight sm:text-5xl">
+          <div className="bg-charcoal px-6 py-16 text-center text-ivory sm:px-16 sm:py-28">
+            <Dove className="mx-auto h-12 w-12 text-ivory/70" />
+            <h2 className="mx-auto mt-10 max-w-3xl text-4xl leading-[1.05] tracking-tight sm:text-6xl">
               {heading}
             </h2>
-            <p className="mx-auto mt-5 max-w-xl text-lg text-ivory/70">{text}</p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <p className="mx-auto mt-6 max-w-xl text-lg text-ivory/60">{text}</p>
+            <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <ButtonLink href={whatsappLink()} variant="light" external>
                 Chat on WhatsApp
               </ButtonLink>
@@ -33,10 +33,6 @@ export function FinalCTA({
                 Start a project
               </ButtonLink>
             </div>
-            <div
-              className="pointer-events-none absolute -bottom-24 -right-16 h-64 w-64 rounded-full bg-terracotta/20 blur-3xl"
-              aria-hidden
-            />
           </div>
         </Reveal>
       </Container>

@@ -1,7 +1,6 @@
 import { type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-/** Centered max-width container with responsive side gutters. */
 export function Container({
   children,
   className,
@@ -26,7 +25,6 @@ export function Container({
   );
 }
 
-/** A small tracked-out label with a short rule, used above section headings. */
 export function Eyebrow({
   children,
   className,
@@ -35,8 +33,7 @@ export function Eyebrow({
   className?: string;
 }) {
   return (
-    <span className={cn("eyebrow inline-flex items-center gap-3 text-muted-foreground", className)}>
-      <span className="h-px w-8 bg-current opacity-50" aria-hidden />
+    <span className={cn("eyebrow text-muted-foreground", className)}>
       {children}
     </span>
   );

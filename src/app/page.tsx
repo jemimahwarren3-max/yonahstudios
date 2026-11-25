@@ -4,16 +4,11 @@ import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/site/cta";
 import { HomeHero } from "@/components/sections/home-hero";
 import { StatsStrip } from "@/components/sections/stats-strip";
-import { Marquee } from "@/components/sections/marquee";
-import { ParallaxBanner } from "@/components/sections/parallax-banner";
 import { ProcessSection } from "@/components/sections/process";
 import { FaqSection } from "@/components/sections/faq-section";
 import { FinalCTA } from "@/components/sections/final-cta";
-import { ProjectVisual } from "@/components/concept/project-visual";
-import { Tilt } from "@/components/motion/tilt";
 import { ShowcaseCarousel } from "@/components/sections/showcase-carousel";
 import { services } from "@/lib/data/services";
-import { getProject } from "@/lib/data/projects";
 
 const valuePoints = [
   { title: "Thoughtful design", text: "Every piece is considered, intentional and made to fit your business." },
@@ -22,14 +17,6 @@ const valuePoints = [
   { title: "Clear communication", text: "No jargon and no guessing. You'll always know what's happening." },
   { title: "Remote collaboration", text: "Work with us from anywhere: everything is delivered online." },
 ];
-
-const serviceVisual: Record<string, string> = {
-  branding: "marula-and-co",
-  web: "sable-and-stone",
-  social: "bloom",
-};
-
-const introPiece = getProject("atelier-form")!;
 
 const sectors = [
   "Hospitality",
@@ -48,151 +35,142 @@ export default function Home() {
   return (
     <>
       <HomeHero />
+
+      {/* Stats */}
       <StatsStrip />
 
       {/* Intro / trust */}
-      <section className="py-14 sm:py-28">
+      <section className="py-20 sm:py-32">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
             <Reveal>
               <Eyebrow>Who we are</Eyebrow>
-              <h2 className="mt-5 font-heading text-4xl leading-tight text-charcoal sm:text-5xl">
+              <h2 className="mt-6 text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-6xl">
                 A remote creative partner for businesses that want to look
                 their best.
               </h2>
-              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            </Reveal>
+
+            <Reveal delay={0.1} className="flex flex-col justify-end">
+              <p className="text-lg leading-relaxed text-muted-foreground">
                 Yonah Studios helps startups, entrepreneurs and established
-                businesses show up online with confidence, through brand
+                businesses show up online with confidence — through brand
                 design, websites and social media that feel considered,
                 consistent and genuinely yours.
               </p>
-            </Reveal>
-
-            <Reveal delay={0.1} className="mx-auto w-full max-w-sm lg:max-w-md">
-              <Tilt strength={6} scale={1.015} className="rounded-xl shadow-[0_40px_80px_-48px_rgba(40,30,20,0.4)]">
-                <ProjectVisual project={introPiece} />
-              </Tilt>
+              <p className="mt-6 text-sm text-muted-foreground">
+                Alongside live sites we&apos;ve built, we show studio concepts,
+                each clearly labelled, so you always know exactly what
+                you&apos;re looking at.
+              </p>
             </Reveal>
           </div>
 
-          <Stagger className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:mt-14 sm:grid-cols-2 lg:grid-cols-3">
+          <Stagger className="mt-16 grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
             {valuePoints.map((v) => (
-              <StaggerItem key={v.title} className="bg-background p-6">
-                <div className="h-1.5 w-1.5 rounded-full bg-terracotta" />
-                <h3 className="mt-4 font-heading text-lg text-charcoal">
+              <StaggerItem key={v.title} className="bg-background p-8">
+                <h3 className="font-heading text-lg font-bold text-charcoal">
                   {v.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {v.text}
                 </p>
               </StaggerItem>
             ))}
-            <StaggerItem className="bg-sand p-6">
-              <p className="font-heading text-lg text-charcoal">
+            <StaggerItem className="bg-charcoal p-8 text-ivory">
+              <h3 className="font-heading text-lg font-bold">
                 Real work, honestly shown
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Alongside live sites we&apos;ve built, we show studio concepts,
-                each clearly labelled, so you always know exactly what
-                you&apos;re looking at.
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-ivory/60">
+                Live sites and studio concepts — each clearly labelled so you
+                always know what you&apos;re looking at.
               </p>
             </StaggerItem>
           </Stagger>
         </Container>
       </section>
 
-      {/* Parallax statement */}
-      <ParallaxBanner
-        eyebrow="Our promise"
-        title="We make the kind of work people remember."
-      />
+      {/* Statement band */}
+      <section className="bg-charcoal py-20 sm:py-32">
+        <Container>
+          <Reveal>
+            <h2 className="mx-auto max-w-4xl text-center text-4xl leading-[1.05] tracking-tight text-ivory sm:text-7xl">
+              We make the kind of work people remember.
+            </h2>
+          </Reveal>
+        </Container>
+      </section>
 
-      {/* Services preview */}
-      <section className="bg-sand/60 py-14 sm:py-28">
+      {/* Services */}
+      <section className="py-20 sm:py-32">
         <Container>
           <Reveal className="max-w-2xl">
             <Eyebrow>What we do</Eyebrow>
-            <h2 className="mt-5 font-heading text-4xl leading-tight text-charcoal sm:text-5xl">
+            <h2 className="mt-6 text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-6xl">
               Three ways we help you grow.
             </h2>
           </Reveal>
 
-          <div className="mt-10 space-y-14 sm:mt-16 sm:space-y-20">
-            {services.map((service, i) => {
-              const project = getProject(serviceVisual[service.slug])!;
-              const reversed = i % 2 === 1;
-              return (
-                <Reveal key={service.slug}>
-                  <div
-                    className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-16 ${
-                      reversed ? "lg:[&>*:first-child]:order-2" : ""
-                    }`}
+          <Stagger className="mt-14 grid gap-px overflow-hidden border border-border bg-border lg:grid-cols-3">
+            {services.map((service) => (
+              <StaggerItem
+                key={service.slug}
+                className="group relative bg-background p-8 transition-colors hover:bg-sand/50 sm:p-10"
+              >
+                <span className="font-heading text-6xl font-bold text-border">
+                  {service.number}
+                </span>
+                <h3 className="mt-6 font-heading text-2xl font-bold tracking-tight text-charcoal">
+                  {service.title}
+                </h3>
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                  {service.description}
+                </p>
+                <ul className="mt-6 flex flex-wrap gap-2">
+                  {service.deliverables.slice(0, 4).map((d) => (
+                    <li
+                      key={d}
+                      className="border border-border bg-background px-3 py-1 text-xs text-muted-foreground"
+                    >
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8">
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.04em] text-charcoal transition-colors hover:text-terracotta"
                   >
-                    <div>
-                      <span className="font-heading text-2xl text-terracotta">
-                        {service.number}
-                      </span>
-                      <h3 className="mt-3 font-heading text-3xl text-charcoal">
-                        {service.title}
-                      </h3>
-                      <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-                        {service.description}
-                      </p>
-                      <ul className="mt-6 flex flex-wrap gap-2">
-                        {service.deliverables.slice(0, 5).map((d) => (
-                          <li
-                            key={d}
-                            className="rounded-full border border-border bg-background px-3 py-1 text-xs text-muted-foreground"
-                          >
-                            {d}
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="mt-8">
-                        <ButtonLink
-                          href={`/services/${service.slug}`}
-                          variant="outline"
-                        >
-                          Explore {service.title.split(" ")[0].toLowerCase()}
-                        </ButtonLink>
-                      </div>
-                    </div>
-                    <div>
-                      <ProjectVisual
-                        project={project}
-                        variant={service.slug === "social" ? "social" : undefined}
-                      />
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
+                    Explore {service.title.split(" ")[0].toLowerCase()}
+                    <span className="transition-transform group-hover:translate-x-1">→</span>
+                  </Link>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
         </Container>
       </section>
 
       {/* Featured work */}
-      <section className="py-14 sm:py-28">
+      <section className="bg-sand/40 py-20 sm:py-32">
         <Container>
           <Reveal className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
-              <Eyebrow>Work in rotation</Eyebrow>
-              <h2 className="mt-5 font-heading text-4xl leading-tight text-charcoal sm:text-5xl">
+              <Eyebrow>Selected work</Eyebrow>
+              <h2 className="mt-6 text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-6xl">
                 A showreel of what we make.
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                Live sites and studio concepts, cycling through. Pause on any
-                that catches your eye and open it to explore.
+                Live sites and studio concepts. Pause on any that catches your
+                eye and open it to explore.
               </p>
             </div>
             <Link
               href="/work"
-              className="group hidden items-center gap-2 text-sm font-medium text-charcoal sm:inline-flex"
+              className="group hidden items-center gap-2 text-sm font-medium uppercase tracking-[0.04em] text-charcoal sm:inline-flex"
             >
               View all work
-              <span className="transition-transform group-hover:translate-x-1">
-                →
-              </span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
             </Link>
           </Reveal>
 
@@ -208,7 +186,22 @@ export default function Home() {
         </Container>
       </section>
 
-      <Marquee items={sectors} />
+      {/* Sectors marquee */}
+      <section className="border-y border-border py-10 sm:py-14">
+        <Container>
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+            {sectors.map((s) => (
+              <span
+                key={s}
+                className="font-heading text-xl font-bold tracking-tight text-charcoal/40 sm:text-2xl"
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       <ProcessSection />
       <FaqSection />
       <FinalCTA />

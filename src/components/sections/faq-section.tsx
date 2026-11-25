@@ -7,8 +7,6 @@ import { Container, Eyebrow } from "@/components/site/container";
 import { Reveal } from "@/components/motion/reveal";
 import { faqs } from "@/lib/data/faq";
 
-/** Renders the FAQ accordion, plus FAQPage structured data for Google's
- * "People Also Ask" / rich-result eligibility. */
 export function FaqSection() {
   const [open, setOpen] = useState<number | null>(0);
 
@@ -23,16 +21,16 @@ export function FaqSection() {
   };
 
   return (
-    <section className="py-14 sm:py-28">
+    <section className="py-20 sm:py-32">
       <Container size="narrow">
         <Reveal className="text-center">
           <Eyebrow>Questions</Eyebrow>
-          <h2 className="mt-5 font-heading text-4xl leading-tight text-charcoal sm:text-5xl">
+          <h2 className="mt-6 text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl">
             Good to know before you start.
           </h2>
         </Reveal>
 
-        <div className="mt-8 divide-y divide-border border-y border-border sm:mt-12">
+        <div className="mt-10 divide-y divide-border border-y border-border sm:mt-14">
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
@@ -43,7 +41,7 @@ export function FaqSection() {
                   aria-expanded={isOpen}
                   className="flex w-full items-center justify-between gap-6 py-5 text-left"
                 >
-                  <span className="font-heading text-lg text-charcoal sm:text-xl">
+                  <span className="font-heading text-lg font-bold text-charcoal">
                     {f.question}
                   </span>
                   <ChevronDown
@@ -58,7 +56,7 @@ export function FaqSection() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{ duration: 0.3, ease: [0.65, 0, 0.45, 1] }}
                       className="overflow-hidden"
                     >
                       <p className="pb-5 leading-relaxed text-muted-foreground">

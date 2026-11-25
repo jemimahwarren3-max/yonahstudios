@@ -53,7 +53,7 @@ export default async function ProjectPage({
             </Link>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <span className="rounded-full bg-sand px-3 py-1 text-[11px] uppercase tracking-[0.15em] text-muted-foreground">
+              <span className="bg-sand px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
                 Studio Concept
               </span>
               {project.categories.map((c) => (
@@ -63,7 +63,7 @@ export default async function ProjectPage({
               ))}
             </div>
 
-            <h1 className="mt-5 font-heading text-5xl font-semibold leading-tight tracking-tight text-charcoal sm:text-6xl">
+            <h1 className="mt-5 text-5xl leading-[1.05] tracking-tight text-charcoal sm:text-7xl">
               {project.name}
             </h1>
             <p className="mt-3 text-lg text-muted-foreground">
@@ -82,7 +82,7 @@ export default async function ProjectPage({
           {project.image ? (
             <>
               <Reveal>
-                <div className="relative mx-auto aspect-[3/5] max-w-md overflow-hidden rounded-3xl bg-sand sm:aspect-[4/5]">
+                <div className="relative mx-auto aspect-[3/5] max-w-md overflow-hidden bg-sand sm:aspect-[4/5]">
                   <Image
                     src={project.image}
                     alt={`${project.name} — ${project.sector}`}
@@ -111,8 +111,8 @@ export default async function ProjectPage({
               <div
                 className={
                   project.discipline === "website"
-                    ? "rounded-3xl bg-sand p-6 sm:p-16"
-                    : "rounded-3xl bg-sand p-6 sm:p-10"
+                    ? "bg-sand p-6 sm:p-16"
+                    : "bg-sand p-6 sm:p-10"
                 }
               >
                 {project.discipline === "website" ? (
@@ -149,7 +149,7 @@ export default async function ProjectPage({
                 {project.palette.map((s) => (
                   <div key={s.hex} className="text-center">
                     <div
-                      className="h-16 w-16 rounded-xl border border-black/5"
+                      className="h-16 w-16 border border-black/5"
                       style={{ background: s.hex }}
                     />
                     <p className="mt-2 text-xs font-medium text-charcoal">
@@ -174,7 +174,7 @@ export default async function ProjectPage({
             </Reveal>
 
             <Reveal delay={0.1}>
-              <div className="rounded-2xl border border-border bg-sand/50 p-8">
+              <div className="border border-border bg-sand/50 p-8">
                 <h3 className="eyebrow text-muted-foreground">Deliverables</h3>
                 <ul className="mt-5 space-y-3">
                   {project.deliverables.map((d) => (
@@ -182,7 +182,7 @@ export default async function ProjectPage({
                       key={d}
                       className="flex items-start gap-3 text-sm text-charcoal"
                     >
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta" />
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-terracotta" />
                       {d}
                     </li>
                   ))}
@@ -212,7 +212,7 @@ export default async function ProjectPage({
           >
             <div>
               <p className="eyebrow text-muted-foreground">Next concept</p>
-              <p className="mt-2 font-heading text-3xl text-charcoal">
+              <p className="mt-2 font-heading text-3xl font-bold tracking-tight text-charcoal">
                 {next.name}
               </p>
             </div>
